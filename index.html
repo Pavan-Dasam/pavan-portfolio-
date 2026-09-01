@@ -1195,6 +1195,43 @@
                 padding: 2rem 1.5rem;
             }
         }
+    
+        /* === HERO TRANSPARENT BACKGROUND WATERMARK === */
+        #hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-watermark {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: clamp(400px, 48vw, 750px);
+            height: 90%;
+            max-height: 750px;
+            object-fit: cover;
+            object-position: center 20%;
+            opacity: 0.14;
+            pointer-events: none;
+            z-index: 0;
+            filter: contrast(1.2) brightness(1.1) drop-shadow(0 0 50px rgba(229, 9, 20, 0.5));
+            mask-image: radial-gradient(ellipse at 65% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%);
+            -webkit-mask-image: radial-gradient(ellipse at 65% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 75%);
+            transition: opacity 0.5s ease;
+        }
+
+        @media (max-width: 992px) {
+            .hero-bg-watermark {
+                right: 50%;
+                transform: translate(50%, -50%);
+                width: 90%;
+                opacity: 0.10;
+                mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
+                -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1232,6 +1269,8 @@
     <main>
         <!-- Hero Section -->
         <section id="hero">
+            <!-- Transparent Ambient Background Portrait -->
+            <img src="pavan-ai-portrait.png" alt="Pavan Dasam Ambient Watermark" class="hero-bg-watermark">
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content reveal-on-scroll">
