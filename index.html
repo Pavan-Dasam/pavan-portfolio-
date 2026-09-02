@@ -1440,203 +1440,7 @@
         }
 
     
-        /* === 1. INTERACTIVE MULTI-AGENT VISUALIZER === */
-        .agent-visualizer-container {
-            background: rgba(12, 14, 20, 0.9);
-            border: 1px solid rgba(229, 9, 20, 0.35);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .agent-visualizer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 0.8rem;
-        }
-
-        .agent-visualizer-header h5 {
-            color: #fff;
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .agent-nodes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin-bottom: 1.2rem;
-        }
-
-        .agent-node-btn {
-            background: rgba(20, 22, 29, 0.8);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 10px 8px;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .agent-node-btn i {
-            font-size: 1.1rem;
-            color: var(--red-light);
-        }
-
-        .agent-node-btn:hover {
-            border-color: var(--red-light);
-            color: #fff;
-            background: rgba(229, 9, 20, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .agent-node-btn.active {
-            border-color: #00F0FF;
-            background: rgba(0, 240, 255, 0.12);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
-        }
-
-        .agent-node-btn.active i {
-            color: #00F0FF;
-        }
-
-        .agent-inspector-panel {
-            background: rgba(8, 10, 15, 0.95);
-            border: 1px solid rgba(0, 240, 255, 0.25);
-            border-radius: 8px;
-            padding: 1.2rem;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            color: #dcdfe8;
-        }
-
-        .inspector-title {
-            color: #00F0FF;
-            font-weight: bold;
-            font-size: 0.95rem;
-            margin-bottom: 0.6rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .inspector-metric {
-            background: rgba(0, 240, 255, 0.1);
-            color: #00F0FF;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.72rem;
-        }
-
-        .inspector-code {
-            background: #06080e;
-            padding: 10px;
-            border-radius: 6px;
-            margin-top: 8px;
-            border: 1px solid var(--border-subtle);
-            color: #a78bfa;
-            font-size: 0.78rem;
-            line-height: 1.5;
-            overflow-x: auto;
-        }
-
-        /* === 2. BEFORE VS AFTER ROI COMPARISON CARD === */
-        .roi-comparison-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-red);
-            border-radius: 14px;
-            padding: 2rem;
-            margin: 3.5rem auto;
-            max-width: 1000px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        .roi-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .roi-header h3 {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            color: #fff;
-            margin-bottom: 0.4rem;
-        }
-
-        .roi-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .roi-grid { grid-template-columns: 1fr; }
-        }
-
-        .roi-column {
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .roi-legacy {
-            background: rgba(239, 68, 68, 0.06);
-            border: 1px solid rgba(239, 68, 68, 0.25);
-        }
-
-        .roi-ai {
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
-        }
-
-        .roi-col-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .roi-legacy .roi-col-title { color: #f87171; }
-        .roi-ai .roi-col-title { color: #34d399; }
-
-        .roi-metric-item {
-            margin-bottom: 1rem;
-            font-size: 0.88rem;
-        }
-
-        .roi-metric-item strong {
-            display: block;
-            color: #fff;
-            font-size: 0.95rem;
-        }
-
-        .roi-metric-item span {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        /* === 3. FLOATING AI TERMINAL WIDGET === */
+        /* === FLOATING AI TERMINAL WIDGET === */
         .terminal-floating-btn {
             position: fixed;
             bottom: 25px;
@@ -1767,90 +1571,7 @@
             font-size: 0.8rem;
         }
 
-        /* === 4. MODALS (ARCHITECTURE & RESUME) === */
-        .custom-modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .custom-modal-backdrop.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .custom-modal-card {
-            background: #0d111c;
-            border: 1px solid rgba(229, 9, 20, 0.4);
-            border-radius: 14px;
-            width: min(850px, 100%);
-            max-height: 88vh;
-            overflow-y: auto;
-            padding: 2rem;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 9, 20, 0.25);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .custom-modal-backdrop.open .custom-modal-card {
-            transform: scale(1);
-        }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 18px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: none;
-            color: #fff;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close-btn:hover {
-            background: var(--red-primary);
-            color: #fff;
-        }
-
-        .btn-blueprint {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.35);
-            color: #00F0FF;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 10px;
-        }
-
-        .btn-blueprint:hover {
-            background: rgba(0, 240, 255, 0.2);
-            color: #fff;
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
-        }
-
-    </style>
+        </style>
 </head>
 
 <body>
@@ -1929,7 +1650,6 @@
                         </div>
 
                         <div class="hero-actions">
-                            <a href="javascript:void(0)" onclick="openResumeModal()" class="btn-primary" style="background: linear-gradient(135deg, #7C3AED, #4C1D95); border-color: #A855F7;"><i class="fas fa-file-pdf"></i><span>Preview Résumé</span></a>
                             <a href="#contact" class="btn-primary">
                                 <span>Get in Touch</span>
                                 <i class="fas fa-arrow-right"></i>
@@ -2030,49 +1750,6 @@
                     </div>
                 </div>
             </div>
-        
-
-        <!-- Before vs After Enterprise AI Transformation -->
-        <div class="container reveal-on-scroll">
-            <div class="roi-comparison-card">
-                <div class="roi-header">
-                    <span class="section-tag">// PROVEN ENTERPRISE ROI</span>
-                    <h3>Measurable Impact &amp; Transformation</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Delivering concrete business outcomes across regulated Financial &amp; Health Insurance platforms.</p>
-                </div>
-                <div class="roi-grid">
-                    <div class="roi-column roi-legacy">
-                        <div class="roi-col-title"><i class="fas fa-times-circle"></i> Traditional Legacy Processing</div>
-                        <div class="roi-metric-item">
-                            <strong>⏱️ 3.5+ Hours Per Claim Review</strong>
-                            <span>Manual inspection of 100+ page medical dossiers and policy PDFs.</span>
-                        </div>
-                        <div class="roi-metric-item">
-                            <strong>⚠️ Inconsistent Auditability</strong>
-                            <span>Manual examiner notes with variable policy section citations.</span>
-                        </div>
-                        <div class="roi-metric-item">
-                            <strong>📉 High Repetitive Overhead</strong>
-                            <span>Examiners spend 65% of time copying/verifying basic benefit dates.</span>
-                        </div>
-                    </div>
-
-                    <div class="roi-column roi-ai">
-                        <div class="roi-col-title"><i class="fas fa-check-circle"></i> Pavan's LangGraph + RAG Pipeline</div>
-                        <div class="roi-metric-item">
-                            <strong>⚡ &lt;3.5 Seconds Synthesis (&gt;70% Time Cut)</strong>
-                            <span>Instant grounded claim summaries and extracted structured fields.</span>
-                        </div>
-                        <div class="roi-metric-item">
-                            <strong>🛡️ 100% Policy Citation Grounding</strong>
-                            <span>Deterministic clause mapping audited via RAGAS and LangSmith.</span>
-                        </div>
-                        <div class="roi-metric-item">
-                            <strong>🎯 94%+ Automated Adjudication Confidence</strong>
-                            <span>Human-in-the-Loop approval with pre-validated coverage rules.</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -2147,46 +1824,6 @@
                                     <span>Docker</span>
                                     <span>AKS</span>
                                 </div>
-
-                            <!-- Interactive Multi-Agent Flow Visualizer -->
-                            <div class="agent-visualizer-container">
-                                <div class="agent-visualizer-header">
-                                    <h5><i class="fas fa-network-wired" style="color: #00F0FF;"></i> Interactive 7-Agent Swarm Inspector (LangGraph)</h5>
-                                    <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #34d399;">● LIVE STATE MACHINE</span>
-                                </div>
-                                <div class="agent-nodes-grid">
-                                    <button class="agent-node-btn active" data-node="intake"><i class="fas fa-file-import"></i>1. Intake</button>
-                                    <button class="agent-node-btn" data-node="doc_verify"><i class="fas fa-file-check"></i>2. Doc Verify</button>
-                                    <button class="agent-node-btn" data-node="policy_rag"><i class="fas fa-search"></i>3. Policy RAG</button>
-                                    <button class="agent-node-btn" data-node="eligibility"><i class="fas fa-user-check"></i>4. Eligibility</button>
-                                    <button class="agent-node-btn" data-node="fraud"><i class="fas fa-shield-alt"></i>5. Fraud/Risk</button>
-                                    <button class="agent-node-btn" data-node="recommendation"><i class="fas fa-clipboard-check"></i>6. Recommend</button>
-                                    <button class="agent-node-btn" data-node="hitl"><i class="fas fa-user-shield"></i>7. HITL Sign-off</button>
-                                </div>
-                                <div class="agent-inspector-panel" id="agentInspector">
-                                    <div class="inspector-title">
-                                        <span id="inspectNodeName">Intake Agent (Node 1)</span>
-                                        <span class="inspector-metric" id="inspectNodeMetric">Latency: 180ms · Accuracy: 99.2%</span>
-                                    </div>
-                                    <p id="inspectNodeDesc" style="color: #94a3b8; font-size: 0.8rem; margin: 4px 0;">
-                                        Classifies incoming multi-channel insurance claims (STD, Life, Supplemental Health) and extracts policy/claimant metadata into typed Pydantic state.
-                                    </p>
-                                    <div class="inspector-code" id="inspectNodeCode">
-{
-  "claim_type": "Short_Term_Disability",
-  "claimant_id": "CLM-90241-US",
-  "missing_docs": ["Employer_Statement_Form_7"],
-  "route": "doc_verification_node"
-}
-                                    </div>
-                                </div>
-                                <button class="btn-blueprint" onclick="openBlueprintModal()">
-                                    <i class="fas fa-project-diagram"></i> 🔍 View Full System Architecture Blueprint
-                                </button>
-                            </div>
-
-                            </div>
-
                             <!-- Product 1.2: Claims Intelligence Copilot -->
                             <div class="project-block">
                                 <div class="project-block-title">
@@ -2723,76 +2360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === 1. Interactive 7-Agent Swarm Inspector ===
-    const nodeData = {
-  "intake": {
-    "name": "1. Intake Agent Node",
-    "metric": "Latency: 180ms \u00b7 Accuracy: 99.2%",
-    "desc": "Classifies incoming multi-channel insurance claims (STD, Life, Supplemental Health) and extracts policy/claimant metadata into typed Pydantic state.",
-    "code": "{\n  \"claim_type\": \"Short_Term_Disability\",\n  \"claimant_id\": \"CLM-90241-US\",\n  \"missing_docs\": [\"Employer_Statement_Form_7\"],\n  \"route\": \"doc_verification_node\"\n}"
-  },
-  "doc_verify": {
-    "name": "2. Document Verification Agent",
-    "metric": "OCR Speed: 2.1s \u00b7 Extraction: 98.6%",
-    "desc": "Runs OCR parsing on multi-page PDF/TIFF dossiers, cross-checking received medical records against specific claim requirement checklists.",
-    "code": "{\n  \"verified_docs\": [\"Attending_Physician_Statement\", \"Claimant_Form\"],\n  \"status\": \"INCOMPLETE_MISSING_EMPLOYER_STATEMENT\",\n  \"confidence\": 0.96\n}"
-  },
-  "policy_rag": {
-    "name": "3. Policy Retrieval Agent (Azure AI Search)",
-    "metric": "RAGAS Grounding: 1.00 \u00b7 Precision: 97.4%",
-    "desc": "Performs hybrid dense-sparse vector search over policy master certificates to extract applicable benefit clauses and elimination period rules.",
-    "code": "{\n  \"policy_section\": \"Section_7.2_Disability_Exclusions\",\n  \"benefit_percentage\": \"60% of Pre-disability Earnings\",\n  \"elimination_days\": 14\n}"
-  },
-  "eligibility": {
-    "name": "4. Eligibility & Plan Rules Agent",
-    "metric": "API Lookup: 42ms \u00b7 Rule Match: 100%",
-    "desc": "Validates active coverage dates, plan tier limits, and premium payment statuses via microservice API and rule-engine integration.",
-    "code": "{\n  \"coverage_status\": \"ACTIVE_IN_FORCE\",\n  \"effective_date\": \"2023-01-01\",\n  \"eligibility_passed\": true\n}"
-  },
-  "fraud": {
-    "name": "5. Fraud & Anomaly Risk Agent",
-    "metric": "False Positive Rate: <0.8%",
-    "desc": "Evaluates anomaly scoring, duplicate submission detection, and unusual physician billing pattern flags.",
-    "code": "{\n  \"risk_score\": 0.04,\n  \"risk_category\": \"LOW_RISK_STANDARD_PROCESSING\",\n  \"flagged_anomalies\": []\n}"
-  },
-  "recommendation": {
-    "name": "6. Recommendation Assembly Agent",
-    "metric": "Confidence: 94.2% \u00b7 Policy Citations: 100%",
-    "desc": "Synthesizes evidence from all predecessor agent states, attaches exact policy citations, and generates structured examiner recommendations.",
-    "code": "{\n  \"recommended_action\": \"REQUEST_MISSING_DOCUMENT\",\n  \"citation\": \"Policy Section 7.2\",\n  \"adjudication_confidence\": 0.942\n}"
-  },
-  "hitl": {
-    "name": "7. Human-in-the-Loop (HITL) Checkpoint",
-    "metric": "Examiner Sign-off \u00b7 Auditable Trace",
-    "desc": "Mandatory human review gate where the licensed claims examiner verifies AI reasoning and approves the final determination.",
-    "code": "{\n  \"examiner_decision\": \"APPROVED_SEND_RFI_LETTER\",\n  \"examiner_id\": \"EXM-8812\",\n  \"timestamp\": \"2026-09-02T16:00:00Z\"\n}"
-  }
-};
-
-    const agentNodeBtns = document.querySelectorAll('.agent-node-btn');
-    const inspectNodeName = document.getElementById('inspectNodeName');
-    const inspectNodeMetric = document.getElementById('inspectNodeMetric');
-    const inspectNodeDesc = document.getElementById('inspectNodeDesc');
-    const inspectNodeCode = document.getElementById('inspectNodeCode');
-
-    if (agentNodeBtns.length > 0) {
-        agentNodeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                agentNodeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const key = btn.getAttribute('data-node');
-                const data = nodeData[key];
-                if (data) {
-                    if (inspectNodeName) inspectNodeName.textContent = data.name;
-                    if (inspectNodeMetric) inspectNodeMetric.textContent = data.metric;
-                    if (inspectNodeDesc) inspectNodeDesc.textContent = data.desc;
-                    if (inspectNodeCode) inspectNodeCode.textContent = data.code;
-                }
-            });
-        });
-    }
-
-    // === 2. Floating AI Terminal Widget ===
+    // === Floating AI Terminal Widget ===
     const terminalToggle = document.getElementById('terminalToggle');
     const aiTerminal = document.getElementById('aiTerminal');
     const termClose = document.getElementById('termClose');
@@ -2873,36 +2441,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // === 3. Modal Controllers ===
-    window.openBlueprintModal = function() {
-        const modal = document.getElementById('blueprintModal');
-        if (modal) modal.classList.add('open');
-    };
-
-    window.closeBlueprintModal = function() {
-        const modal = document.getElementById('blueprintModal');
-        if (modal) modal.classList.remove('open');
-    };
-
-    window.openResumeModal = function() {
-        const modal = document.getElementById('resumeModal');
-        if (modal) modal.classList.add('open');
-    };
-
-    window.closeResumeModal = function() {
-        const modal = document.getElementById('resumeModal');
-        if (modal) modal.classList.remove('open');
-    };
-
-    // Close on backdrop click
-    document.querySelectorAll('.custom-modal-backdrop').forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('open');
-            }
-        });
-    });
 });
     </script>
 
@@ -2938,49 +2476,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, hire)..." autocomplete="off">
         </div>
     </div>
-
-
-    <!-- Architecture Blueprint Modal -->
-    <div class="custom-modal-backdrop" id="blueprintModal">
-        <div class="custom-modal-card">
-            <button class="modal-close-btn" onclick="closeBlueprintModal()"><i class="fas fa-times"></i></button>
-            <h3 style="color: #00F0FF; font-family: var(--font-display); margin-bottom: 6px;">🏗️ Autonomous Claims Processing Agent — Architecture Blueprint</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.2rem;">Production-grade LangGraph Multi-Agent Fabric with Azure AI Search &amp; Human-in-the-Loop Sign-off.</p>
-            
-            <div style="background: #06080e; padding: 1.2rem; border-radius: 8px; border: 1px solid rgba(0,240,255,0.3); font-family: var(--font-mono); font-size: 0.76rem; color: #a78bfa; line-height: 1.6; overflow-x: auto;">
-┌────────────────┐     ┌───────────────────────┐     ┌────────────────────────────────┐
-│  Claim Intake  │ ──► │  Document OCR & Chunk │ ──► │ Policy Retrieval (Azure Search) │
-└────────────────┘     └───────────────────────┘     └────────────────────────────────┘
-                                                                      │
-                                                                      ▼
-┌────────────────┐     ┌───────────────────────┐     ┌────────────────────────────────┐
-│ Human Examiner │ ◄── │  Recommendation Node  │ ◄── │  LangGraph 7-Agent Swarm Eval  │
-│ Sign-off (HITL)│     │  (94%+ Confidence)    │     │  (Eligibility + Fraud Scoring) │
-└────────────────┘     └───────────────────────┘     └────────────────────────────────┘
-            </div>
-
-            <div style="margin-top: 1.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div style="background: rgba(20,22,29,0.7); padding: 12px; border-radius: 8px; border-left: 3px solid #00F0FF;">
-                    <div style="color: #00F0FF; font-weight: bold; font-size: 0.85rem;">🛡️ Guardrails &amp; Security</div>
-                    <div style="color: #94a3b8; font-size: 0.78rem; margin-top: 4px;">Automated PII redaction layer, strict prompt injection barriers, and mandatory Human-in-the-Loop checkpoints.</div>
-                </div>
-                <div style="background: rgba(20,22,29,0.7); padding: 12px; border-radius: 8px; border-left: 3px solid #34d399;">
-                    <div style="color: #34d399; font-weight: bold; font-size: 0.85rem;">⚡ Scalability &amp; Latency</div>
-                    <div style="color: #94a3b8; font-size: 0.78rem; margin-top: 4px;">Sub-second node routing (&lt;800ms P95), Redis vector caching, and async FastAPI microservices on Azure AKS.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Résumé Preview Modal -->
-    <div class="custom-modal-backdrop" id="resumeModal">
-        <div class="custom-modal-card" style="max-width: 750px;">
-            <button class="modal-close-btn" onclick="closeResumeModal()"><i class="fas fa-times"></i></button>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem; margin-bottom: 1.2rem;">
-                <div>
-                    <h3 style="color: #fff; font-family: var(--font-display); margin: 0;">Pavan Dasam — Résumé Preview</h3>
-                    <div style="color: #a78bfa; font-family: var(--font-mono); font-size: 0.8rem; margin-top: 3px;">AI Engineer · Generative AI &amp; Agentic Architect</div>
-                </div>
                 <a href="mailto:pavanwork2113@gmail.com?subject=Interview%20Request%20-%20Pavan%20Dasam" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
                     <i class="fas fa-paper-plane"></i> Request Full PDF
                 </a>
