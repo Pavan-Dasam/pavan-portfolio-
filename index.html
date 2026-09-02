@@ -1384,15 +1384,15 @@
             }
         }
     
-        /* === EXPERIENCE INTERACTIVE FILTER BAR === */
+        /* === EXPERIENCE COMPANY FILTER BAR === */
         .experience-filter-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             margin: -1.5rem auto 3rem auto;
-            max-width: 800px;
+            max-width: 850px;
             z-index: 10;
             position: relative;
         }
@@ -1401,10 +1401,10 @@
             background: rgba(20, 22, 29, 0.85);
             border: 1px solid var(--border-subtle);
             color: var(--text-muted);
-            padding: 8px 18px;
+            padding: 10px 22px;
             border-radius: 99px;
             font-family: var(--font-mono);
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -1417,27 +1417,15 @@
         .exp-filter-btn:hover {
             color: #fff;
             border-color: var(--red-light);
-            background: rgba(229, 9, 20, 0.12);
+            background: rgba(229, 9, 20, 0.14);
             transform: translateY(-2px);
         }
 
         .exp-filter-btn.active {
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.35), rgba(143, 6, 13, 0.5));
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.4), rgba(143, 6, 13, 0.6));
             color: #fff;
             border-color: var(--red-primary);
-            box-shadow: 0 0 15px var(--red-glow);
-        }
-
-        .exp-filter-btn .count {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2px 7px;
-            border-radius: 99px;
-            font-size: 0.72rem;
-        }
-
-        .exp-filter-btn.active .count {
-            background: var(--red-primary);
-            color: #fff;
+            box-shadow: 0 0 18px var(--red-glow);
         }
 
         .timeline-item {
@@ -1631,35 +1619,31 @@
         </section>
 
         <!-- Professional Experience & Major Products -->
+        <!-- Professional Experience & Major Products -->
         <section id="experience">
             <div class="container">
                 <div class="section-header reveal-on-scroll">
                     <span class="section-tag">// ENTERPRISE DELIVERABLES</span>
                     <h2 class="section-title gradient-text">Professional Experience</h2>
-                    <p class="section-subtitle">Deep dive into enterprise AI systems and production architectures built
-                        for industry leaders.</p>
+                    <p class="section-subtitle">Deep dive into enterprise AI systems and production architectures built for industry leaders.</p>
                 </div>
 
-                
-                <!-- Experience Category Filter Bar -->
+                <!-- Experience Company Filter Bar -->
                 <div class="experience-filter-wrapper reveal-on-scroll">
                     <button class="exp-filter-btn active" data-filter="all">
-                        <i class="fas fa-layer-group"></i> All Experience <span class="count">4</span>
+                        <i class="fas fa-building"></i> All Companies
                     </button>
-                    <button class="exp-filter-btn" data-filter="agentic">
-                        <i class="fas fa-network-wired"></i> Agentic AI / LangGraph <span class="count">2</span>
+                    <button class="exp-filter-btn" data-filter="accenture">
+                        <i class="fas fa-briefcase"></i> Accenture · Voya Financial
                     </button>
-                    <button class="exp-filter-btn" data-filter="rag">
-                        <i class="fas fa-brain"></i> GenAI & RAG <span class="count">2</span>
-                    </button>
-                    <button class="exp-filter-btn" data-filter="backend">
-                        <i class="fas fa-server"></i> Java & Backend Core <span class="count">1</span>
+                    <button class="exp-filter-btn" data-filter="tao">
+                        <i class="fas fa-briefcase"></i> TAO Digitals · Anthem
                     </button>
                 </div>
 
                 <div class="timeline">
                     <!-- Role 1: Accenture -->
-                    <div class="timeline-item reveal-on-scroll">
+                    <div class="timeline-item reveal-on-scroll" data-company="accenture">
                         <div class="timeline-dot"></div>
                         <div class="timeline-card">
                             <div class="timeline-meta">
@@ -1678,42 +1662,20 @@
                                     <span class="project-type-pill">Agentic AI</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life,
-                                    and disability, and brought Leave/PFML/Short-Term Disability claims administration
-                                    in-house. Designed a multi-agent workflow to process incoming claims end-to-end.
+                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life, and disability, and brought Leave/PFML/Short-Term Disability claims administration in-house. Designed a multi-agent workflow to process incoming claims end-to-end.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>Multi-Agent Workflow:</strong><br>
-                                    New Claim <span>→</span> Intake Agent <span>→</span> Document Verification Agent
-                                    <span>→</span> Policy Retrieval Agent <span>→</span> Eligibility Agent
-                                    <span>→</span> Claims Analysis Agent <span>→</span> Fraud/Risk Agent <span>→</span>
-                                    Recommendation Agent <span>→</span> Human Claims Examiner
+                                    New Claim <span>→</span> Intake Agent <span>→</span> Document Verification Agent <span>→</span> Policy Retrieval Agent <span>→</span> Eligibility Agent <span>→</span> Claims Analysis Agent <span>→</span> Fraud/Risk Agent <span>→</span> Recommendation Agent <span>→</span> Human Claims Examiner
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Designed and built a multi-agent LangGraph workflow spanning Intake, Document
-                                        Verification, Policy Retrieval, Eligibility, Claims Analysis, Fraud/Risk, and
-                                        Recommendation agents to process disability, life, and supplemental health
-                                        claims.</li>
-                                    <li>Developed the <strong>Intake Agent</strong> to classify incoming claims and
-                                        extract claimant/policy info, and the <strong>Document Verification
-                                            Agent</strong> to check received documents against claim requirements and
-                                        flag missing items.</li>
-                                    <li>Implemented the <strong>Policy Retrieval Agent</strong> using RAG over
-                                        certificate/policy language to surface applicable coverage sections for each
-                                        claim.</li>
-                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates,
-                                        plan eligibility, and applicable rules via internal APIs and rules-engine
-                                        integration.</li>
-                                    <li>Built the <strong>Fraud/Risk Agent</strong> to flag unusual claim patterns, and
-                                        the <strong>Recommendation Agent</strong> to assemble supporting evidence, cite
-                                        policy sections, and produce a confidence-scored recommended next action.</li>
-                                    <li>Implemented <strong>Human-in-the-Loop routing</strong> so claims examiners
-                                        review and finalize every agent-recommended action before it is applied (e.g.,
-                                        flags 4/5 documents received, cites Policy Section 7.2, and recommends
-                                        requesting missing employer statement at 94% confidence).</li>
-                                    <li>Selected <strong>LangGraph</strong> over simple LangChain chains because the
-                                        claims process required persistent state, conditional branching, and
-                                        human-in-the-loop checkpoints.</li>
+                                    <li>Designed and built a multi-agent LangGraph workflow spanning Intake, Document Verification, Policy Retrieval, Eligibility, Claims Analysis, Fraud/Risk, and Recommendation agents to process disability, life, and supplemental health claims.</li>
+                                    <li>Developed the <strong>Intake Agent</strong> to classify incoming claims and extract claimant/policy info, and the <strong>Document Verification Agent</strong> to check received documents against claim requirements and flag missing items.</li>
+                                    <li>Implemented the <strong>Policy Retrieval Agent</strong> using RAG over certificate/policy language to surface applicable coverage sections for each claim.</li>
+                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates, plan eligibility, and applicable rules via internal APIs and rules-engine integration.</li>
+                                    <li>Built the <strong>Fraud/Risk Agent</strong> to flag unusual claim patterns, and the <strong>Recommendation Agent</strong> to assemble supporting evidence, cite policy sections, and produce a confidence-scored recommended next action.</li>
+                                    <li>Implemented <strong>Human-in-the-Loop routing</strong> so claims examiners review and finalize every agent-recommended action before it is applied (e.g., flags 4/5 documents received, cites Policy Section 7.2, and recommends requesting missing employer statement at 94% confidence).</li>
+                                    <li>Selected <strong>LangGraph</strong> over simple LangChain chains because the claims process required persistent state, conditional branching, and human-in-the-loop checkpoints.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>LangGraph</span>
@@ -1736,30 +1698,18 @@
                                     <span class="project-type-pill">GenAI · RAG</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Examiners needed a faster way to understand large claim
-                                    files spanning medical documents, claim forms, employer information, policy
-                                    documents, and correspondence.
+                                    <strong>Context:</strong> Examiners needed a faster way to understand large claim files spanning medical documents, claim forms, employer information, policy documents, and correspondence.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>RAG Architecture:</strong><br>
-                                    Documents <span>→</span> OCR / Document Extraction <span>→</span> Chunking
-                                    <span>→</span> Embeddings <span>→</span> Vector DB <span>→</span> RAG <span>→</span>
-                                    LLM <span>→</span> Structured Claims Summary
+                                    Documents <span>→</span> OCR / Document Extraction <span>→</span> Chunking <span>→</span> Embeddings <span>→</span> Vector DB <span>→</span> RAG <span>→</span> LLM <span>→</span> Structured Claims Summary
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Built a GenAI copilot that ingests claim documents and produces a structured
-                                        summary for examiners — claim type, reason, missing documents, relevant policy
-                                        sections, potential issues, and recommended next step — replacing manual review
-                                        of the full file.</li>
-                                    <li>Implemented OCR-based document extraction, chunking, and embedding generation
-                                        across heterogeneous claim file formats.</li>
-                                    <li>Developed RAG retrieval over policy and claims documentation to ground each
-                                        generated summary in the applicable plan language.</li>
-                                    <li>Built FastAPI endpoints and a React-based interface for examiners to review
-                                        AI-generated summaries alongside source documents, with Application Insights
-                                        monitoring.</li>
-                                    <li>Applied guardrails ensuring the copilot assists examiners with information
-                                        synthesis only, avoiding autonomous high-impact approvals/denials.</li>
+                                    <li>Built a GenAI copilot that ingests claim documents and produces a structured summary for examiners — claim type, reason, missing documents, relevant policy sections, potential issues, and recommended next step — replacing manual review of the full file.</li>
+                                    <li>Implemented OCR-based document extraction, chunking, and embedding generation across heterogeneous claim file formats.</li>
+                                    <li>Developed RAG retrieval over policy and claims documentation to ground each generated summary in the applicable plan language.</li>
+                                    <li>Built FastAPI endpoints and a React-based interface for examiners to review AI-generated summaries alongside source documents, with Application Insights monitoring.</li>
+                                    <li>Applied guardrails ensuring the copilot assists examiners with information synthesis only, avoiding autonomous high-impact approvals/denials.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Azure OpenAI / GPT</span>
@@ -1777,7 +1727,7 @@
                     </div>
 
                     <!-- Role 2: TAO Digitals -->
-                    <div class="timeline-item reveal-on-scroll">
+                    <div class="timeline-item reveal-on-scroll" data-company="tao">
                         <div class="timeline-dot"></div>
                         <div class="timeline-card">
                             <div class="timeline-meta">
@@ -1796,31 +1746,18 @@
                                     <span class="project-type-pill">GenAI · Support Copilot</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Members contact support with questions on procedure
-                                    coverage, deductibles, claim denials, out-of-pocket costs, provider network status,
-                                    and EOBs. Support agents needed instant retrieval across benefit docs and claims
-                                    data.
+                                    <strong>Context:</strong> Members contact support with questions on procedure coverage, deductibles, claim denials, out-of-pocket costs, provider network status, and EOBs. Support agents needed instant retrieval across benefit docs and claims data.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>Architecture:</strong><br>
-                                    Member/CSR <span>→</span> AI Assistant <span>→</span> Intent Detection
-                                    <span>→</span> RAG <span>→</span> Member/Claims APIs + Vector DB <span>→</span> LLM
-                                    <span>→</span> Guardrails <span>→</span> Response
+                                    Member/CSR <span>→</span> AI Assistant <span>→</span> Intent Detection <span>→</span> RAG <span>→</span> Member/Claims APIs + Vector DB <span>→</span> LLM <span>→</span> Guardrails <span>→</span> Response
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Built MemberAssist AI, a RAG-based GenAI assistant that retrieves a member's
-                                        relevant plan, benefit, and claims information and explains it in plain
-                                        language.</li>
-                                    <li>Implemented intent detection to route member questions (coverage, deductible,
-                                        claim denial reason, cost-share, network status, EOB explanation) to appropriate
-                                        retrieval and API paths.</li>
-                                    <li>Developed RAG retrieval over benefit documents and internal knowledge bases
-                                        combined with real-time lookups against member and claims APIs.</li>
-                                    <li>Example: for a denied-claim query, retrieves claim, denial reason, member
-                                        benefits, and policy, generating plain-language explanations (e.g. missing prior
-                                        authorization) and appeal steps.</li>
-                                    <li>Generated embeddings, indexed benefit guides, built FastAPI endpoints, applied
-                                        plan-data grounding checks, and used LangSmith for tracing/debugging.</li>
+                                    <li>Built MemberAssist AI, a RAG-based GenAI assistant that retrieves a member's relevant plan, benefit, and claims information and explains it in plain language.</li>
+                                    <li>Implemented intent detection to route member questions (coverage, deductible, claim denial reason, cost-share, network status, EOB explanation) to appropriate retrieval and API paths.</li>
+                                    <li>Developed RAG retrieval over benefit documents and internal knowledge bases combined with real-time lookups against member and claims APIs.</li>
+                                    <li>Example: for a denied-claim query, retrieves claim, denial reason, member benefits, and policy, generating plain-language explanations (e.g. missing prior authorization) and appeal steps.</li>
+                                    <li>Generated embeddings, indexed benefit guides, built FastAPI endpoints, applied plan-data grounding checks, and used LangSmith for tracing/debugging.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Azure OpenAI</span>
@@ -1841,16 +1778,10 @@
                                     <span class="project-type-pill">Backend Microservices</span>
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Began as a Java backend developer on Anthem's claims and member services
-                                        platform, building and maintaining core services before transitioning into the
-                                        GenAI team.</li>
-                                    <li>Developed and maintained backend microservices using Java, Spring Boot, and REST
-                                        APIs for claims processing and member service workflows.</li>
-                                    <li>Designed and optimized SQL queries and stored procedures, and wrote
-                                        unit/integration tests using JUnit and Mockito to ensure service reliability.
-                                    </li>
-                                    <li>Collaborated with QA and business teams in Agile sprint cycles with Git and
-                                        Jenkins CI/CD pipelines.</li>
+                                    <li>Began as a Java backend developer on Anthem's claims and member services platform, building and maintaining core services before transitioning into the GenAI team.</li>
+                                    <li>Developed and maintained backend microservices using Java, Spring Boot, and REST APIs for claims processing and member service workflows.</li>
+                                    <li>Designed and optimized SQL queries and stored procedures, and wrote unit/integration tests using JUnit and Mockito to ensure service reliability.</li>
+                                    <li>Collaborated with QA and business teams in Agile sprint cycles with Git and Jenkins CI/CD pipelines.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Java</span>
@@ -1859,9 +1790,8 @@
                                     <span>SQL</span>
                                     <span>JUnit</span>
                                     <span>Mockito</span>
-                                    <span>Git</span>
                                     <span>Jenkins</span>
-                                    <span>Agile</span>
+                                    <span>PostgreSQL</span>
                                 </div>
                             </div>
                         </div>
@@ -2288,6 +2218,37 @@
                 timelineItems.forEach(item => {
                     const categories = item.getAttribute('data-category') || 'all';
                     if (filter === 'all' || categories.includes(filter)) {
+                        item.classList.remove('filtered-out');
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(15px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+    }
+
+    
+    // === PROFESSIONAL EXPERIENCE COMPANY FILTER ===
+    const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (expFilterBtns.length > 0 && timelineItems.length > 0) {
+        expFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                expFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+
+                timelineItems.forEach(item => {
+                    const company = item.getAttribute('data-company') || '';
+                    if (filter === 'all' || company === filter) {
                         item.classList.remove('filtered-out');
                         item.style.opacity = '0';
                         item.style.transform = 'translateY(15px)';
