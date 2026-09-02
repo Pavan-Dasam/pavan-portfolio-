@@ -1928,7 +1928,7 @@
 
     <!-- Interactive Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
             // === Animated Custom Cursor ===
             const cursorDot = document.querySelector("[data-cursor-dot]");
             const cursorOutline = document.querySelector("[data-cursor-outline]");
@@ -1942,28 +1942,12 @@
                     cursorOutline.animate({
                         left: `${posX}px`,
                         top: `${posY}px`
-                    }, { duration: 400, fill: "forwards" });
-                });
-
-                // Enlarge cursor on interactive elements
-                const interactables = document.querySelectorAll('a, button, .project-block, .skill-category-card, .principle-card, .cert-card, .skill-tag');
-                interactables.forEach(item => {
-                    item.addEventListener('mouseenter', () => {
-                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                        cursorOutline.style.borderColor = '#ff4d58';
-                        cursorOutline.style.backgroundColor = 'rgba(229, 9, 20, 0.15)';
-                    });
-                    item.addEventListener('mouseleave', () => {
-                        cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                        cursorOutline.style.borderColor = 'var(--red-primary)';
-                        cursorOutline.style.backgroundColor = 'transparent';
-                    });
+                    }, { duration: 350, fill: "forwards" });
                 });
             }
 
-            // === Typing Animation ===
+            // === Dynamic Subtitle Role Typing Effect ===
             const roles = [
-                "an AI Engineer",
                 "an Agentic AI Specialist (LangGraph)",
                 "a RAG Systems Architect",
                 "a Production GenAI Engineer"
@@ -2009,7 +1993,7 @@
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
+
                     const rotateX = ((y - centerY) / centerY) * -12;
                     const rotateY = ((x - centerX) / centerX) * 12;
 
@@ -2023,20 +2007,23 @@
 
             // === Scroll Reveal Observer ===
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    root: null,
+                    threshold: 0.08,
+                    rootMargin: "0px 0px -20px 0px"
                 });
-            }, {
-                root: null,
-                threshold: 0.12,
-                rootMargin: "0px 0px -40px 0px"
-            });
-
-            revealElements.forEach(el => revealObserver.observe(el));
+                revealElements.forEach(el => revealObserver.observe(el));
+            } else {
+                revealElements.forEach(el => el.classList.add('is-visible'));
+            }
 
             // === Active Nav Highlighting & Header Blur on Scroll ===
             const header = document.getElementById('header');
@@ -2045,9 +2032,9 @@
 
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
+                    header?.classList.add('scrolled');
                 } else {
-                    header.classList.remove('scrolled');
+                    header?.classList.remove('scrolled');
                 }
 
                 let currentSection = '';
@@ -2075,11 +2062,11 @@
                     navMenu.classList.toggle('active');
                     const icon = mobileBtn.querySelector('i');
                     if (navMenu.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
+                        icon?.classList.remove('fa-bars');
+                        icon?.classList.add('fa-times');
                     } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
+                        icon?.classList.remove('fa-times');
+                        icon?.classList.add('fa-bars');
                     }
                 });
 
@@ -2087,74 +2074,42 @@
                     link.addEventListener('click', () => {
                         navMenu.classList.remove('active');
                         const icon = mobileBtn.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
+                        icon?.classList.remove('fa-times');
+                        icon?.classList.add('fa-bars');
+                    });
+                });
+            }
+
+            // === Professional Experience Company Filter ===
+            const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            if (expFilterBtns.length > 0 && timelineItems.length > 0) {
+                expFilterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        expFilterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        const filter = btn.getAttribute('data-filter');
+
+                        timelineItems.forEach(item => {
+                            const company = item.getAttribute('data-company') || '';
+                            if (filter === 'all' || company === filter) {
+                                item.classList.remove('filtered-out');
+                                item.style.opacity = '0';
+                                item.style.transform = 'translateY(15px)';
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                }, 50);
+                            } else {
+                                item.classList.add('filtered-out');
+                            }
+                        });
                     });
                 });
             }
         });
-    
-    // === PROFESSIONAL EXPERIENCE CATEGORY FILTER ===
-    const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    if (expFilterBtns.length > 0 && timelineItems.length > 0) {
-        expFilterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                expFilterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-
-                timelineItems.forEach(item => {
-                    const categories = item.getAttribute('data-category') || 'all';
-                    if (filter === 'all' || categories.includes(filter)) {
-                        item.classList.remove('filtered-out');
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(15px)';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        item.classList.add('filtered-out');
-                    }
-                });
-            });
-        });
-    }
-
-    
-    // === PROFESSIONAL EXPERIENCE COMPANY FILTER ===
-    const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
-    const timelineItems = document.querySelectorAll('.timeline-item');
-
-    if (expFilterBtns.length > 0 && timelineItems.length > 0) {
-        expFilterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                expFilterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
-
-                timelineItems.forEach(item => {
-                    const company = item.getAttribute('data-company') || '';
-                    if (filter === 'all' || company === filter) {
-                        item.classList.remove('filtered-out');
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(15px)';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        item.classList.add('filtered-out');
-                    }
-                });
-            });
-        });
-    }
-
     </script>
 </body>
 </html>
