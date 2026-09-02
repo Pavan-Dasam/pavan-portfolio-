@@ -1440,63 +1440,71 @@
         }
 
     
-        /* === FLOATING AI TERMINAL WIDGET === */
+        /* === FLOATING AI TERMINAL WIDGET (PORTFOLIO THEME) === */
         .terminal-floating-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
             z-index: 9999;
-            background: linear-gradient(135deg, #0f172a, #060913);
-            border: 1px solid #00F0FF;
-            color: #00F0FF;
-            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(20, 22, 30, 0.95), rgba(10, 12, 16, 0.98));
+            border: 1px solid var(--red-primary);
+            color: #fff;
+            padding: 11px 20px;
             border-radius: 99px;
             font-family: var(--font-mono);
-            font-size: 0.85rem;
-            font-weight: bold;
+            font-size: 0.84rem;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.35);
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            backdrop-filter: blur(10px);
         }
 
         .terminal-floating-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 35px rgba(0, 240, 255, 0.6);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 30px rgba(229, 9, 20, 0.6);
+            border-color: var(--red-light);
             color: #fff;
-            border-color: #fff;
         }
 
         .terminal-pulse-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #34d399;
-            box-shadow: 0 0 8px #34d399;
-            animation: pulse-dot 1.5s infinite;
+            background: var(--red-light);
+            box-shadow: 0 0 10px var(--red-light);
+            animation: pulse-red-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-red-dot {
+            0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px var(--red-light); }
+            50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 12px var(--red-light); }
+            100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 4px var(--red-light); }
         }
 
         .ai-terminal-window {
             position: fixed;
             bottom: 85px;
             right: 25px;
-            width: min(500px, calc(100vw - 30px));
+            width: min(480px, calc(100vw - 30px));
             height: 380px;
-            background: rgba(6, 9, 19, 0.96);
-            border: 1px solid rgba(0, 240, 255, 0.4);
+            background: rgba(10, 12, 18, 0.97);
+            border: 1px solid rgba(229, 9, 20, 0.35);
             border-radius: 12px;
             z-index: 9999;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 9, 20, 0.2);
             backdrop-filter: blur(16px);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             opacity: 0;
             pointer-events: none;
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(20px) scale(0.96);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            font-family: var(--font-mono);
         }
 
         .ai-terminal-window.open {
@@ -1506,12 +1514,12 @@
         }
 
         .terminal-topbar {
-            background: #0f172a;
+            background: rgba(20, 22, 30, 0.95);
             padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .terminal-controls {
@@ -1531,8 +1539,9 @@
 
         .terminal-title {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #94a3b8;
+            font-size: 0.76rem;
+            color: #cbd5e1;
+            font-weight: 500;
         }
 
         .terminal-body {
@@ -1541,24 +1550,24 @@
             overflow-y: auto;
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: #dcdfe8;
-            line-height: 1.55;
+            color: #e2e8f0;
+            line-height: 1.6;
         }
 
         .terminal-input-row {
             display: flex;
             align-items: center;
-            padding: 8px 14px;
-            background: #0b101e;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 9px 14px;
+            background: rgba(14, 16, 24, 0.95);
+            border-top: 1px solid var(--border-subtle);
             gap: 8px;
         }
 
         .terminal-prompt {
-            color: #00F0FF;
+            color: var(--red-light);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: bold;
+            font-size: 0.82rem;
+            font-weight: 700;
         }
 
         .terminal-input {
@@ -1568,10 +1577,27 @@
             outline: none;
             color: #fff;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
         }
 
-        </style>
+        .term-badge {
+            background: rgba(229, 9, 20, 0.12);
+            border: 1px solid rgba(229, 9, 20, 0.3);
+            color: #ff7a7a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            transition: all 0.2s ease;
+        }
+
+        .term-badge:hover {
+            background: rgba(229, 9, 20, 0.25);
+            color: #fff;
+            border-color: var(--red-light);
+        }
+</style>
 </head>
 
 <body>
@@ -2443,7 +2469,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <!-- Floating AI Terminal Widget -->
     <button class="terminal-floating-btn" id="terminalToggle" title="Open Interactive AI Terminal">
         <div class="terminal-pulse-dot"></div>
-        <i class="fas fa-terminal"></i>
+        <i class="fas fa-terminal" style="color: var(--red-light);"></i>
         <span>AI Terminal</span>
     </button>
 
@@ -2454,46 +2480,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="terminal-dot yellow"></span>
                 <span class="terminal-dot green"></span>
             </div>
-            <span class="terminal-title">pavan@devos:~$ (AI Twin Sandbox)</span>
-            <span style="font-size: 0.7rem; color: #34d399; font-family: monospace;">ONLINE</span>
+            <span class="terminal-title">pavan@devos:~$</span>
+            <span style="font-size: 0.7rem; color: #34d399; font-family: var(--font-mono);">ONLINE</span>
         </div>
         <div class="terminal-body" id="termOutput">
-            <div style="color: #00F0FF; font-weight: bold; margin-bottom: 6px;">✨ Pavan Dasam | AI Engineer Shell v2.4</div>
-            <div style="color: #94a3b8; margin-bottom: 8px;">Type <span style="color: #a78bfa; font-weight: bold;">help</span> to see available commands or click below:</div>
+            <div style="color: #fff; font-weight: bold; margin-bottom: 6px; font-family: var(--font-mono);">
+                <span style="color: var(--red-light);">●</span> Pavan Dasam | AI Engineer Shell v2.4
+            </div>
+            <div style="color: var(--text-muted); margin-bottom: 8px; font-size: 0.78rem;">
+                Type <span style="color: var(--red-light); font-weight: bold;">help</span> or click a quick action:
+            </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
-                <span style="background: rgba(0,240,255,0.1); color: #00F0FF; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.72rem;" onclick="runTermCmd('skills')">skills</span>
-                <span style="background: rgba(167,139,250,0.1); color: #a78bfa; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.72rem;" onclick="runTermCmd('projects')">projects</span>
-                <span style="background: rgba(52,211,153,0.1); color: #34d399; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.72rem;" onclick="runTermCmd('certs')">certs</span>
-                <span style="background: rgba(239,68,68,0.1); color: #f87171; padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 0.72rem;" onclick="runTermCmd('hire')">hire</span>
+                <span class="term-badge" onclick="runTermCmd('skills')">skills</span>
+                <span class="term-badge" onclick="runTermCmd('projects')">projects</span>
+                <span class="term-badge" onclick="runTermCmd('certs')">certs</span>
+                <span class="term-badge" onclick="runTermCmd('contact')">contact</span>
             </div>
         </div>
+        <div class="terminal-input-row">
+            <span class="terminal-prompt">&gt;</span>
+            <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, contact)..." autocomplete="off">
+        </div>
+    </div>
         <div class="terminal-input-row">
             <span class="terminal-prompt">&gt;</span>
             <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, hire)..." autocomplete="off">
         </div>
     </div>
-                <a href="mailto:pavanwork2113@gmail.com?subject=Interview%20Request%20-%20Pavan%20Dasam" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
-                    <i class="fas fa-paper-plane"></i> Request Full PDF
-                </a>
-            </div>
-            
-            <div style="font-size: 0.85rem; color: #dcdfe8; line-height: 1.6; space-y: 12px;">
-                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                    <div style="color: #00F0FF; font-weight: bold; margin-bottom: 4px;">🎓 Education &amp; Background</div>
-                    <div>B.Tech in Computer Science &amp; Engineering · JNTUK University (Andhra Pradesh, India) · 3+ Years Enterprise Experience.</div>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                    <div style="color: #34d399; font-weight: bold; margin-bottom: 4px;">🎖️ Verified Credentials</div>
-                    <div>• LangChain Academy: Introduction to LangChain (ID: ctddbhm9sf)<br>• LangChain Academy: Introduction to LangGraph (ID: 9ucdiusaz6)<br>• Databricks Certified Generative AI Engineer</div>
-                </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-                    <div style="color: #a78bfa; font-weight: bold; margin-bottom: 4px;">💼 Core Experience Highlights</div>
-                    <div>• <strong>Agentic AI Engineer (Accenture / Voya Financial):</strong> Built 7-Agent LangGraph claims system with 100% citation grounding.<br>• <strong>Software Engineer (TAO Digitals / Anthem):</strong> Built MemberAssist AI RAG copilot (&lt;800ms P95) &amp; Java 17 backend services.</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
+                </body>
 
 </html>
