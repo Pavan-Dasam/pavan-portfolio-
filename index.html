@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pavan Dasam - AI Engineer specializing in Generative AI, Agentic AI, and RAG Systems. 3+ Years in Financial & Health Insurance domains.">
+    <meta name="description"
+        content="Pavan Dasam - AI Engineer specializing in Generative AI, Agentic AI, and RAG Systems. 3+ Years in Financial & Health Insurance domains.">
     <title>Pavan Dasam | AI Engineer · Generative AI · Agentic AI · RAG</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome & DevIcons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
@@ -19,11 +23,11 @@
         /* === ROOT THEME & COLOR PALETTE === */
         :root {
             --red-primary: #E50914;
-            --red-glow: rgba(229, 9, 20, 0.45);
+            --red-glow: rgba(80, 2, 6, 0.934);
             --red-glow-strong: rgba(229, 9, 20, 0.85);
             --red-dark: #8f060d;
             --red-light: #ff4d58;
-            
+
             --bg-main: #0c0d10;
             --bg-card: #14161d;
             --bg-card-hover: #1b1e28;
@@ -38,12 +42,14 @@
             --font-main: 'Poppins', sans-serif;
             --font-display: 'Space Grotesk', sans-serif;
             --font-mono: 'Space Mono', monospace;
-            
+
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         /* === GLOBAL RESET === */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -62,7 +68,8 @@
         }
 
         /* === CUSTOM ANIMATED CURSOR === */
-        .cursor-dot, .cursor-outline {
+        .cursor-dot,
+        .cursor-outline {
             pointer-events: none;
             position: fixed;
             top: 50%;
@@ -89,7 +96,11 @@
         }
 
         @media (hover: none) and (pointer: coarse) {
-            .cursor-dot, .cursor-outline { display: none; }
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
         }
 
         /* === COSMIC STARFIELD BACKGROUND === */
@@ -103,13 +114,18 @@
             pointer-events: none;
             overflow: hidden;
             background: radial-gradient(circle at 80% 10%, rgba(229, 9, 20, 0.09) 0%, transparent 40%),
-                        radial-gradient(circle at 10% 60%, rgba(143, 6, 13, 0.07) 0%, transparent 45%),
-                        var(--bg-main);
+                radial-gradient(circle at 10% 60%, rgba(143, 6, 13, 0.07) 0%, transparent 45%),
+                var(--bg-main);
         }
 
         @keyframes move-stars {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-2000px); }
+            from {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(-2000px);
+            }
         }
 
         .stars-layer {
@@ -122,22 +138,22 @@
         }
 
         .stars-1 {
-            background-image: radial-gradient(1px 1px at 25px 35px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(1.5px 1.5px at 150px 220px, #ff4d58, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 300px 90px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 450px 380px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 600px 180px, #ff999f, rgba(0,0,0,0)),
-                              radial-gradient(1.5px 1.5px at 750px 420px, #fff, rgba(0,0,0,0));
+            background-image: radial-gradient(1px 1px at 25px 35px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(1.5px 1.5px at 150px 220px, #ff4d58, rgba(0, 0, 0, 0)),
+                radial-gradient(1px 1px at 300px 90px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 450px 380px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(1px 1px at 600px 180px, #ff999f, rgba(0, 0, 0, 0)),
+                radial-gradient(1.5px 1.5px at 750px 420px, #fff, rgba(0, 0, 0, 0));
             background-size: 800px 600px;
             animation: move-stars 120s linear infinite;
             opacity: 0.6;
         }
 
         .stars-2 {
-            background-image: radial-gradient(1.5px 1.5px at 80px 120px, #ff4d58, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 280px 320px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 520px 40px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2.5px 2.5px at 700px 260px, #E50914, rgba(0,0,0,0));
+            background-image: radial-gradient(1.5px 1.5px at 80px 120px, #ff4d58, rgba(0, 0, 0, 0)),
+                radial-gradient(2px 2px at 280px 320px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(1px 1px at 520px 40px, #fff, rgba(0, 0, 0, 0)),
+                radial-gradient(2.5px 2.5px at 700px 260px, #E50914, rgba(0, 0, 0, 0));
             background-size: 750px 500px;
             animation: move-stars 80s linear infinite;
             opacity: 0.45;
@@ -176,9 +192,17 @@
         }
 
         @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .section-title {
@@ -244,8 +268,15 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 15px var(--red-glow); }
-            50% { box-shadow: 0 0 28px var(--red-glow-strong); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px var(--red-glow);
+            }
+
+            50% {
+                box-shadow: 0 0 28px var(--red-glow-strong);
+            }
         }
 
         /* === HEADER & NAVIGATION === */
@@ -316,11 +347,13 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover,
+        nav a.active {
             color: #fff;
         }
 
-        nav a:hover::after, nav a.active::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
         }
 
@@ -383,7 +416,9 @@
         }
 
         @keyframes cursor-blink {
-            50% { border-color: transparent; }
+            50% {
+                border-color: transparent;
+            }
         }
 
         .hero-bio {
@@ -510,8 +545,13 @@
         }
 
         @keyframes rotate-conic {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .portrait-inner {
@@ -564,8 +604,17 @@
         }
 
         @keyframes pulse-dot {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.6; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.6;
+            }
         }
 
         .status-badge span {
@@ -645,7 +694,7 @@
             border-color: var(--border-red);
             background: var(--bg-card-hover);
             transform: translateX(6px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         .principle-icon {
@@ -883,7 +932,7 @@
             border-color: var(--border-red);
             background: var(--bg-card-hover);
             transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
         }
 
         .skill-category-header {
@@ -1128,12 +1177,14 @@
                 text-align: center;
             }
 
-            .hero-bio, .hero-subtitle {
+            .hero-bio,
+            .hero-subtitle {
                 margin-left: auto;
                 margin-right: auto;
             }
 
-            .hero-badges, .hero-actions {
+            .hero-badges,
+            .hero-actions {
                 justify-content: center;
             }
 
@@ -1145,7 +1196,8 @@
                 width: 280px;
             }
 
-            .about-grid, .contact-box {
+            .about-grid,
+            .contact-box {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
@@ -1195,7 +1247,7 @@
                 padding: 2rem 1.5rem;
             }
         }
-    
+
         /* === HARDWARE-ACCELERATED (60FPS) HERO FIERY GLOW === */
         #hero {
             position: relative;
@@ -1211,12 +1263,12 @@
             height: 85%;
             max-height: 750px;
             border-radius: 50%;
-            background: radial-gradient(ellipse at 65% 50%, 
-                rgba(255, 69, 0, 0.40) 0%, 
-                rgba(229, 9, 20, 0.28) 25%, 
-                rgba(255, 140, 0, 0.18) 45%, 
-                rgba(255, 215, 0, 0.06) 60%, 
-                transparent 75%);
+            background: radial-gradient(ellipse at 65% 50%,
+                    rgba(255, 69, 0, 0.40) 0%,
+                    rgba(229, 9, 20, 0.28) 25%,
+                    rgba(255, 140, 0, 0.18) 45%,
+                    rgba(255, 215, 0, 0.06) 60%,
+                    transparent 75%);
             filter: blur(35px);
             pointer-events: none;
             z-index: 0;
@@ -1237,11 +1289,9 @@
             opacity: 0.23;
             pointer-events: none;
             z-index: 0;
-            filter: contrast(1.25) brightness(1.15) 
-                    drop-shadow(0 0 20px rgba(255, 69, 0, 0.85)) 
-                    drop-shadow(0 -10px 35px rgba(255, 140, 0, 0.65));
-            mask-image: radial-gradient(ellipse at 65% 50%, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 80%);
-            -webkit-mask-image: radial-gradient(ellipse at 65% 50%, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 80%);
+            filter: contrast(1.25) brightness(1.15) drop-shadow(0 0 20px rgba(255, 69, 0, 0.85)) drop-shadow(0 -10px 35px rgba(255, 140, 0, 0.65));
+            mask-image: radial-gradient(ellipse at 65% 50%, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0) 80%);
+            -webkit-mask-image: radial-gradient(ellipse at 65% 50%, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0) 80%);
             will-change: transform, opacity;
             animation: fastFirePulse 4.5s ease-in-out infinite alternate;
         }
@@ -1251,10 +1301,12 @@
                 opacity: 0.20;
                 transform: translate3d(0, -50%, 0) scale(1);
             }
+
             50% {
                 opacity: 0.27;
                 transform: translate3d(0, -51%, 0) scale(1.02);
             }
+
             100% {
                 opacity: 0.22;
                 transform: translate3d(0, -49.5%, 0) scale(1.008);
@@ -1266,10 +1318,12 @@
                 opacity: 0.70;
                 transform: translate3d(0, -50%, 0) scale(0.98);
             }
+
             50% {
                 opacity: 0.95;
                 transform: translate3d(0, -50%, 0) scale(1.03);
             }
+
             100% {
                 opacity: 0.78;
                 transform: translate3d(0, -50%, 0) scale(1.01);
@@ -1284,29 +1338,120 @@
                 opacity: 0.60;
                 filter: blur(25px);
             }
+
             .hero-bg-watermark {
                 right: 50%;
                 transform: translate3d(50%, -50%, 0);
                 width: 90%;
                 opacity: 0.17;
                 filter: contrast(1.2) brightness(1.1) drop-shadow(0 0 15px rgba(255, 69, 0, 0.75));
-                mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
-                -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+                mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
+                -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
             }
+
             @keyframes fastFirePulse {
-                0% { opacity: 0.15; transform: translate3d(50%, -50%, 0) scale(1); }
-                50% { opacity: 0.20; transform: translate3d(50%, -50%, 0) scale(1.01); }
-                100% { opacity: 0.16; transform: translate3d(50%, -50%, 0) scale(1); }
+                0% {
+                    opacity: 0.15;
+                    transform: translate3d(50%, -50%, 0) scale(1);
+                }
+
+                50% {
+                    opacity: 0.20;
+                    transform: translate3d(50%, -50%, 0) scale(1.01);
+                }
+
+                100% {
+                    opacity: 0.16;
+                    transform: translate3d(50%, -50%, 0) scale(1);
+                }
             }
+
             @keyframes fastFireAura {
-                0% { opacity: 0.5; transform: translate3d(50%, -50%, 0) scale(0.98); }
-                50% { opacity: 0.75; transform: translate3d(50%, -50%, 0) scale(1.02); }
-                100% { opacity: 0.6; transform: translate3d(50%, -50%, 0) scale(1); }
+                0% {
+                    opacity: 0.5;
+                    transform: translate3d(50%, -50%, 0) scale(0.98);
+                }
+
+                50% {
+                    opacity: 0.75;
+                    transform: translate3d(50%, -50%, 0) scale(1.02);
+                }
+
+                100% {
+                    opacity: 0.6;
+                    transform: translate3d(50%, -50%, 0) scale(1);
+                }
             }
+        }
+    
+        /* === EXPERIENCE INTERACTIVE FILTER BAR === */
+        .experience-filter-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: -1.5rem auto 3rem auto;
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .exp-filter-btn {
+            background: rgba(20, 22, 29, 0.85);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 99px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(8px);
+        }
+
+        .exp-filter-btn:hover {
+            color: #fff;
+            border-color: var(--red-light);
+            background: rgba(229, 9, 20, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .exp-filter-btn.active {
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.35), rgba(143, 6, 13, 0.5));
+            color: #fff;
+            border-color: var(--red-primary);
+            box-shadow: 0 0 15px var(--red-glow);
+        }
+
+        .exp-filter-btn .count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 7px;
+            border-radius: 99px;
+            font-size: 0.72rem;
+        }
+
+        .exp-filter-btn.active .count {
+            background: var(--red-primary);
+            color: #fff;
+        }
+
+        .timeline-item {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            will-change: opacity, transform;
+        }
+
+        .timeline-item.filtered-out {
+            display: none !important;
         }
 
     </style>
 </head>
+
 <body>
 
     <!-- Custom Cursor -->
@@ -1354,11 +1499,14 @@
                             <span>I'm </span><span class="typing-text"></span>
                         </div>
                         <p class="hero-bio">
-                            AI Engineer with 3+ Years of experience designing, building, and deploying enterprise Generative AI, LLM assistants, and multi-step agentic workflows across Financial Insurance and Health Insurance domains.
+                            AI Engineer with 3+ Years of experience designing, building, and deploying enterprise
+                            Generative AI, LLM assistants, and multi-step agentic workflows across Financial Insurance
+                            and Health Insurance domains.
                         </p>
 
                         <div class="hero-badges">
-                            <div class="hero-badge"><i class="fas fa-certificate"></i> LangChain & LangGraph Certified</div>
+                            <div class="hero-badge"><i class="fas fa-certificate"></i> LangChain & LangGraph Certified
+                            </div>
                             <div class="hero-badge"><i class="fas fa-network-wired"></i> Multi-Agent Orchestration</div>
                             <div class="hero-badge"><i class="fas fa-cloud"></i> Azure OpenAI & Claude</div>
                             <div class="hero-badge"><i class="fas fa-shield-alt"></i> Responsible AI & Guardrails</div>
@@ -1389,10 +1537,15 @@
                                 <span>Email Me</span>
                             </a>
                             <div class="social-row">
-                                <a href="mailto:pavanwork2113@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
-                                <a href="tel:+919640559197" class="social-link" title="Phone"><i class="fas fa-phone"></i></a>
-                                <a href="https://github.com/Pavan-Dasam" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                                <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="mailto:pavanwork2113@gmail.com" class="social-link" title="Email"><i
+                                        class="fas fa-envelope"></i></a>
+                                <a href="tel:+919640559197" class="social-link" title="Phone"><i
+                                        class="fas fa-phone"></i></a>
+                                <a href="https://github.com/Pavan-Dasam" target="_blank" rel="noopener noreferrer"
+                                    class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank"
+                                    rel="noopener noreferrer" class="social-link" title="LinkedIn"><i
+                                        class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
@@ -1419,19 +1572,29 @@
                 <div class="section-header reveal-on-scroll">
                     <span class="section-tag">// PROFESSIONAL PROFILE</span>
                     <h2 class="section-title gradient-text">Professional Summary</h2>
-                    <p class="section-subtitle">Delivering production-oriented Generative AI, RAG pipelines, and stateful agentic workflows.</p>
+                    <p class="section-subtitle">Delivering production-oriented Generative AI, RAG pipelines, and
+                        stateful agentic workflows.</p>
                 </div>
 
                 <div class="about-grid">
                     <div class="about-narrative reveal-on-scroll">
                         <p>
-                            <strong>AI Engineer with over 3 years of experience</strong> designing, building, and deploying enterprise Generative AI and Agentic AI solutions across Financial Insurance and Health Insurance domains.
+                            <strong>AI Engineer with over 3 years of experience</strong> designing, building, and
+                            deploying enterprise Generative AI and Agentic AI solutions across Financial Insurance and
+                            Health Insurance domains.
                         </p>
                         <p>
-                            Hands-on experience developing production-oriented RAG applications, LLM-powered assistants, and multi-step agentic workflows using <strong>Python, LangChain, and LangGraph</strong>. Skilled across the full GenAI application lifecycle — prompt engineering, embeddings, vector search, retrieval pipelines, tool integration, structured outputs, evaluation, and guardrails — with practical exposure to <strong>FastAPI-based API development and Docker/Azure deployment</strong>.
+                            Hands-on experience developing production-oriented RAG applications, LLM-powered assistants,
+                            and multi-step agentic workflows using <strong>Python, LangChain, and LangGraph</strong>.
+                            Skilled across the full GenAI application lifecycle — prompt engineering, embeddings, vector
+                            search, retrieval pipelines, tool integration, structured outputs, evaluation, and
+                            guardrails — with practical exposure to <strong>FastAPI-based API development and
+                                Docker/Azure deployment</strong>.
                         </p>
                         <p>
-                            Experienced collaborating with architects, product owners, SMEs, and compliance stakeholders to translate regulated, enterprise business requirements into <strong>reliable, grounded, and auditable AI systems</strong>.
+                            Experienced collaborating with architects, product owners, SMEs, and compliance stakeholders
+                            to translate regulated, enterprise business requirements into <strong>reliable, grounded,
+                                and auditable AI systems</strong>.
                         </p>
                     </div>
 
@@ -1440,7 +1603,8 @@
                             <div class="principle-icon"><i class="fas fa-project-diagram"></i></div>
                             <div class="principle-text">
                                 <h4>Agentic AI & State Management</h4>
-                                <p>LangGraph multi-agent systems with persistent state, tool-calling, conditional branching, and Human-in-the-Loop checkpoints.</p>
+                                <p>LangGraph multi-agent systems with persistent state, tool-calling, conditional
+                                    branching, and Human-in-the-Loop checkpoints.</p>
                             </div>
                         </div>
 
@@ -1448,7 +1612,8 @@
                             <div class="principle-icon"><i class="fas fa-layer-group"></i></div>
                             <div class="principle-text">
                                 <h4>Advanced RAG & Retrieval</h4>
-                                <p>OCR extraction, RecursiveCharacterTextSplitter, embeddings, Azure AI Search, reranking, and citation grounding.</p>
+                                <p>OCR extraction, RecursiveCharacterTextSplitter, embeddings, Azure AI Search,
+                                    reranking, and citation grounding.</p>
                             </div>
                         </div>
 
@@ -1456,7 +1621,8 @@
                             <div class="principle-icon"><i class="fas fa-shield-virus"></i></div>
                             <div class="principle-text">
                                 <h4>Evaluation & Responsible AI</h4>
-                                <p>RAGAS, LLM-as-a-Judge, prompt injection protection, PII filtering, output validation, and human escalation.</p>
+                                <p>RAGAS, LLM-as-a-Judge, prompt injection protection, PII filtering, output validation,
+                                    and human escalation.</p>
                             </div>
                         </div>
                     </div>
@@ -1470,7 +1636,25 @@
                 <div class="section-header reveal-on-scroll">
                     <span class="section-tag">// ENTERPRISE DELIVERABLES</span>
                     <h2 class="section-title gradient-text">Professional Experience</h2>
-                    <p class="section-subtitle">Deep dive into enterprise AI systems and production architectures built for industry leaders.</p>
+                    <p class="section-subtitle">Deep dive into enterprise AI systems and production architectures built
+                        for industry leaders.</p>
+                </div>
+
+                
+                <!-- Experience Category Filter Bar -->
+                <div class="experience-filter-wrapper reveal-on-scroll">
+                    <button class="exp-filter-btn active" data-filter="all">
+                        <i class="fas fa-layer-group"></i> All Experience <span class="count">4</span>
+                    </button>
+                    <button class="exp-filter-btn" data-filter="agentic">
+                        <i class="fas fa-network-wired"></i> Agentic AI / LangGraph <span class="count">2</span>
+                    </button>
+                    <button class="exp-filter-btn" data-filter="rag">
+                        <i class="fas fa-brain"></i> GenAI & RAG <span class="count">2</span>
+                    </button>
+                    <button class="exp-filter-btn" data-filter="backend">
+                        <i class="fas fa-server"></i> Java & Backend Core <span class="count">1</span>
+                    </button>
                 </div>
 
                 <div class="timeline">
@@ -1494,20 +1678,42 @@
                                     <span class="project-type-pill">Agentic AI</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life, and disability, and brought Leave/PFML/Short-Term Disability claims administration in-house. Designed a multi-agent workflow to process incoming claims end-to-end.
+                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life,
+                                    and disability, and brought Leave/PFML/Short-Term Disability claims administration
+                                    in-house. Designed a multi-agent workflow to process incoming claims end-to-end.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>Multi-Agent Workflow:</strong><br>
-                                    New Claim <span>→</span> Intake Agent <span>→</span> Document Verification Agent <span>→</span> Policy Retrieval Agent <span>→</span> Eligibility Agent <span>→</span> Claims Analysis Agent <span>→</span> Fraud/Risk Agent <span>→</span> Recommendation Agent <span>→</span> Human Claims Examiner
+                                    New Claim <span>→</span> Intake Agent <span>→</span> Document Verification Agent
+                                    <span>→</span> Policy Retrieval Agent <span>→</span> Eligibility Agent
+                                    <span>→</span> Claims Analysis Agent <span>→</span> Fraud/Risk Agent <span>→</span>
+                                    Recommendation Agent <span>→</span> Human Claims Examiner
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Designed and built a multi-agent LangGraph workflow spanning Intake, Document Verification, Policy Retrieval, Eligibility, Claims Analysis, Fraud/Risk, and Recommendation agents to process disability, life, and supplemental health claims.</li>
-                                    <li>Developed the <strong>Intake Agent</strong> to classify incoming claims and extract claimant/policy info, and the <strong>Document Verification Agent</strong> to check received documents against claim requirements and flag missing items.</li>
-                                    <li>Implemented the <strong>Policy Retrieval Agent</strong> using RAG over certificate/policy language to surface applicable coverage sections for each claim.</li>
-                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates, plan eligibility, and applicable rules via internal APIs and rules-engine integration.</li>
-                                    <li>Built the <strong>Fraud/Risk Agent</strong> to flag unusual claim patterns, and the <strong>Recommendation Agent</strong> to assemble supporting evidence, cite policy sections, and produce a confidence-scored recommended next action.</li>
-                                    <li>Implemented <strong>Human-in-the-Loop routing</strong> so claims examiners review and finalize every agent-recommended action before it is applied (e.g., flags 4/5 documents received, cites Policy Section 7.2, and recommends requesting missing employer statement at 94% confidence).</li>
-                                    <li>Selected <strong>LangGraph</strong> over simple LangChain chains because the claims process required persistent state, conditional branching, and human-in-the-loop checkpoints.</li>
+                                    <li>Designed and built a multi-agent LangGraph workflow spanning Intake, Document
+                                        Verification, Policy Retrieval, Eligibility, Claims Analysis, Fraud/Risk, and
+                                        Recommendation agents to process disability, life, and supplemental health
+                                        claims.</li>
+                                    <li>Developed the <strong>Intake Agent</strong> to classify incoming claims and
+                                        extract claimant/policy info, and the <strong>Document Verification
+                                            Agent</strong> to check received documents against claim requirements and
+                                        flag missing items.</li>
+                                    <li>Implemented the <strong>Policy Retrieval Agent</strong> using RAG over
+                                        certificate/policy language to surface applicable coverage sections for each
+                                        claim.</li>
+                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates,
+                                        plan eligibility, and applicable rules via internal APIs and rules-engine
+                                        integration.</li>
+                                    <li>Built the <strong>Fraud/Risk Agent</strong> to flag unusual claim patterns, and
+                                        the <strong>Recommendation Agent</strong> to assemble supporting evidence, cite
+                                        policy sections, and produce a confidence-scored recommended next action.</li>
+                                    <li>Implemented <strong>Human-in-the-Loop routing</strong> so claims examiners
+                                        review and finalize every agent-recommended action before it is applied (e.g.,
+                                        flags 4/5 documents received, cites Policy Section 7.2, and recommends
+                                        requesting missing employer statement at 94% confidence).</li>
+                                    <li>Selected <strong>LangGraph</strong> over simple LangChain chains because the
+                                        claims process required persistent state, conditional branching, and
+                                        human-in-the-loop checkpoints.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>LangGraph</span>
@@ -1530,18 +1736,30 @@
                                     <span class="project-type-pill">GenAI · RAG</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Examiners needed a faster way to understand large claim files spanning medical documents, claim forms, employer information, policy documents, and correspondence.
+                                    <strong>Context:</strong> Examiners needed a faster way to understand large claim
+                                    files spanning medical documents, claim forms, employer information, policy
+                                    documents, and correspondence.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>RAG Architecture:</strong><br>
-                                    Documents <span>→</span> OCR / Document Extraction <span>→</span> Chunking <span>→</span> Embeddings <span>→</span> Vector DB <span>→</span> RAG <span>→</span> LLM <span>→</span> Structured Claims Summary
+                                    Documents <span>→</span> OCR / Document Extraction <span>→</span> Chunking
+                                    <span>→</span> Embeddings <span>→</span> Vector DB <span>→</span> RAG <span>→</span>
+                                    LLM <span>→</span> Structured Claims Summary
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Built a GenAI copilot that ingests claim documents and produces a structured summary for examiners — claim type, reason, missing documents, relevant policy sections, potential issues, and recommended next step — replacing manual review of the full file.</li>
-                                    <li>Implemented OCR-based document extraction, chunking, and embedding generation across heterogeneous claim file formats.</li>
-                                    <li>Developed RAG retrieval over policy and claims documentation to ground each generated summary in the applicable plan language.</li>
-                                    <li>Built FastAPI endpoints and a React-based interface for examiners to review AI-generated summaries alongside source documents, with Application Insights monitoring.</li>
-                                    <li>Applied guardrails ensuring the copilot assists examiners with information synthesis only, avoiding autonomous high-impact approvals/denials.</li>
+                                    <li>Built a GenAI copilot that ingests claim documents and produces a structured
+                                        summary for examiners — claim type, reason, missing documents, relevant policy
+                                        sections, potential issues, and recommended next step — replacing manual review
+                                        of the full file.</li>
+                                    <li>Implemented OCR-based document extraction, chunking, and embedding generation
+                                        across heterogeneous claim file formats.</li>
+                                    <li>Developed RAG retrieval over policy and claims documentation to ground each
+                                        generated summary in the applicable plan language.</li>
+                                    <li>Built FastAPI endpoints and a React-based interface for examiners to review
+                                        AI-generated summaries alongside source documents, with Application Insights
+                                        monitoring.</li>
+                                    <li>Applied guardrails ensuring the copilot assists examiners with information
+                                        synthesis only, avoiding autonomous high-impact approvals/denials.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Azure OpenAI / GPT</span>
@@ -1578,18 +1796,31 @@
                                     <span class="project-type-pill">GenAI · Support Copilot</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Members contact support with questions on procedure coverage, deductibles, claim denials, out-of-pocket costs, provider network status, and EOBs. Support agents needed instant retrieval across benefit docs and claims data.
+                                    <strong>Context:</strong> Members contact support with questions on procedure
+                                    coverage, deductibles, claim denials, out-of-pocket costs, provider network status,
+                                    and EOBs. Support agents needed instant retrieval across benefit docs and claims
+                                    data.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>Architecture:</strong><br>
-                                    Member/CSR <span>→</span> AI Assistant <span>→</span> Intent Detection <span>→</span> RAG <span>→</span> Member/Claims APIs + Vector DB <span>→</span> LLM <span>→</span> Guardrails <span>→</span> Response
+                                    Member/CSR <span>→</span> AI Assistant <span>→</span> Intent Detection
+                                    <span>→</span> RAG <span>→</span> Member/Claims APIs + Vector DB <span>→</span> LLM
+                                    <span>→</span> Guardrails <span>→</span> Response
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Built MemberAssist AI, a RAG-based GenAI assistant that retrieves a member's relevant plan, benefit, and claims information and explains it in plain language.</li>
-                                    <li>Implemented intent detection to route member questions (coverage, deductible, claim denial reason, cost-share, network status, EOB explanation) to appropriate retrieval and API paths.</li>
-                                    <li>Developed RAG retrieval over benefit documents and internal knowledge bases combined with real-time lookups against member and claims APIs.</li>
-                                    <li>Example: for a denied-claim query, retrieves claim, denial reason, member benefits, and policy, generating plain-language explanations (e.g. missing prior authorization) and appeal steps.</li>
-                                    <li>Generated embeddings, indexed benefit guides, built FastAPI endpoints, applied plan-data grounding checks, and used LangSmith for tracing/debugging.</li>
+                                    <li>Built MemberAssist AI, a RAG-based GenAI assistant that retrieves a member's
+                                        relevant plan, benefit, and claims information and explains it in plain
+                                        language.</li>
+                                    <li>Implemented intent detection to route member questions (coverage, deductible,
+                                        claim denial reason, cost-share, network status, EOB explanation) to appropriate
+                                        retrieval and API paths.</li>
+                                    <li>Developed RAG retrieval over benefit documents and internal knowledge bases
+                                        combined with real-time lookups against member and claims APIs.</li>
+                                    <li>Example: for a denied-claim query, retrieves claim, denial reason, member
+                                        benefits, and policy, generating plain-language explanations (e.g. missing prior
+                                        authorization) and appeal steps.</li>
+                                    <li>Generated embeddings, indexed benefit guides, built FastAPI endpoints, applied
+                                        plan-data grounding checks, and used LangSmith for tracing/debugging.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Azure OpenAI</span>
@@ -1610,10 +1841,16 @@
                                     <span class="project-type-pill">Backend Microservices</span>
                                 </div>
                                 <ul class="timeline-details">
-                                    <li>Began as a Java backend developer on Anthem's claims and member services platform, building and maintaining core services before transitioning into the GenAI team.</li>
-                                    <li>Developed and maintained backend microservices using Java, Spring Boot, and REST APIs for claims processing and member service workflows.</li>
-                                    <li>Designed and optimized SQL queries and stored procedures, and wrote unit/integration tests using JUnit and Mockito to ensure service reliability.</li>
-                                    <li>Collaborated with QA and business teams in Agile sprint cycles with Git and Jenkins CI/CD pipelines.</li>
+                                    <li>Began as a Java backend developer on Anthem's claims and member services
+                                        platform, building and maintaining core services before transitioning into the
+                                        GenAI team.</li>
+                                    <li>Developed and maintained backend microservices using Java, Spring Boot, and REST
+                                        APIs for claims processing and member service workflows.</li>
+                                    <li>Designed and optimized SQL queries and stored procedures, and wrote
+                                        unit/integration tests using JUnit and Mockito to ensure service reliability.
+                                    </li>
+                                    <li>Collaborated with QA and business teams in Agile sprint cycles with Git and
+                                        Jenkins CI/CD pipelines.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>Java</span>
@@ -1639,7 +1876,8 @@
                 <div class="section-header reveal-on-scroll">
                     <span class="section-tag">// EXPERTISE MATRIX</span>
                     <h2 class="section-title gradient-text">Technical Skills</h2>
-                    <p class="section-subtitle">Comprehensive breakdown of frameworks, models, data pipelines, and deployment tooling.</p>
+                    <p class="section-subtitle">Comprehensive breakdown of frameworks, models, data pipelines, and
+                        deployment tooling.</p>
                 </div>
 
                 <div class="skills-category-grid">
@@ -1777,25 +2015,29 @@
                     <div class="cert-card reveal-on-scroll">
                         <p class="cert-issuer">DATABRICKS CERTIFIED</p>
                         <h3 class="cert-title">Generative AI Engineer</h3>
-                        <p class="cert-desc">Certified in foundational concepts, LLM architectures, prompt engineering, fine-tuning, and GenAI production deployment.</p>
+                        <p class="cert-desc">Certified in foundational concepts, LLM architectures, prompt engineering,
+                            fine-tuning, and GenAI production deployment.</p>
                     </div>
 
                     <div class="cert-card reveal-on-scroll">
                         <p class="cert-issuer">LANGCHAIN OFFICIAL</p>
                         <h3 class="cert-title">LangChain Certification</h3>
-                        <p class="cert-desc">Validated mastery in LLM orchestration, chains, indexes, document loaders, vector stores, and custom retrieval pipelines.</p>
+                        <p class="cert-desc">Validated mastery in LLM orchestration, chains, indexes, document loaders,
+                            vector stores, and custom retrieval pipelines.</p>
                     </div>
 
                     <div class="cert-card reveal-on-scroll">
                         <p class="cert-issuer">LANGCHAIN / LANGGRAPH</p>
                         <h3 class="cert-title">LangGraph Certification</h3>
-                        <p class="cert-desc">Demonstrated capability in stateful multi-agent systems, cyclic graphs, persistence layers, and Human-in-the-Loop workflows.</p>
+                        <p class="cert-desc">Demonstrated capability in stateful multi-agent systems, cyclic graphs,
+                            persistence layers, and Human-in-the-Loop workflows.</p>
                     </div>
 
                     <div class="cert-card reveal-on-scroll">
                         <p class="cert-issuer">JNTUK UNIVERSITY</p>
                         <h3 class="cert-title">Bachelor of Technology (B.Tech)</h3>
-                        <p class="cert-desc">Graduated 2023. Strong academic grounding in computer science, software engineering, algorithms, and data systems.</p>
+                        <p class="cert-desc">Graduated 2023. Strong academic grounding in computer science, software
+                            engineering, algorithms, and data systems.</p>
                     </div>
                 </div>
             </div>
@@ -1809,7 +2051,8 @@
                         <span class="section-tag">// GET IN TOUCH</span>
                         <h2 class="section-title gradient-text">Let's Connect & Collaborate</h2>
                         <p class="section-subtitle" style="text-align: left; margin: 0;">
-                            Available for high-impact AI Engineering roles, consulting, and building enterprise Agentic & RAG solutions.
+                            Available for high-impact AI Engineering roles, consulting, and building enterprise Agentic
+                            & RAG solutions.
                         </p>
 
                         <div class="contact-methods">
@@ -1841,8 +2084,10 @@
 
                     <div class="contact-action-side">
                         <h3>Start a Conversation</h3>
-                        <p>Looking for a proven AI Engineer with enterprise experience in LangGraph, RAG, and FastAPI?</p>
-                        <a href="mailto:pavanwork2113@gmail.com?subject=Inquiry%20from%20Pavan%20Dasam%20Portfolio" class="btn-primary" style="width: 100%; justify-content: center;">
+                        <p>Looking for a proven AI Engineer with enterprise experience in LangGraph, RAG, and FastAPI?
+                        </p>
+                        <a href="mailto:pavanwork2113@gmail.com?subject=Inquiry%20from%20Pavan%20Dasam%20Portfolio"
+                            class="btn-primary" style="width: 100%; justify-content: center;">
                             <i class="fas fa-paper-plane"></i>
                             <span>Send an Email</span>
                         </a>
@@ -1855,7 +2100,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 <strong>Pavan Dasam</strong> · AI Engineer · LangChain & LangGraph Certified · Built with <span>❤️</span></p>
+            <p>© 2026 <strong>Pavan Dasam</strong> · AI Engineer · LangChain & LangGraph Certified · Built with
+                <span>❤️</span></p>
         </div>
     </footer>
 
@@ -1942,7 +2188,7 @@
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
+
                     const rotateX = ((y - centerY) / centerY) * -12;
                     const rotateY = ((x - centerX) / centerX) * 12;
 
@@ -2026,6 +2272,38 @@
                 });
             }
         });
+    
+    // === PROFESSIONAL EXPERIENCE CATEGORY FILTER ===
+    const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    if (expFilterBtns.length > 0 && timelineItems.length > 0) {
+        expFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                expFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+
+                timelineItems.forEach(item => {
+                    const categories = item.getAttribute('data-category') || 'all';
+                    if (filter === 'all' || categories.includes(filter)) {
+                        item.classList.remove('filtered-out');
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(15px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+    }
+
     </script>
 </body>
+
 </html>
