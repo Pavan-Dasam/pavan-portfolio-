@@ -1,17 +1,17 @@
 
-        const document = {
-            querySelector: () => ({ addEventListener: () => {}, style: {}, animate: () => {}, classList: { add: () => {}, remove: () => {}, toggle: () => {}, contains: () => false } }),
-            querySelectorAll: () => [],
-            getElementById: () => ({ addEventListener: () => {}, style: {}, classList: { add: () => {}, remove: () => {}, toggle: () => {}, contains: () => false } }),
-            addEventListener: () => {},
-            createElement: () => ({ style: {}, appendChild: () => {} })
-        };
-        const window = {
-            addEventListener: () => {},
-            location: { replace: () => {} }
-        };
-        const IntersectionObserver = function() { return { observe: () => {}, unobserve: () => {} }; };
-        
+    const document = {
+        querySelector: () => ({ addEventListener: () => {}, style: {}, animate: () => {}, classList: { add: () => {}, remove: () => {}, toggle: () => {}, contains: () => false } }),
+        querySelectorAll: () => [],
+        getElementById: () => ({ addEventListener: () => {}, style: {}, classList: { add: () => {}, remove: () => {}, toggle: () => {}, contains: () => false } }),
+        addEventListener: () => {},
+        createElement: () => ({ style: {}, appendChild: () => {} })
+    };
+    const window = {
+        addEventListener: () => {},
+        location: { replace: () => {} }
+    };
+    const IntersectionObserver = function() { return { observe: () => {}, unobserve: () => {} }; };
+    
 document.addEventListener('DOMContentLoaded', () => {
     // === Animated Custom Cursor ===
     const cursorDot = document.querySelector("[data-cursor-dot]");

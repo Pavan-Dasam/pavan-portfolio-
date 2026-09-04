@@ -2809,12 +2809,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Floating AI Terminal Widget ===
+    // === Floating AI Terminal Widget (Preserve Options on Clear) ===
     const terminalToggle = document.getElementById('terminalToggle');
     const aiTerminal = document.getElementById('aiTerminal');
     const termClose = document.getElementById('termClose');
     const termInput = document.getElementById('termInput');
     const termOutput = document.getElementById('termOutput');
+    const termDefaultHTML = termOutput ? termOutput.innerHTML : '';
 
     if (terminalToggle && aiTerminal) {
         terminalToggle.addEventListener('click', () => {
@@ -2842,8 +2843,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cmdText || !termOutput) return;
         const cleanCmd = cmdText.trim().toLowerCase();
         
+        if (cleanCmd === 'clear') {
+            termOutput.innerHTML = termDefaultHTML;
+            if (termInput) termInput.value = '';
+            return;
+        }
+
         const userLine = document.createElement('div');
-        userLine.style.color = '#00F0FF';
+        userLine.style.color = '#ff6b6b';
         userLine.style.marginTop = '8px';
         userLine.innerHTML = '&gt; ' + cmdText;
         termOutput.appendChild(userLine);
@@ -2853,35 +2860,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch (cleanCmd) {
             case 'help':
-                resp.innerHTML = '<span style="color:#a78bfa;">Available commands:</span><br>• <span style="color:#00F0FF;">skills</span> - Core stack &amp; specializations<br>• <span style="color:#00F0FF;">projects</span> - Featured enterprise AI architectures<br>• <span style="color:#00F0FF;">certs</span> - Official LangChain/Databricks IDs<br>• <span style="color:#00F0FF;">roi</span> - Business impact &amp; transformation<br>• <span style="color:#00F0FF;">hire</span> - Direct email &amp; LinkedIn contact<br>• <span style="color:#00F0FF;">clear</span> - Clear terminal screen';
+                resp.innerHTML = '<span style="color:var(--red-light);">Available commands:</span><br>• <span style="color:#fff;">skills</span> - Core stack &amp; specializations<br>• <span style="color:#fff;">experience</span> - Accenture &amp; TAO Digitals roles<br>• <span style="color:#fff;">projects</span> - Featured enterprise AI architectures<br>• <span style="color:#fff;">certs</span> - Official LangChain/Databricks IDs<br>• <span style="color:#fff;">recruiter</span> - 60-second executive candidate pitch<br>• <span style="color:#fff;">why-langgraph</span> - Architecture design rationale<br>• <span style="color:#fff;">contact</span> - Direct WhatsApp &amp; Email<br>• <span style="color:#fff;">clear</span> - Reset screen (preserves quick buttons)';
                 break;
             case 'skills':
-                resp.innerHTML = '<span style="color:#34d399;">🧠 Core Specializations:</span><br>• <strong>Agentic AI:</strong> LangGraph, Multi-Agent Swarms, Cyclic Graphs, HITL<br>• <strong>RAG &amp; Search:</strong> Azure AI Search, ChromaDB, Qdrant, OCR Chunking<br>• <strong>Backend:</strong> Python (FastAPI), Java 17 (Spring Boot), PostgreSQL, Redis';
+                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🧠 Core Specializations:</span><br>• <strong>Agentic AI:</strong> LangGraph, Multi-Agent Swarms, Cyclic Graphs, HITL<br>• <strong>RAG &amp; Retrieval:</strong> Azure AI Search, FAISS, ChromaDB, OCR Chunking<br>• <strong>Backend:</strong> Python (FastAPI), Java 17 (Spring Boot), PostgreSQL, Redis';
+                break;
+            case 'experience':
+            case 'work':
+                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">💼 Enterprise Roles:</span><br>1. <strong>Accenture (Client: Voya Financial)</strong> · Agentic AI Engineer (2024–Present)<br>• Built 7-Agent LangGraph claims system with 100% citation grounding.<br>2. <strong>TAO Digitals (Client: Anthem)</strong> · Software Engineer (2023–2024)<br>• Built MemberAssist AI RAG copilot (&lt;800ms P95) &amp; Java 17 backend services.';
                 break;
             case 'projects':
-                resp.innerHTML = '<span style="color:#00F0FF;">🚀 Top Deliverables:</span><br>1. <strong>Autonomous Claims Agent:</strong> 7-Agent LangGraph system with 94%+ confidence.<br>2. <strong>Claims Intelligence Copilot:</strong> OCR &amp; RAG document synthesis (&lt;3.5s).<br>3. <strong>MemberAssist AI:</strong> Healthcare member service copilot (&lt;800ms P95).';
+                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🚀 Featured Deliverables:</span><br>1. <strong>Autonomous Claims Agent:</strong> 7-Agent LangGraph system with 94%+ confidence.<br>2. <strong>Claims Intelligence Copilot:</strong> OCR &amp; RAG document synthesis (&lt;3.5s).<br>3. <strong>MemberAssist AI:</strong> Healthcare member service copilot (&lt;800ms P95).';
                 break;
             case 'certs':
-                resp.innerHTML = '<span style="color:#fbbf24;">🎖️ Verified Credentials:</span><br>• LangChain Academy (LangChain): <strong style="color:#00F0FF;">ctddbhm9sf</strong><br>• LangChain Academy (LangGraph): <strong style="color:#a78bfa;">9ucdiusaz6</strong><br>• Databricks Certified Generative AI Engineer';
+                resp.innerHTML = '<span style="color:#fbbf24; font-weight:bold;">🎖️ Verified Credentials:</span><br>• LangChain Academy (LangChain): <strong style="color:#fff;">ctddbhm9sf</strong><br>• LangChain Academy (LangGraph): <strong style="color:#fff;">9ucdiusaz6</strong><br>• Databricks Certified Generative AI Engineer';
                 break;
             case 'recruiter':
-                resp.innerHTML = '<span style=\"color:#fbbf24; font-weight:bold;\">⚡ 60-Second Pitch:</span><br>• <strong>Role:</strong> Agentic AI &amp; Production RAG Engineer (3+ Yrs).<br>• <strong>Deliverables:</strong> 7-Agent LangGraph Swarm (Voya) &amp; MemberAssist AI (Anthem).<br>• <strong>Stack:</strong> Python (FastAPI), LangGraph, Azure OpenAI, Azure AI Search, Java.<br>• <strong>Contact:</strong> WhatsApp (+91 9640559197) or <a href=\"mailto:pavanwork2113@gmail.com\" style=\"color:var(--red-light);\">pavanwork2113@gmail.com</a>';
+                resp.innerHTML = '<span style="color:#fbbf24; font-weight:bold;">⚡ 60-Second Pitch:</span><br>• <strong>Role:</strong> Agentic AI &amp; Production RAG Engineer (3+ Yrs).<br>• <strong>Deliverables:</strong> 7-Agent LangGraph Swarm (Voya) &amp; MemberAssist AI (Anthem).<br>• <strong>Stack:</strong> Python (FastAPI), LangGraph, Azure OpenAI, Azure AI Search, Java.<br>• <strong>Contact:</strong> WhatsApp (+91 9640559197) or <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light);">pavanwork2113@gmail.com</a>';
                 break;
             case 'why-langgraph':
-                resp.innerHTML = '<span style=\"color:var(--red-light); font-weight:bold;\">🧠 Why LangGraph over Simple Chains:</span><br>1. <strong>Cyclic State Graphs:</strong> Allows agents to re-route, loop, and request missing data.<br>2. <strong>Human-in-the-Loop:</strong> Pauses graph execution at checkpoints for human sign-off.<br>3. <strong>State Persistence:</strong> Checkpointing directly into PostgreSQL for fault recovery.';
+                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🧠 Why LangGraph over Simple Chains:</span><br>1. <strong>Cyclic State Graphs:</strong> Allows agents to re-route, loop, and request missing data.<br>2. <strong>Human-in-the-Loop:</strong> Pauses graph execution at checkpoints for human sign-off.<br>3. <strong>State Persistence:</strong> Checkpointing directly into PostgreSQL for fault recovery.';
                 break;
             case 'roi':
-                resp.innerHTML = '<span style="color:#34d399;">📈 Enterprise ROI:</span> &gt;70% reduction in adjudication turnaround, &lt;800ms P95 latency, 100% citation grounding.';
+                resp.innerHTML = '<span style="color:#34d399; font-weight:bold;">📈 Enterprise ROI:</span> &gt;70% reduction in adjudication turnaround, &lt;800ms P95 latency, 100% citation grounding.';
                 break;
             case 'hire':
             case 'contact':
-                resp.innerHTML = '📧 Email: <a href="mailto:pavanwork2113@gmail.com" style="color:#00F0FF;">pavanwork2113@gmail.com</a><br>🔗 LinkedIn: <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank" style="color:#00F0FF;">in/pavan-kumar-dasam-2574893b9</a>';
+                resp.innerHTML = '💬 WhatsApp: <a href="https://wa.me/919640559197" target="_blank" style="color:var(--red-light);">+91 9640559197</a><br>📧 Email: <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light);">pavanwork2113@gmail.com</a><br>🔗 LinkedIn: <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank" style="color:var(--red-light);">in/pavan-kumar-dasam-2574893b9</a>';
                 break;
-            case 'clear':
-                termOutput.innerHTML = '';
-                return;
             default:
-                resp.innerHTML = '<span style="color:#f87171;">Command not recognized: \'' + cleanCmd + '\'. Type \'help\' for options.</span>';
+                resp.innerHTML = '<span style="color:#f87171;">Command not recognized: "' + cleanCmd + '". Type "help" for options.</span>';
         }
 
         termOutput.appendChild(resp);
@@ -2895,7 +2903,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 handleTermSubmit(termInput.value);
             }
         });
-    
+    }
 
     // === ENHANCEMENT JS: RECRUITER BRIEF & BLUEPRINT MODALS ===
     const recruiterModal = document.getElementById('recruiterModal');
@@ -3052,8 +3060,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(playStep, 350);
     };
-
-}
 });
     </script>
 
@@ -3083,11 +3089,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
                 <span class="term-badge" onclick="runTermCmd('skills')">skills</span>
+                <span class="term-badge" onclick="runTermCmd('experience')">experience</span>
                 <span class="term-badge" onclick="runTermCmd('projects')">projects</span>
                 <span class="term-badge" onclick="runTermCmd('certs')">certs</span>
                 <span class="term-badge" onclick="runTermCmd('contact')">contact</span>
                 <span class="term-badge" onclick="runTermCmd('recruiter')">⚡ recruiter</span>
                 <span class="term-badge" onclick="runTermCmd('why-langgraph')">why-langgraph</span>
+                <span class="term-badge" onclick="runTermCmd('clear')">clear</span>
             </div>
         </div>
         <div class="terminal-input-row">
