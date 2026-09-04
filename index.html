@@ -2351,6 +2351,61 @@
                                     <i class="fas fa-sitemap"></i> View MemberAssist RAG Architecture
                                 </button>
 
+                            
+                                <!-- Interactive MemberAssist AI Copilot Simulator -->
+                                <div class="agent-simulator-card" style="margin-top: 1.2rem;">
+                                    <div class="simulator-header">
+                                        <div class="simulator-title">
+                                            <i class="fas fa-headset" style="color: var(--red-light);"></i>
+                                            <span>Interactive Member Service Copilot Simulator</span>
+                                        </div>
+                                        <button class="scenario-btn active" id="runMemberAssistSimBtn" onclick="runMemberAssistSimulation()" style="background: var(--red-primary); color: #fff; border-color: var(--red-light);">
+                                            <i class="fas fa-play"></i> Run Member AI Simulation
+                                        </button>
+                                    </div>
+                                    <div style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 8px;">
+                                        Select a real-world healthcare member inquiry to test intent routing &amp; &lt;800ms response:
+                                    </div>
+                                    <div class="scenario-selector-row">
+                                        <button class="scenario-btn active" onclick="setMemberScenario('denial', this)">Physical Therapy Denial Reason</button>
+                                        <button class="scenario-btn" onclick="setMemberScenario('deductible', this)">Remaining In-Network Deductible</button>
+                                        <button class="scenario-btn" onclick="setMemberScenario('priorauth', this)">Prior Auth for Knee MRI</button>
+                                    </div>
+
+                                    <!-- 6-Node MemberAssist Pipeline -->
+                                    <div class="agent-node-pipeline">
+                                        <div class="agent-node" id="node-ma-input">
+                                            <i class="fas fa-comment-dots"></i>
+                                            <span>1. Member Q</span>
+                                        </div>
+                                        <div class="agent-node" id="node-ma-intent">
+                                            <i class="fas fa-directions"></i>
+                                            <span>2. Intent Route</span>
+                                        </div>
+                                        <div class="agent-node" id="node-ma-api">
+                                            <i class="fas fa-database"></i>
+                                            <span>3. Member API</span>
+                                        </div>
+                                        <div class="agent-node" id="node-ma-rag">
+                                            <i class="fas fa-book"></i>
+                                            <span>4. Benefit RAG</span>
+                                        </div>
+                                        <div class="agent-node" id="node-ma-llm">
+                                            <i class="fas fa-robot"></i>
+                                            <span>5. GPT-4 Synth</span>
+                                        </div>
+                                        <div class="agent-node" id="node-ma-guard">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>6. Guardrail</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Live Trace Console -->
+                                    <div class="simulator-trace-console" id="memberAssistTraceConsole">
+                                        <span style="color: #34d399;">Ready.</span> Select an inquiry and click "Run Member AI Simulation".
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Product 2.2: Java Backend -->
@@ -3067,6 +3122,253 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(playStep, 350);
     };
+
+    // === SIMULATOR 2: VOYA CLAIMS RAG COPILOT ===
+    let currentCopilotScenario = 'multipage';
+    const copilotScenarios = {
+        multipage: [
+            { node: 'node-rag-ingest', msg: '[1. Ingest] Uploaded 52-page claim package: Medical Records + Form 1099 + Claim Form.' },
+            { node: 'node-rag-ocr', msg: '[2. OCR Chunk] Azure Document Intelligence extracted 184 chunk segments with layout preservation.' },
+            { node: 'node-rag-embed', msg: '[3. Embeddings] Generated vector embeddings via text-embedding-ada-002 (1536-dim).' },
+            { node: 'node-rag-search', msg: '[4. Hybrid Search] Azure AI Search matched Certificate Sec 8.1 & ICD-10 medical notes.' },
+            { node: 'node-rag-rerank', msg: '[5. Reranking] Semantic cross-encoder reranked top-8 chunks (Top score: 0.962).' },
+            { node: 'node-rag-llm', msg: '[6. Synthesis] GPT-4 synthesized 1-page structured brief for examiner (Latency: 2.8s, 100% cited).' }
+        ],
+        exclusion: [
+            { node: 'node-rag-ingest', msg: '[1. Ingest] Ingested accident report & attending doctor assessment.' },
+            { node: 'node-rag-ocr', msg: '[2. OCR Chunk] Cleanly extracted medical diagnosis and date of manifestation.' },
+            { node: 'node-rag-embed', msg: '[3. Embeddings] Vectorized chunks across policy certificate index.' },
+            { node: 'node-rag-search', msg: '[4. Hybrid Search] Retrieved exclusion rider clause #EX-14 (Hazardous Activity).' },
+            { node: 'node-rag-rerank', msg: '[5. Reranking] Isolated exact conflicting clause with 98.4% relevance.' },
+            { node: 'node-rag-llm', msg: '[6. Synthesis] Generated Examiner Alert: Flagged Exclusion Clause 14.2 for senior review.' }
+        ],
+        rapid: [
+            { node: 'node-rag-ingest', msg: '[1. Ingest] Rapid ingestion of Supplemental Hospital Confinement bill.' },
+            { node: 'node-rag-ocr', msg: '[2. OCR Chunk] OCR parsed itemized hospital stay dates and billing codes.' },
+            { node: 'node-rag-embed', msg: '[3. Embeddings] Cached embeddings matched in vector store.' },
+            { node: 'node-rag-search', msg: '[4. Hybrid Search] Direct match to Rider H-10 ($250/day benefit).' },
+            { node: 'node-rag-rerank', msg: '[5. Reranking] Verified 3 confinement days without exclusions.' },
+            { node: 'node-rag-llm', msg: '[6. Synthesis] Summary ready: Approved $750 payout with full source citations in 1.4s.' }
+        ]
+    };
+
+    window.setCopilotScenario = function(scen, btn) {
+        currentCopilotScenario = scen;
+        const parent = btn.closest('.agent-simulator-card');
+        if (parent) parent.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        const consoleEl = document.getElementById('copilotTraceConsole');
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#34d399;">Scenario selected: ' + scen.toUpperCase() + '.</span> Click "Run RAG Simulation".';
+    };
+
+    window.runCopilotSimulation = function() {
+        const traceSteps = copilotScenarios[currentCopilotScenario] || copilotScenarios.multipage;
+        const consoleEl = document.getElementById('copilotTraceConsole');
+        const runBtn = document.getElementById('runCopilotSimBtn');
+        const allNodes = document.querySelectorAll('#node-rag-ingest, #node-rag-ocr, #node-rag-embed, #node-rag-search, #node-rag-rerank, #node-rag-llm');
+
+        if (runBtn) runBtn.disabled = true;
+        allNodes.forEach(n => { n.classList.remove('active-node'); n.classList.remove('done-node'); });
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#fbbf24;">[RAG Engine] Initializing Document Pipeline for ' + currentCopilotScenario.toUpperCase() + '...</span>';
+
+        let stepIndex = 0;
+        function playStep() {
+            if (stepIndex > 0 && stepIndex - 1 < traceSteps.length) {
+                const prevNodeEl = document.getElementById(traceSteps[stepIndex - 1].node);
+                if (prevNodeEl) { prevNodeEl.classList.remove('active-node'); prevNodeEl.classList.add('done-node'); }
+            }
+            if (stepIndex < traceSteps.length) {
+                const step = traceSteps[stepIndex];
+                const nodeEl = document.getElementById(step.node);
+                if (nodeEl) nodeEl.classList.add('active-node');
+                if (consoleEl) {
+                    const line = document.createElement('div');
+                    line.style.marginTop = '4px';
+                    line.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">▶</span> ' + step.msg;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+                stepIndex++;
+                setTimeout(playStep, 600);
+            } else {
+                if (runBtn) runBtn.disabled = false;
+                if (consoleEl) {
+                    const doneLine = document.createElement('div');
+                    doneLine.style.marginTop = '6px';
+                    doneLine.style.color = '#34d399';
+                    doneLine.style.fontWeight = 'bold';
+                    doneLine.innerHTML = '✔ RAG Synthesis complete: Structured brief generated with 100% policy grounding.';
+                    consoleEl.appendChild(doneLine);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            }
+        }
+        setTimeout(playStep, 300);
+    };
+
+    // === SIMULATOR 3: MEMBERASSIST AI (ANTHEM) ===
+    let currentMemberScenario = 'denial';
+    const memberScenarios = {
+        denial: [
+            { node: 'node-ma-input', msg: '[1. Inquiry] Member asked: "Why was my claim for physical therapy denied?"' },
+            { node: 'node-ma-intent', msg: '[2. Intent Route] Intent classified: CLAIM_DENIAL_EXPLANATION (Confidence: 99.4%).' },
+            { node: 'node-ma-api', msg: '[3. Member API] Looked up claim #CLM-8021: Status=DENIED, ReasonCode=DEN_PR_AUTH.' },
+            { node: 'node-ma-rag', msg: '[4. Benefit RAG] Retrieved plan handbook section 4.8: "Physical therapy requires prior auth after 6 visits."' },
+            { node: 'node-ma-llm', msg: '[5. GPT-4 Synth] Formatted empathetic, plain-English response + appeal steps.' },
+            { node: 'node-ma-guard', msg: '[6. Guardrail] PII masked, grounding verified. Returned in 680ms (P95 <800ms)!' }
+        ],
+        deductible: [
+            { node: 'node-ma-input', msg: '[1. Inquiry] Member asked: "What is my remaining in-network deductible?"' },
+            { node: 'node-ma-intent', msg: '[2. Intent Route] Intent classified: DEDUCTIBLE_BALANCE_CHECK (Confidence: 99.8%).' },
+            { node: 'node-ma-api', msg: '[3. Member API] Real-time accumulator lookup: Individual=$1,500, Met=$1,120, Remaining=$380.' },
+            { node: 'node-ma-rag', msg: '[4. Benefit RAG] Verified benefit year period: Jan 1 - Dec 31 (Plan Anthem Silver PPO).' },
+            { node: 'node-ma-llm', msg: '[5. GPT-4 Synth] Generated concise balance breakdown for member.' },
+            { node: 'node-ma-guard', msg: '[6. Guardrail] Real-time verified. Delivered in 420ms (Zero hallucination).' }
+        ],
+        priorauth: [
+            { node: 'node-ma-input', msg: '[1. Inquiry] Member asked: "Do I need prior authorization for a knee MRI?"' },
+            { node: 'node-ma-intent', msg: '[2. Intent Route] Intent classified: PRIOR_AUTHORIZATION_QUERY (Confidence: 98.9%).' },
+            { node: 'node-ma-api', msg: '[3. Member API] Validated active member plan: Anthem Blue Cross HMO Tier 1.' },
+            { node: 'node-ma-rag', msg: '[4. Benefit RAG] Queried Advanced Imaging guidelines: Outpatient MRI requires pre-certification.' },
+            { node: 'node-ma-llm', msg: '[5. GPT-4 Synth] Formatted physician checklist & turnaround timeline for pre-cert.' },
+            { node: 'node-ma-guard', msg: '[6. Guardrail] 100% cited against Plan Policy Doc Page 42. Latency: 590ms.' }
+        ]
+    };
+
+    window.setMemberScenario = function(scen, btn) {
+        currentMemberScenario = scen;
+        const parent = btn.closest('.agent-simulator-card');
+        if (parent) parent.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        const consoleEl = document.getElementById('memberAssistTraceConsole');
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#34d399;">Scenario selected: ' + scen.toUpperCase() + '.</span> Click "Run Member AI Simulation".';
+    };
+
+    window.runMemberAssistSimulation = function() {
+        const traceSteps = memberScenarios[currentMemberScenario] || memberScenarios.denial;
+        const consoleEl = document.getElementById('memberAssistTraceConsole');
+        const runBtn = document.getElementById('runMemberAssistSimBtn');
+        const allNodes = document.querySelectorAll('#node-ma-input, #node-ma-intent, #node-ma-api, #node-ma-rag, #node-ma-llm, #node-ma-guard');
+
+        if (runBtn) runBtn.disabled = true;
+        allNodes.forEach(n => { n.classList.remove('active-node'); n.classList.remove('done-node'); });
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#fbbf24;">[MemberAssist] Processing query for ' + currentMemberScenario.toUpperCase() + '...</span>';
+
+        let stepIndex = 0;
+        function playStep() {
+            if (stepIndex > 0 && stepIndex - 1 < traceSteps.length) {
+                const prevNodeEl = document.getElementById(traceSteps[stepIndex - 1].node);
+                if (prevNodeEl) { prevNodeEl.classList.remove('active-node'); prevNodeEl.classList.add('done-node'); }
+            }
+            if (stepIndex < traceSteps.length) {
+                const step = traceSteps[stepIndex];
+                const nodeEl = document.getElementById(step.node);
+                if (nodeEl) nodeEl.classList.add('active-node');
+                if (consoleEl) {
+                    const line = document.createElement('div');
+                    line.style.marginTop = '4px';
+                    line.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">▶</span> ' + step.msg;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+                stepIndex++;
+                setTimeout(playStep, 550);
+            } else {
+                if (runBtn) runBtn.disabled = false;
+                if (consoleEl) {
+                    const doneLine = document.createElement('div');
+                    doneLine.style.marginTop = '6px';
+                    doneLine.style.color = '#34d399';
+                    doneLine.style.fontWeight = 'bold';
+                    doneLine.innerHTML = '✔ Query resolved in &lt;800ms with verified plan grounding.';
+                    consoleEl.appendChild(doneLine);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            }
+        }
+        setTimeout(playStep, 300);
+    };
+
+    // === SIMULATOR 4: JAVA SPRING BOOT MICROSERVICES (ANTHEM) ===
+    let currentBackendScenario = 'claim_tx';
+    const backendScenarios = {
+        claim_tx: [
+            { node: 'node-be-rest', msg: '[1. REST Ingest] POST /api/v1/claims received JSON payload (Header: Bearer JWT).' },
+            { node: 'node-be-dto', msg: '[2. DTO Validation] Hibernate Validator checked claim DTO fields (0 validation errors).' },
+            { node: 'node-be-cache', msg: '[3. Redis Cache] Checked duplicate idempotency key in Redis (New transaction verified).' },
+            { node: 'node-be-sql', msg: '[4. PostgreSQL] Executed Spring Data JPA repository transaction (Saved claim row in 14ms).' },
+            { node: 'node-be-event', msg: '[5. Event Queue] Dispatched ClaimSubmittedEvent to Azure Service Bus topic (HTTP 201 Created).' }
+        ],
+        cache_hit: [
+            { node: 'node-be-rest', msg: '[1. REST Ingest] GET /api/v1/members/88921/eligibility received.' },
+            { node: 'node-be-dto', msg: '[2. DTO Validation] Request params validated.' },
+            { node: 'node-be-cache', msg: '[3. Redis Cache] CACHE HIT! Redis returned cached eligibility profile in 8ms (Bypassed DB!).' },
+            { node: 'node-be-sql', msg: '[4. PostgreSQL] (Skipped database query to preserve connection pool capacity).' },
+            { node: 'node-be-event', msg: '[5. Event Queue] HTTP 200 OK returned to client in 11ms total.' }
+        ],
+        fault_dlq: [
+            { node: 'node-be-rest', msg: '[1. REST Ingest] Processing async batch claim item from message broker.' },
+            { node: 'node-be-dto', msg: '[2. DTO Validation] Corrupted provider tax ID detected.' },
+            { node: 'node-be-cache', msg: '[3. Redis Cache] Evicted invalid session token.' },
+            { node: 'node-be-sql', msg: '[4. PostgreSQL] Transaction rolled back safely (@Transactional ACID protection).' },
+            { node: 'node-be-event', msg: '[5. Event Queue] Routed bad message to Dead Letter Queue (DLQ) with alert log.' }
+        ]
+    };
+
+    window.setBackendScenario = function(scen, btn) {
+        currentBackendScenario = scen;
+        const parent = btn.closest('.agent-simulator-card');
+        if (parent) parent.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        const consoleEl = document.getElementById('backendTraceConsole');
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#34d399;">Scenario selected: ' + scen.toUpperCase() + '.</span> Click "Run Backend Flow".';
+    };
+
+    window.runBackendSimulation = function() {
+        const traceSteps = backendScenarios[currentBackendScenario] || backendScenarios.claim_tx;
+        const consoleEl = document.getElementById('backendTraceConsole');
+        const runBtn = document.getElementById('runBackendSimBtn');
+        const allNodes = document.querySelectorAll('#node-be-rest, #node-be-dto, #node-be-cache, #node-be-sql, #node-be-event');
+
+        if (runBtn) runBtn.disabled = true;
+        allNodes.forEach(n => { n.classList.remove('active-node'); n.classList.remove('done-node'); });
+        if (consoleEl) consoleEl.innerHTML = '<span style="color:#fbbf24;">[Spring Boot] Executing transaction flow for ' + currentBackendScenario.toUpperCase() + '...</span>';
+
+        let stepIndex = 0;
+        function playStep() {
+            if (stepIndex > 0 && stepIndex - 1 < traceSteps.length) {
+                const prevNodeEl = document.getElementById(traceSteps[stepIndex - 1].node);
+                if (prevNodeEl) { prevNodeEl.classList.remove('active-node'); prevNodeEl.classList.add('done-node'); }
+            }
+            if (stepIndex < traceSteps.length) {
+                const step = traceSteps[stepIndex];
+                const nodeEl = document.getElementById(step.node);
+                if (nodeEl) nodeEl.classList.add('active-node');
+                if (consoleEl) {
+                    const line = document.createElement('div');
+                    line.style.marginTop = '4px';
+                    line.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">▶</span> ' + step.msg;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+                stepIndex++;
+                setTimeout(playStep, 550);
+            } else {
+                if (runBtn) runBtn.disabled = false;
+                if (consoleEl) {
+                    const doneLine = document.createElement('div');
+                    doneLine.style.marginTop = '6px';
+                    doneLine.style.color = '#34d399';
+                    doneLine.style.fontWeight = 'bold';
+                    doneLine.innerHTML = '✔ Enterprise microservice execution finalized with 0 data loss.';
+                    consoleEl.appendChild(doneLine);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            }
+        }
+        setTimeout(playStep, 300);
+    };
+
 });
     </script>
 
