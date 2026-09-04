@@ -2105,7 +2105,7 @@
 
                 <!-- Experience Company Filter Bar -->
                 <div class="experience-filter-wrapper reveal-on-scroll">
-                    <button class="exp-filter-btn" data-filter="accenture">
+                    <button class="exp-filter-btn active" data-filter="accenture">
                         <i class="fas fa-briefcase"></i> Accenture · Voya Financial
                     </button>
                     <button class="exp-filter-btn" data-filter="tao">
@@ -2781,7 +2781,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
     const timelineItems = document.querySelectorAll('.timeline-item');
 
-    timelineItems.forEach(item => item.classList.add('filtered-out'));
+    timelineItems.forEach(item => {
+        if (item.getAttribute('data-company') === 'accenture') {
+            item.classList.remove('filtered-out');
+            item.style.opacity = '1';
+        } else {
+            item.classList.add('filtered-out');
+        }
+    });
 
     if (expFilterBtns.length > 0 && timelineItems.length > 0) {
         expFilterBtns.forEach(btn => {

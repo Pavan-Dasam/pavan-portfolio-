@@ -174,7 +174,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
     const timelineItems = document.querySelectorAll('.timeline-item');
 
-    timelineItems.forEach(item => item.classList.add('filtered-out'));
+    timelineItems.forEach(item => {
+        if (item.getAttribute('data-company') === 'accenture') {
+            item.classList.remove('filtered-out');
+            item.style.opacity = '1';
+        } else {
+            item.classList.add('filtered-out');
+        }
+    });
 
     if (expFilterBtns.length > 0 && timelineItems.length > 0) {
         expFilterBtns.forEach(btn => {
