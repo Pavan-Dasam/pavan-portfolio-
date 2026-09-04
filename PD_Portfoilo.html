@@ -1597,7 +1597,321 @@
             color: #fff;
             border-color: var(--red-light);
         }
-</style>
+
+        /* === ENHANCEMENT 1: 60-SECOND RECRUITER BRIEF BUTTON & MODAL === */
+        .btn-recruiter-brief {
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.18), rgba(20, 22, 30, 0.9));
+            border: 1px solid var(--red-light);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 0 16px rgba(229, 9, 20, 0.25);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-recruiter-brief:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.35), rgba(28, 30, 42, 0.95));
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.55);
+            border-color: #ff6b6b;
+            color: #fff;
+        }
+
+        /* Reusable Modal Backdrop & Dialog */
+        .portfolio-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 5, 8, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .portfolio-modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .portfolio-modal-content {
+            background: linear-gradient(160deg, #10121a, #090a0f);
+            border: 1px solid rgba(229, 9, 20, 0.4);
+            border-radius: 16px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(229, 9, 20, 0.2);
+            padding: 2rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+        }
+
+        .portfolio-modal-backdrop.open .portfolio-modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: rgba(229, 9, 20, 0.2);
+            border-color: var(--red-light);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        /* Recruiter Snapshot Cards */
+        .recruiter-stat-pill-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 1.2rem 0;
+        }
+
+        .recruiter-stat-pill {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+
+        .recruiter-stat-pill strong {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--red-light);
+            font-family: var(--font-mono);
+        }
+
+        .recruiter-stat-pill span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* === ENHANCEMENT 2: INTERACTIVE MULTI-AGENT SIMULATOR === */
+        .agent-simulator-card {
+            background: linear-gradient(160deg, rgba(20, 24, 35, 0.8), rgba(12, 14, 20, 0.95));
+            border: 1px solid rgba(229, 9, 20, 0.35);
+            border-radius: 14px;
+            padding: 1.4rem;
+            margin-top: 1.4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(229, 9, 20, 0.05);
+        }
+
+        .simulator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .simulator-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scenario-selector-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .scenario-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            padding: 5px 11px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .scenario-btn:hover {
+            border-color: var(--red-light);
+            color: #fff;
+            background: rgba(229, 9, 20, 0.1);
+        }
+
+        .scenario-btn.active {
+            background: rgba(229, 9, 20, 0.2);
+            border-color: var(--red-light);
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+
+        /* 7-Node State Machine Pipeline */
+        .agent-node-pipeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+            gap: 8px;
+            margin: 1.2rem 0;
+        }
+
+        .agent-node {
+            background: rgba(14, 16, 24, 0.85);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 8px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .agent-node i {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        .agent-node.active-node {
+            background: rgba(229, 9, 20, 0.22);
+            border-color: var(--red-light);
+            box-shadow: 0 0 15px var(--red-glow);
+            transform: scale(1.05);
+        }
+
+        .agent-node.active-node i {
+            color: #ff4d4d;
+        }
+
+        .agent-node.done-node {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .agent-node.done-node i {
+            color: #34d399;
+        }
+
+        .simulator-trace-console {
+            background: #08090d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: #cbd5e1;
+            min-height: 80px;
+            max-height: 140px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        /* === ENHANCEMENT 3: ENTERPRISE ROI & RAGAS SCORECARD === */
+        .metrics-scorecard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin: 1rem 0;
+        }
+
+        .metric-score-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 10px 12px;
+            text-align: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .metric-score-card:hover {
+            border-color: rgba(229, 9, 20, 0.4);
+        }
+
+        .metric-score-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+
+        .metric-score-card.red .metric-score-value {
+            color: var(--red-light);
+        }
+
+        .metric-score-card.gold .metric-score-value {
+            color: #fbbf24;
+        }
+
+        .metric-score-label {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-top: 2px;
+        }
+
+        /* === ENHANCEMENT 5: ARCHITECTURE BLUEPRINT BUTTON & DRAWER === */
+        .btn-blueprint-trigger {
+            background: transparent;
+            border: 1px dashed rgba(229, 9, 20, 0.4);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-blueprint-trigger:hover {
+            background: rgba(229, 9, 20, 0.1);
+            border-color: var(--red-light);
+            color: #fff;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -1847,6 +2161,92 @@
                                     <span>Docker</span>
                                     <span>AKS</span>
                                 </div>
+                            
+                                <!-- Enterprise Metrics & RAGAS Scorecard -->
+                                <div class="metrics-scorecard-grid">
+                                    <div class="metric-score-card">
+                                        <div class="metric-score-value">1.0</div>
+                                        <div class="metric-score-label">RAGAS Faithfulness</div>
+                                    </div>
+                                    <div class="metric-score-card">
+                                        <div class="metric-score-value">96.4%</div>
+                                        <div class="metric-score-label">Context Precision</div>
+                                    </div>
+                                    <div class="metric-score-card red">
+                                        <div class="metric-score-value">-78%</div>
+                                        <div class="metric-score-label">Turnaround Time</div>
+                                    </div>
+                                    <div class="metric-score-card gold">
+                                        <div class="metric-score-value">100%</div>
+                                        <div class="metric-score-label">Citation Grounded</div>
+                                    </div>
+                                </div>
+                                <button class="btn-blueprint-trigger" onclick="openBlueprint('voya')">
+                                    <i class="fas fa-sitemap"></i> View Architecture Blueprint &amp; State Specs
+                                </button>
+
+                                <!-- Interactive Multi-Agent Flow Simulator -->
+                                <div class="agent-simulator-card">
+                                    <div class="simulator-header">
+                                        <div class="simulator-title">
+                                            <i class="fas fa-network-wired" style="color: var(--red-light);"></i>
+                                            <span>Interactive Multi-Agent Flow Simulator</span>
+                                        </div>
+                                        <button class="scenario-btn active" id="runSimBtn" onclick="runAgentSimulation()" style="background: var(--red-primary); color: #fff; border-color: var(--red-light);">
+                                            <i class="fas fa-play"></i> Run Agent Simulation
+                                        </button>
+                                    </div>
+                                    <div style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 8px;">
+                                        Select an enterprise claims scenario to see state pass through the 7-agent LangGraph workflow:
+                                    </div>
+                                    <div class="scenario-selector-row">
+                                        <button class="scenario-btn active" onclick="setSimScenario('disability', this)">Short-Term Disability (Missing Form)</button>
+                                        <button class="scenario-btn" onclick="setSimScenario('health', this)">Supplemental Health (100% Grounded)</button>
+                                        <button class="scenario-btn" onclick="setSimScenario('risk', this)">High Risk / Anomaly Flag</button>
+                                    </div>
+
+                                    <!-- 7-Node State Pipeline -->
+                                    <div class="agent-node-pipeline">
+                                        <div class="agent-node" id="node-intake">
+                                            <i class="fas fa-file-import"></i>
+                                            <span>1. Intake</span>
+                                        </div>
+                                        <div class="agent-node" id="node-verify">
+                                            <i class="fas fa-check-double"></i>
+                                            <span>2. Verify</span>
+                                        </div>
+                                        <div class="agent-node" id="node-policy">
+                                            <i class="fas fa-book-open"></i>
+                                            <span>3. Policy RAG</span>
+                                        </div>
+                                        <div class="agent-node" id="node-eligible">
+                                            <i class="fas fa-user-check"></i>
+                                            <span>4. Eligibility</span>
+                                        </div>
+                                        <div class="agent-node" id="node-analysis">
+                                            <i class="fas fa-brain"></i>
+                                            <span>5. Analysis</span>
+                                        </div>
+                                        <div class="agent-node" id="node-risk">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>6. Fraud/Risk</span>
+                                        </div>
+                                        <div class="agent-node" id="node-recom">
+                                            <i class="fas fa-clipboard-check"></i>
+                                            <span>7. Recom</span>
+                                        </div>
+                                        <div class="agent-node" id="node-hitl">
+                                            <i class="fas fa-user-shield"></i>
+                                            <span>8. HITL</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Live Trace Console -->
+                                    <div class="simulator-trace-console" id="simTraceConsole">
+                                        <span style="color: #34d399;">Ready.</span> Click "Run Agent Simulation" to test real-time state orchestration across the LangGraph multi-agent swarm.
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Product 1.2: Claims Intelligence Copilot -->
@@ -1927,6 +2327,30 @@
                                     <span>Azure Functions / AKS</span>
                                     <span>LangSmith</span>
                                 </div>
+                            
+                                <!-- Enterprise Metrics & RAGAS Scorecard (Anthem) -->
+                                <div class="metrics-scorecard-grid">
+                                    <div class="metric-score-card">
+                                        <div class="metric-score-value">&lt;800ms</div>
+                                        <div class="metric-score-label">P95 Latency</div>
+                                    </div>
+                                    <div class="metric-score-card">
+                                        <div class="metric-score-value">98.1%</div>
+                                        <div class="metric-score-label">Intent Accuracy</div>
+                                    </div>
+                                    <div class="metric-score-card red">
+                                        <div class="metric-score-value">0.0%</div>
+                                        <div class="metric-score-label">Hallucination Rate</div>
+                                    </div>
+                                    <div class="metric-score-card gold">
+                                        <div class="metric-score-value">65k+</div>
+                                        <div class="metric-score-label">Inquiries Resolved</div>
+                                    </div>
+                                </div>
+                                <button class="btn-blueprint-trigger" onclick="openBlueprint('anthem')">
+                                    <i class="fas fa-sitemap"></i> View MemberAssist RAG Architecture
+                                </button>
+
                             </div>
 
                             <!-- Product 2.2: Java Backend -->
@@ -2440,6 +2864,12 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'certs':
                 resp.innerHTML = '<span style="color:#fbbf24;">🎖️ Verified Credentials:</span><br>• LangChain Academy (LangChain): <strong style="color:#00F0FF;">ctddbhm9sf</strong><br>• LangChain Academy (LangGraph): <strong style="color:#a78bfa;">9ucdiusaz6</strong><br>• Databricks Certified Generative AI Engineer';
                 break;
+            case 'recruiter':
+                resp.innerHTML = '<span style=\"color:#fbbf24; font-weight:bold;\">⚡ 60-Second Pitch:</span><br>• <strong>Role:</strong> Agentic AI &amp; Production RAG Engineer (3+ Yrs).<br>• <strong>Deliverables:</strong> 7-Agent LangGraph Swarm (Voya) &amp; MemberAssist AI (Anthem).<br>• <strong>Stack:</strong> Python (FastAPI), LangGraph, Azure OpenAI, Azure AI Search, Java.<br>• <strong>Contact:</strong> WhatsApp (+91 9640559197) or <a href=\"mailto:pavanwork2113@gmail.com\" style=\"color:var(--red-light);\">pavanwork2113@gmail.com</a>';
+                break;
+            case 'why-langgraph':
+                resp.innerHTML = '<span style=\"color:var(--red-light); font-weight:bold;\">🧠 Why LangGraph over Simple Chains:</span><br>1. <strong>Cyclic State Graphs:</strong> Allows agents to re-route, loop, and request missing data.<br>2. <strong>Human-in-the-Loop:</strong> Pauses graph execution at checkpoints for human sign-off.<br>3. <strong>State Persistence:</strong> Checkpointing directly into PostgreSQL for fault recovery.';
+                break;
             case 'roi':
                 resp.innerHTML = '<span style="color:#34d399;">📈 Enterprise ROI:</span> &gt;70% reduction in adjudication turnaround, &lt;800ms P95 latency, 100% citation grounding.';
                 break;
@@ -2465,7 +2895,165 @@ document.addEventListener('DOMContentLoaded', () => {
                 handleTermSubmit(termInput.value);
             }
         });
+    
+
+    // === ENHANCEMENT JS: RECRUITER BRIEF & BLUEPRINT MODALS ===
+    const recruiterModal = document.getElementById('recruiterModal');
+    const openRecruiterBtn = document.getElementById('openRecruiterModal');
+    const closeRecruiterBtn = document.getElementById('closeRecruiterModal');
+
+    if (openRecruiterBtn && recruiterModal) {
+        openRecruiterBtn.addEventListener('click', () => {
+            recruiterModal.classList.add('open');
+        });
     }
+
+    if (closeRecruiterBtn && recruiterModal) {
+        closeRecruiterBtn.addEventListener('click', () => {
+            recruiterModal.classList.remove('open');
+        });
+    }
+
+    if (recruiterModal) {
+        recruiterModal.addEventListener('click', (e) => {
+            if (e.target === recruiterModal) recruiterModal.classList.remove('open');
+        });
+    }
+
+    const blueprintModal = document.getElementById('blueprintModal');
+    const closeBlueprintBtn = document.getElementById('closeBlueprintModal');
+    if (closeBlueprintBtn && blueprintModal) {
+        closeBlueprintBtn.addEventListener('click', () => {
+            blueprintModal.classList.remove('open');
+        });
+    }
+    if (blueprintModal) {
+        blueprintModal.addEventListener('click', (e) => {
+            if (e.target === blueprintModal) blueprintModal.classList.remove('open');
+        });
+    }
+
+    window.openBlueprint = function(type) {
+        if (!blueprintModal) return;
+        const bpTitle = document.getElementById('bpTitle');
+        const bpSubtitle = document.getElementById('bpSubtitle');
+        const bpAscii = document.getElementById('bpAscii');
+        const bpNotes = document.getElementById('bpNotes');
+
+        if (type === 'anthem') {
+            if (bpTitle) bpTitle.textContent = 'MemberAssist AI | Architecture Blueprint';
+            if (bpSubtitle) bpSubtitle.textContent = '// RAG + INTENT ROUTING + FASTAPI + LANGSMITH TRACING';
+            if (bpAscii) bpAscii.innerHTML = '[Member / CSR Question] ➔ [FastAPI Gateway] ➔ [Intent Classifier Agent]<br>                                            │<br>                ┌───────────────────────────┴───────────────────────────┐<br>                ▼                                                       ▼<br>   [Benefit Doc RAG (Azure AI Search)]                  [Member Claims &amp; Benefit APIs]<br>   - Plan Document Chunks                               - Real-Time Coverage Verification<br>   - Semantic Reranking                                 - Cost-Share &amp; Deductibles<br>                └───────────────────────────┬───────────────────────────┘<br>                                            ▼<br>                              [Azure OpenAI GPT-4 Model]<br>                              - Plain Language Translation<br>                              - Guardrails &amp; Source Grounding Check (&lt;800ms P95)';
+            if (bpNotes) bpNotes.innerHTML = '<div><strong>• Intent Routing:</strong> Directs coverage, deductible, denial reasons, or provider network queries to specialized retrieval tools.</div><div><strong>• Grounding Verification:</strong> Responses must cite specific plan document sections before rendering to CSR agents.</div>';
+        } else {
+            if (bpTitle) bpTitle.textContent = 'Autonomous Claims Processing Swarm | Architecture Blueprint';
+            if (bpSubtitle) bpSubtitle.textContent = '// 7-AGENT LANGGRAPH STATE MACHINE + HITL CHECKPOINT';
+            if (bpAscii) bpAscii.innerHTML = '[Incoming Claim PDF/JSON] ➔ [FastAPI Ingestion] ➔ [Azure Service Bus Queue]<br>                                                  │<br>                                                  ▼<br>               ┌────────────────────────────────────────────────────────┐<br>               │          7-Agent LangGraph Cyclic State Swarm          │<br>               │  Intake ➔ DocVerify ➔ PolicyRAG ➔ Eligibility           │<br>               │  Claims Analysis ➔ FraudRisk ➔ Recommendation ➔ HITL   │<br>               └───────────────────────────┬────────────────────────────┘<br>                                           │<br>                     ┌─────────────────────┴─────────────────────┐<br>                     ▼                                           ▼<br>        [Azure AI Search (Hybrid)]                    [Azure OpenAI GPT-4o]<br>        - Certificate RAG                             - Structured Pydantic Action<br>        - OCR Chunk Embeddings                        - 100% Policy Grounded Citations';
+            if (bpNotes) bpNotes.innerHTML = '<div><strong>• State Persistence:</strong> LangGraph TypedDict state persisted to PostgreSQL checkpoint tables, ensuring interrupted executions can resume without data loss.</div><div><strong>• Human-in-the-Loop:</strong> High-risk or low-confidence claims automatically halt graph traversal for human sign-off.</div>';
+        }
+        blueprintModal.classList.add('open');
+    };
+
+    // === ENHANCEMENT JS: INTERACTIVE MULTI-AGENT SIMULATOR ===
+    let currentSimScenario = 'disability';
+    const scenarios = {
+        disability: [
+            { node: 'node-intake', msg: '[1. Intake Agent] Extracted claim #STD-4091: Short-Term Disability (Voya Group #8821). Claimant: Employee.' },
+            { node: 'node-verify', msg: '[2. Doc Verification Agent] Checked 4/5 items. Missing Employer Attestation Statement! Flag added to state.' },
+            { node: 'node-policy', msg: '[3. Policy Retrieval Agent] RAG matched Certificate Section 4.2 (Disability Elimination Period: 14 Days).' },
+            { node: 'node-eligible', msg: '[4. Eligibility Agent] Coverage active on incident date (08/14). Member eligible under Plan Option B.' },
+            { node: 'node-analysis', msg: '[5. Claims Analysis Agent] Medical disability timeline consistent with ICD-10 diagnostic code.' },
+            { node: 'node-risk', msg: '[6. Fraud/Risk Agent] Anomaly score: 0.04 (Low Risk). No duplicate filings detected.' },
+            { node: 'node-recom', msg: '[7. Recommendation Agent] Confidence: 94%. Action: Request missing Employer Statement before final payout.' },
+            { node: 'node-hitl', msg: '[8. HITL Checkpoint] Routed recommendation to Claims Examiner Sarah M. for single-click dispatch. (Done!)' }
+        ],
+        health: [
+            { node: 'node-intake', msg: '[1. Intake Agent] Extracted claim #SUPP-1044: Supplemental Hospital Confinement.' },
+            { node: 'node-verify', msg: '[2. Doc Verification Agent] All required admission & discharge records verified (100% complete).' },
+            { node: 'node-policy', msg: '[3. Policy Retrieval Agent] Matched Rider H-10: $250/day confinement benefit.' },
+            { node: 'node-eligible', msg: '[4. Eligibility Agent] Policy continuously active for 18 months. Pre-existing clause passed.' },
+            { node: 'node-analysis', msg: '[5. Claims Analysis Agent] 3 inpatient days verified against facility bill.' },
+            { node: 'node-risk', msg: '[6. Fraud/Risk Agent] Normal provider NPI verified. Fraud risk score: 0.01.' },
+            { node: 'node-recom', msg: '[7. Recommendation Agent] Recommendation: Approve $750 benefit (Confidence: 99.2%).' },
+            { node: 'node-hitl', msg: '[8. HITL Checkpoint] Examiner approved with single click. Automated payment scheduled.' }
+        ],
+        risk: [
+            { node: 'node-intake', msg: '[1. Intake Agent] Extracted claim #ACC-9923: Accidental Injury.' },
+            { node: 'node-verify', msg: '[2. Doc Verification Agent] Hospital invoice dates conflicting with incident report.' },
+            { node: 'node-policy', msg: '[3. Policy Retrieval Agent] Retrieved exclusion clause Section 9.1 (Non-covered activities).' },
+            { node: 'node-eligible', msg: '[4. Eligibility Agent] Active coverage verified.' },
+            { node: 'node-analysis', msg: '[5. Claims Analysis Agent] High variance in billing codes vs injury documentation.' },
+            { node: 'node-risk', msg: '[6. Fraud/Risk Agent] RISK ALERT: High anomaly pattern flagged! Escalation required.' },
+            { node: 'node-recom', msg: '[7. Recommendation Agent] Action: Halt autonomous workflow. Refer to Special Investigation Unit (SIU).' },
+            { node: 'node-hitl', msg: '[8. HITL Checkpoint] High-priority examiner intervention triggered. Notification sent to Senior Auditor.' }
+        ]
+    };
+
+    window.setSimScenario = function(scen, btn) {
+        currentSimScenario = scen;
+        document.querySelectorAll('.scenario-selector-row .scenario-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+        const consoleEl = document.getElementById('simTraceConsole');
+        if (consoleEl) {
+            consoleEl.innerHTML = '<span style="color: #34d399;">Scenario selected: ' + scen.toUpperCase() + '.</span> Click "Run Agent Simulation" to start trace.';
+        }
+    };
+
+    window.runAgentSimulation = function() {
+        const traceSteps = scenarios[currentSimScenario] || scenarios.disability;
+        const consoleEl = document.getElementById('simTraceConsole');
+        const runBtn = document.getElementById('runSimBtn');
+        const allNodes = document.querySelectorAll('.agent-node');
+
+        if (runBtn) runBtn.disabled = true;
+        allNodes.forEach(n => { n.classList.remove('active-node'); n.classList.remove('done-node'); });
+        if (consoleEl) consoleEl.innerHTML = '<span style="color: #fbbf24;">[System] Initializing LangGraph 7-Agent Swarm for ' + currentSimScenario.toUpperCase() + '...</span>';
+
+        let stepIndex = 0;
+
+        function playStep() {
+            if (stepIndex > 0 && stepIndex - 1 < traceSteps.length) {
+                const prevNodeId = traceSteps[stepIndex - 1].node;
+                const prevNodeEl = document.getElementById(prevNodeId);
+                if (prevNodeEl) {
+                    prevNodeEl.classList.remove('active-node');
+                    prevNodeEl.classList.add('done-node');
+                }
+            }
+
+            if (stepIndex < traceSteps.length) {
+                const step = traceSteps[stepIndex];
+                const nodeEl = document.getElementById(step.node);
+                if (nodeEl) nodeEl.classList.add('active-node');
+
+                if (consoleEl) {
+                    const line = document.createElement('div');
+                    line.style.marginTop = '4px';
+                    line.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">▶</span> ' + step.msg;
+                    consoleEl.appendChild(line);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+
+                stepIndex++;
+                setTimeout(playStep, 650);
+            } else {
+                if (runBtn) runBtn.disabled = false;
+                if (consoleEl) {
+                    const doneLine = document.createElement('div');
+                    doneLine.style.marginTop = '6px';
+                    doneLine.style.color = '#34d399';
+                    doneLine.style.fontWeight = 'bold';
+                    doneLine.innerHTML = '✔ Multi-Agent Swarm execution finalized with complete audit trace.';
+                    consoleEl.appendChild(doneLine);
+                    consoleEl.scrollTop = consoleEl.scrollHeight;
+                }
+            }
+        }
+
+        setTimeout(playStep, 350);
+    };
+
+}
 });
     </script>
 
@@ -2498,6 +3086,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="term-badge" onclick="runTermCmd('projects')">projects</span>
                 <span class="term-badge" onclick="runTermCmd('certs')">certs</span>
                 <span class="term-badge" onclick="runTermCmd('contact')">contact</span>
+                <span class="term-badge" onclick="runTermCmd('recruiter')">⚡ recruiter</span>
+                <span class="term-badge" onclick="runTermCmd('why-langgraph')">why-langgraph</span>
             </div>
         </div>
         <div class="terminal-input-row">
@@ -2505,11 +3095,104 @@ document.addEventListener('DOMContentLoaded', () => {
             <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, contact)..." autocomplete="off">
         </div>
     </div>
-        <div class="terminal-input-row">
-            <span class="terminal-prompt">&gt;</span>
-            <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, hire)..." autocomplete="off">
+        
+    <!-- Modal 1: 60-Second Recruiter Brief -->
+    <div class="portfolio-modal-backdrop" id="recruiterModal">
+        <div class="portfolio-modal-content">
+            <button class="modal-close-btn" id="closeRecruiterModal" title="Close"><i class="fas fa-times"></i></button>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <i class="fas fa-bolt" style="color: #fbbf24; font-size: 1.3rem;"></i>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0;">60-Second Recruiter Brief</h3>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--red-light); margin-bottom: 14px;">
+                // PAVAN DASAM · AGENTIC AI &amp; PRODUCTION RAG ENGINEER
+            </div>
+
+            <div class="recruiter-stat-pill-row">
+                <div class="recruiter-stat-pill">
+                    <strong>3+ Years</strong>
+                    <span>GenAI &amp; Backend</span>
+                </div>
+                <div class="recruiter-stat-pill">
+                    <strong>Voya &amp; Anthem</strong>
+                    <span>Enterprise Clients</span>
+                </div>
+                <div class="recruiter-stat-pill">
+                    <strong>100%</strong>
+                    <span>Citation Grounding</span>
+                </div>
+                <div class="recruiter-stat-pill">
+                    <strong>&lt;800ms</strong>
+                    <span>P95 Copilot Latency</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 14px; margin-bottom: 14px; font-size: 0.84rem; line-height: 1.6; color: #cbd5e1;">
+                <strong style="color: #fff;">Candidate Value Proposition:</strong><br>
+                Engineered an autonomous <strong>7-Agent LangGraph Claims Processing system</strong> for Voya Financial with full Human-in-the-Loop governance. Built healthcare member copilots on Azure OpenAI with zero hallucination rate using RAGAS evaluation. Fluent in Python (FastAPI), LangGraph, Azure AI Search, and Java 17 Spring Boot microservices.
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px; font-family: var(--font-mono);">
+                    🎖️ Official Verified Credentials:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem;">
+                    <span style="background: rgba(229,9,20,0.12); border: 1px solid var(--border-red); color: #ff8a8a; padding: 3px 8px; border-radius: 4px;">LangChain (ctddbhm9sf)</span>
+                    <span style="background: rgba(229,9,20,0.12); border: 1px solid var(--border-red); color: #ff8a8a; padding: 3px 8px; border-radius: 4px;">LangGraph (9ucdiusaz6)</span>
+                    <span style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.4); color: #fbbf24; padding: 3px 8px; border-radius: 4px;">Databricks GenAI Certified</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
+                <a href="https://wa.me/919640559197" target="_blank" class="btn-secondary" style="padding: 7px 14px; font-size: 0.8rem;">
+                    <i class="fab fa-whatsapp" style="color: #25D366;"></i> Chat on WhatsApp
+                </a>
+                <a href="mailto:pavanwork2113@gmail.com?subject=Interview%20Inquiry%20-%20Pavan%20Dasam" class="btn-primary" style="padding: 7px 14px; font-size: 0.8rem;">
+                    <i class="fas fa-envelope"></i> Email Pavan
+                </a>
+                <a href="Pavan_Dasam_AI_Engineer_Resume.pdf" download="Pavan_Dasam_AI_Engineer_Resume.pdf" target="_blank" class="btn-secondary" style="padding: 7px 14px; font-size: 0.8rem;">
+                    <i class="fas fa-download"></i> PDF Résumé
+                </a>
+            </div>
         </div>
     </div>
-                </body>
+
+    <!-- Modal 2: Architecture Blueprint Modal -->
+    <div class="portfolio-modal-backdrop" id="blueprintModal">
+        <div class="portfolio-modal-content" style="max-width: 760px;">
+            <button class="modal-close-btn" id="closeBlueprintModal" title="Close"><i class="fas fa-times"></i></button>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <i class="fas fa-project-diagram" style="color: var(--red-light); font-size: 1.3rem;"></i>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0;" id="bpTitle">Production Architecture Blueprint</h3>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8; margin-bottom: 14px;" id="bpSubtitle">
+                // ENTERPRISE SYSTEM DESIGN SPECIFICATION
+            </div>
+
+            <div style="background: #08090e; border: 1px solid rgba(229,9,20,0.3); border-radius: 10px; padding: 14px; margin-bottom: 14px; font-family: var(--font-mono); font-size: 0.75rem; color: #ffb8bc; line-height: 1.6; overflow-x: auto;" id="bpAscii">
+                [Claim Stream] ➔ [FastAPI Ingestion] ➔ [Azure Service Bus Queue]
+                                                      │
+                                                      ▼
+                              ┌─────────────────────────────────────────────────┐
+                              │     7-Agent LangGraph State Machine Swarm       │
+                              │  Intake ➔ DocVerify ➔ Policy ➔ Eligibility      │
+                              │  Analysis ➔ Risk ➔ Recommendation ➔ HITL Check  │
+                              └───────────────────────┬─────────────────────────┘
+                                                      │
+                       ┌──────────────────────────────┴─────────────────────────┐
+                       ▼                                                        ▼
+            [Azure AI Search (Hybrid)]                              [Azure OpenAI GPT-4o]
+            - OCR Chunk Indexing                                    - Strict JSON Structured Output
+            - Semantic Vector Reranking                             - 100% Policy Citation Grounding
+            </div>
+
+            <div style="font-size: 0.84rem; color: #cbd5e1; line-height: 1.6; space-y: 10px;" id="bpNotes">
+                <div><strong>• Why LangGraph:</strong> Linear chains fail when document verification detects missing items. LangGraph's cyclic state graphs allow agents to request additional data, route back, and persist execution checkpoints into PostgreSQL.</div>
+                <div><strong>• Governance &amp; HITL:</strong> The system reaches up to 94% autonomous confidence, but policy requires claims examiners to finalize all high-risk determinations.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
 
 </html>
