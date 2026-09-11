@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
     <style>
-        /* === ROOT THEME & COLOR PALETTE (CRIMSON RED & GLOWING METALLIC) === */
+        /* === ROOT THEME & COLOR PALETTE (CRIMSON MIDNIGHT BLUE & METALLIC GLOW) === */
         :root {
-            /* Glowing Metallic Alloy Tones */
+            /* === METALLIC CRIMSON ACCENTS (HOT LASER ANODE) === */
             --metal-crimson: #E50914;
             --metal-ruby: #ff2a36;
             --metal-platinum: #f8fafc;
@@ -32,21 +32,22 @@
             --metal-gunmetal: #475569;
 
             --red-primary: #E50914;
-            --red-glow: rgba(229, 9, 20, 0.60);
-            --red-glow-strong: rgba(255, 42, 54, 0.92);
+            --red-glow: rgba(229, 9, 20, 0.55);
+            --red-glow-strong: rgba(255, 42, 54, 0.90);
             --red-dark: #8f060d;
             --red-light: #ff4d58;
 
-            --bg-main: #0c0d12;
-            --bg-card: #14161f;
-            --bg-card-hover: #1c202c;
-            --bg-header: rgba(12, 13, 18, 0.92);
-            --border-subtle: rgba(203, 213, 225, 0.14);
+            /* === ENTERPRISE VOID SAPPHIRE SURFACES (COLD SUBSTRATE) === */
+            --bg-main: #060913;
+            --bg-card: #0d1222;
+            --bg-card-hover: #131a30;
+            --bg-header: rgba(6, 9, 19, 0.92);
+            --border-subtle: rgba(148, 163, 184, 0.12);
             --border-red: rgba(229, 9, 20, 0.45);
 
             --text-primary: #f8fafc;
-            --text-secondary: #e2e8f0;
-            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --text-muted: #8493a8;
 
             --font-main: 'Poppins', sans-serif;
             --font-display: 'Space Grotesk', sans-serif;
@@ -122,8 +123,9 @@
             z-index: -1;
             pointer-events: none;
             overflow: hidden;
-            background: radial-gradient(circle at 80% 10%, rgba(229, 9, 20, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 10% 60%, rgba(203, 213, 225, 0.08) 0%, transparent 45%),
+            background: radial-gradient(circle at 80% 10%, rgba(229, 9, 20, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 15% 55%, rgba(30, 58, 138, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(229, 9, 20, 0.08) 0%, transparent 45%),
                 var(--bg-main);
         }
 
@@ -575,7 +577,7 @@
             height: 100%;
             border-radius: 50%;
             overflow: hidden;
-            background: #111218;
+            background: #090e1c;
             border: 4px solid var(--bg-main);
         }
 
@@ -597,7 +599,7 @@
             bottom: 5%;
             right: 5%;
             z-index: 5;
-            background: rgba(18, 20, 26, 0.92);
+            background: rgba(13, 18, 34, 0.92);
             border: 1px solid var(--border-red);
             padding: 8px 16px;
             border-radius: 99px;
@@ -1138,7 +1140,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            background: rgba(12, 13, 16, 0.6);
+            background: rgba(10, 14, 28, 0.6);
             border: 1px solid var(--border-subtle);
             border-radius: 14px;
             padding: 2.5rem;
@@ -1420,7 +1422,7 @@
         }
 
         .exp-filter-btn {
-            background: rgba(20, 22, 29, 0.85);
+            background: rgba(13, 18, 34, 0.85);
             border: 1px solid var(--border-subtle);
             color: var(--text-muted);
             padding: 10px 22px;
@@ -1468,7 +1470,7 @@
             bottom: 25px;
             right: 25px;
             z-index: 9999;
-            background: linear-gradient(135deg, rgba(18, 22, 32, 0.95), rgba(10, 12, 16, 0.98));
+            background: linear-gradient(135deg, rgba(13, 18, 34, 0.95), rgba(6, 9, 19, 0.98));
             border: 1px solid #E50914;
             color: #f8fafc;
             padding: 11px 20px;
@@ -1513,7 +1515,7 @@
             right: 25px;
             width: min(480px, calc(100vw - 30px));
             height: 380px;
-            background: rgba(13, 16, 23, 0.97);
+            background: rgba(8, 13, 26, 0.97);
             border: 1px solid rgba(229, 9, 20, 0.38);
             border-radius: 12px;
             z-index: 9999;
@@ -1536,7 +1538,7 @@
         }
 
         .terminal-topbar {
-            background: rgba(20, 22, 30, 0.95);
+            background: rgba(13, 18, 34, 0.95);
             padding: 10px 14px;
             display: flex;
             justify-content: space-between;
@@ -1580,7 +1582,7 @@
             display: flex;
             align-items: center;
             padding: 9px 14px;
-            background: rgba(14, 16, 24, 0.95);
+            background: rgba(10, 14, 28, 0.95);
             border-top: 1px solid var(--border-subtle);
             gap: 8px;
         }
@@ -1654,7 +1656,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(4, 5, 8, 0.85);
+            background: rgba(3, 5, 12, 0.85);
             backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex;
@@ -1672,7 +1674,7 @@
         }
 
         .portfolio-modal-content {
-            background: linear-gradient(160deg, #121620, #0a0c10);
+            background: linear-gradient(160deg, #10162a, #090e1c);
             border: 1px solid rgba(229, 9, 20, 0.4);
             border-radius: 16px;
             max-width: 680px;
@@ -1745,7 +1747,7 @@
 
         /* === ENHANCEMENT 2: INTERACTIVE MULTI-AGENT SIMULATOR === */
         .agent-simulator-card {
-            background: linear-gradient(160deg, rgba(18, 22, 32, 0.88), rgba(10, 12, 16, 0.97));
+            background: linear-gradient(160deg, rgba(16, 22, 40, 0.88), rgba(8, 13, 26, 0.97));
             border: 1px solid rgba(229, 9, 20, 0.35);
             border-radius: 14px;
             padding: 1.4rem;
@@ -1814,7 +1816,7 @@
         }
 
         .agent-node {
-            background: rgba(14, 16, 24, 0.85);
+            background: rgba(13, 18, 34, 0.85);
             border: 1px solid var(--border-subtle);
             border-radius: 8px;
             padding: 10px 8px;
@@ -1854,7 +1856,7 @@
         }
 
         .simulator-trace-console {
-            background: #08090d;
+            background: #080d1a;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             padding: 12px 14px;
@@ -3509,7 +3511,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // ENTERPRISE SYSTEM DESIGN SPECIFICATION
             </div>
 
-            <div style="background: #08090e; border: 1px solid rgba(229, 9, 20,0.3); border-radius: 10px; padding: 14px; margin-bottom: 14px; font-family: var(--font-mono); font-size: 0.75rem; color: #e2e8f0; line-height: 1.6; overflow-x: auto;" id="bpAscii">
+            <div style="background: #080d1a; border: 1px solid rgba(229, 9, 20,0.3); border-radius: 10px; padding: 14px; margin-bottom: 14px; font-family: var(--font-mono); font-size: 0.75rem; color: #e2e8f0; line-height: 1.6; overflow-x: auto;" id="bpAscii">
                 [Claim Stream] ➔ [FastAPI Ingestion] ➔ [Azure Service Bus Queue]
                                                       │
                                                       ▼
