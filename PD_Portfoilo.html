@@ -539,15 +539,6 @@
             perspective: 1000px;
         }
 
-        .portrait-frame {
-            width: min(100%, 360px);
-            aspect-ratio: 1 / 1;
-            position: relative;
-            border-radius: 50%;
-            padding: 8px;
-            transform-style: preserve-3d;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
 
         .portrait-frame::before {
             content: '';
@@ -570,28 +561,123 @@
             }
         }
 
+        .portrait-frame {
+            width: min(100%, 360px);
+            aspect-ratio: 1 / 1;
+            position: relative;
+            border-radius: 50%;
+            padding: 8px;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            outline: none;
+        }
+
+        .portrait-frame:focus-visible {
+            box-shadow: 0 0 0 3px var(--red-light);
+        }
+
         .portrait-inner {
             position: relative;
             z-index: 2;
             width: 100%;
             height: 100%;
             border-radius: 50%;
+            transform-style: preserve-3d;
+            transition: transform 0.85s cubic-bezier(0.34, 1.35, 0.64, 1);
+        }
+
+        .portrait-frame.is-flipped .portrait-inner {
+            transform: rotateY(180deg);
+        }
+
+        .portrait-face {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
             overflow: hidden;
             background: #090e1c;
             border: 4px solid var(--bg-main);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .portrait-inner img {
+        .portrait-face.portrait-front {
+            transform: rotateY(0deg) translateZ(1px);
+        }
+
+        .portrait-face.portrait-back {
+            transform: rotateY(180deg) translateZ(1px);
+        }
+
+        .portrait-face img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 15%;
             filter: contrast(1.05) brightness(1.02);
             transition: transform 0.5s ease;
+            user-select: none;
+            -webkit-user-drag: none;
+            display: block;
         }
 
-        .portrait-frame:hover .portrait-inner img {
+        .portrait-face.portrait-back img {
+            object-position: center 12%;
+        }
+
+        .portrait-frame:hover .portrait-face img {
             transform: scale(1.06);
+        }
+
+        /* Interactive Flip Hint */
+        .portrait-flip-hint {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+            background: rgba(13, 18, 34, 0.88);
+            border: 1px solid rgba(229, 9, 20, 0.45);
+            color: var(--text-secondary);
+            padding: 4px 14px;
+            border-radius: 99px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(229, 9, 20, 0.25);
+            backdrop-filter: blur(8px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+
+        .portrait-frame:hover .portrait-flip-hint {
+            opacity: 1;
+            color: #fff;
+            border-color: var(--red-light);
+            box-shadow: 0 6px 25px rgba(229, 9, 20, 0.5);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .portrait-flip-hint i {
+            color: var(--red-light);
+            font-size: 0.65rem;
+            transition: transform 0.6s ease;
+        }
+
+        .portrait-frame.is-flipped .portrait-flip-hint i {
+            transform: rotate(180deg);
         }
 
         .status-badge {
@@ -2033,15 +2119,23 @@
                         </div>
                     </div>
 
-                    <!-- 3D Tilt Portrait Frame -->
+                    <!-- 3D Tilt & Flip Portrait Frame -->
                     <div class="hero-image-wrapper reveal-on-scroll">
-                        <div class="portrait-frame" id="tiltCard">
-                            <div class="portrait-inner">
-                                <img src="pavan-ai-portrait.png" alt="Pavan Dasam AI Engineer">
+                        <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Click to rotate avatar style" aria-label="Click to flip avatar">
+                            <div class="portrait-flip-hint">
+                                <i class="fas fa-sync-alt"></i> <span>CLICK TO ROTATE</span>
+                            </div>
+                            <div class="portrait-inner" id="portraitFlipper">
+                                <div class="portrait-face portrait-front">
+                                    <img src="pavan-ai-portrait.png" alt="Pavan Dasam AI Engineer">
+                                </div>
+                                <div class="portrait-face portrait-back">
+                                    <img src="pavan-flip-portrait.jpg" alt="Pavan Dasam Signature Style">
+                                </div>
                             </div>
                             <div class="status-badge">
                                 <div class="status-dot"></div>
-                                <span>ACTIVE · READY TO BUILD</span>
+                                <span id="portraitStatusText">ACTIVE · READY TO BUILD</span>
                             </div>
                         </div>
                     </div>
@@ -2755,9 +2849,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleTyping();
 
-    // === 3D Interactive Tilt on Hero Portrait ===
+    // === 3D Interactive Tilt & Flip on Hero Portrait ===
     const tiltCard = document.getElementById('tiltCard');
     if (tiltCard) {
+        let isFlipped = false;
+
+        const toggleFlip = () => {
+            isFlipped = !isFlipped;
+            tiltCard.classList.toggle('is-flipped', isFlipped);
+            const statusText = document.getElementById('portraitStatusText');
+            if (statusText) {
+                statusText.textContent = isFlipped ? 'SIGNATURE STYLE · RETRO VIBE' : 'ACTIVE · READY TO BUILD';
+            }
+        };
+
+        tiltCard.addEventListener('click', toggleFlip);
+        tiltCard.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFlip();
+            }
+        });
+
         tiltCard.addEventListener('mousemove', (e) => {
             const rect = tiltCard.getBoundingClientRect();
             const x = e.clientX - rect.left;
