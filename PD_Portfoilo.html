@@ -39,8 +39,8 @@
 
             /* === ENTERPRISE VOID SAPPHIRE SURFACES (COLD SUBSTRATE) === */
             --bg-main: #060913;
-            --bg-card: #0d1222;
-            --bg-card-hover: #131a30;
+            --bg-card: rgba(13, 18, 34, 0.80);
+            --bg-card-hover: rgba(19, 26, 48, 0.88);
             --bg-header: rgba(6, 9, 19, 0.92);
             --border-subtle: rgba(148, 163, 184, 0.12);
             --border-red: rgba(229, 9, 20, 0.45);
@@ -113,7 +113,7 @@
             }
         }
 
-        /* === COSMIC STARFIELD BACKGROUND === */
+        /* === COSMIC STARFIELD & GLOBAL TRANSPARENT RETRO BACKGROUND === */
         .stars-container {
             position: fixed;
             top: 0;
@@ -127,6 +127,29 @@
                 radial-gradient(circle at 15% 55%, rgba(30, 58, 138, 0.18) 0%, transparent 50%),
                 radial-gradient(circle at 50% 90%, rgba(229, 9, 20, 0.08) 0%, transparent 45%),
                 var(--bg-main);
+        }
+
+        .global-retro-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pavan-flip-portrait.jpg?v=3');
+            background-size: cover;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            opacity: 0.18;
+            filter: contrast(1.15) brightness(0.95);
+            pointer-events: none;
+        }
+
+        .global-retro-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 35%, rgba(6, 9, 19, 0.55) 100%),
+                        linear-gradient(180deg, rgba(6, 9, 19, 0.35) 0%, transparent 20%, transparent 80%, rgba(6, 9, 19, 0.35) 100%);
+            pointer-events: none;
         }
 
         @keyframes move-stars {
@@ -749,29 +772,6 @@
             overflow: hidden;
         }
 
-        .about-retro-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('pavan-flip-portrait.jpg?v=2');
-            background-size: cover;
-            background-position: center 20%;
-            background-repeat: no-repeat;
-            opacity: 0.16;
-            filter: contrast(1.15) brightness(0.95);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .about-retro-bg::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, var(--bg-main) 0%, rgba(6, 9, 19, 0.55) 15%, rgba(6, 9, 19, 0.55) 85%, var(--bg-main) 100%);
-            pointer-events: none;
-        }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
@@ -888,6 +888,15 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             line-height: 1.5;
+        }
+
+        
+        .timeline-card,
+        .skill-category-card,
+        .cert-card,
+        .contact-box {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         /* === WORK EXPERIENCE & PROJECTS TIMELINE === */
@@ -2096,8 +2105,9 @@
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
-    <!-- Starfield Cosmic Background -->
+    <!-- Starfield & Global Transparent Retro Background -->
     <div class="stars-container">
+        <div class="global-retro-bg" aria-hidden="true"></div>
         <div class="stars-layer stars-1"></div>
         <div class="stars-layer stars-2"></div>
     </div>
@@ -2214,7 +2224,6 @@
 
         <!-- Professional Summary / About Section -->
         <section id="about">
-            <div class="about-retro-bg" aria-hidden="true"></div>
             <div class="container">
                 <div class="section-header reveal-on-scroll">
                     <span class="section-tag">// PROFESSIONAL PROFILE</span>
