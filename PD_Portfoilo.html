@@ -611,6 +611,86 @@
             box-shadow: 0 0 0 3px var(--red-light);
         }
 
+        
+        /* === THUNDER & LIGHTNING EFFECT ON HERO ROTATE === */
+        .thunder-overlay {
+            position: absolute;
+            inset: -25px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            overflow: visible;
+        }
+
+        .thunder-overlay.striking {
+            opacity: 1;
+        }
+
+        .thunder-flash {
+            position: absolute;
+            inset: 25px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(0, 240, 255, 0.55) 45%, rgba(229, 9, 20, 0.35) 75%, transparent 100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .thunder-overlay.striking .thunder-flash {
+            animation: thunderFlashStrobe 0.55s ease-out forwards;
+        }
+
+        @keyframes thunderFlashStrobe {
+            0% { opacity: 0; transform: scale(0.95); }
+            12% { opacity: 0.95; transform: scale(1.04); }
+            24% { opacity: 0.25; transform: scale(1); }
+            38% { opacity: 0.90; transform: scale(1.02); }
+            55% { opacity: 0.15; transform: scale(0.99); }
+            70% { opacity: 0.65; transform: scale(1.01); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+
+        .thunder-shockwave {
+            position: absolute;
+            inset: 20px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 25px #00F0FF, 0 0 50px #ff2a36, inset 0 0 20px #00F0FF;
+        }
+
+        .thunder-overlay.striking .thunder-shockwave {
+            animation: thunderShockwaveExpand 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes thunderShockwaveExpand {
+            0% {
+                transform: scale(0.85);
+                opacity: 1;
+                border-color: #fff;
+            }
+            50% {
+                opacity: 0.85;
+                border-color: #00F0FF;
+            }
+            100% {
+                transform: scale(1.45);
+                opacity: 0;
+                border-color: #ff2a36;
+            }
+        }
+
+        .thunder-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
         .portrait-inner {
             position: relative;
             z-index: 2;
@@ -1457,43 +1537,6 @@
             animation: fastFireAura 4.5s ease-in-out infinite alternate;
         }
 
-        .hero-bg-watermark {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translate3d(0, -50%, 0);
-            width: clamp(380px, 46vw, 700px);
-            height: 88%;
-            max-height: 720px;
-            object-fit: cover;
-            object-position: center 20%;
-            opacity: 0.12;
-            pointer-events: none;
-            z-index: 0;
-            filter: contrast(1.15) brightness(1.1) drop-shadow(0 0 30px rgba(229, 9, 20, 0.55)) drop-shadow(0 0 60px rgba(255, 77, 88, 0.25));
-            mask-image: radial-gradient(ellipse at 65% 50%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%);
-            -webkit-mask-image: radial-gradient(ellipse at 65% 50%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%);
-            will-change: transform, opacity;
-            animation: fastFirePulse 4.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes fastFirePulse {
-            0% {
-                opacity: 0.10;
-                transform: translate3d(0, -50%, 0) scale(1);
-            }
-
-            50% {
-                opacity: 0.15;
-                transform: translate3d(0, -50.8%, 0) scale(1.015);
-            }
-
-            100% {
-                opacity: 0.11;
-                transform: translate3d(0, -49.5%, 0) scale(1.005);
-            }
-        }
-
         @keyframes fastFireAura {
             0% {
                 opacity: 0.50;
@@ -1519,34 +1562,6 @@
                 width: 95%;
                 opacity: 0.35;
                 filter: blur(30px);
-            }
-
-            .hero-bg-watermark {
-                right: 50%;
-                top: 50%;
-                transform: translate3d(50%, -50%, 0);
-                width: 90%;
-                opacity: 0.08;
-                filter: contrast(1.1) brightness(1.05) drop-shadow(0 0 15px rgba(229, 9, 20, 0.25));
-                mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
-                -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 75%);
-            }
-
-            @keyframes fastFirePulse {
-                0% {
-                    opacity: 0.06;
-                    transform: translate3d(50%, -50%, 0) scale(1);
-                }
-
-                50% {
-                    opacity: 0.09;
-                    transform: translate3d(50%, -50%, 0) scale(1.01);
-                }
-
-                100% {
-                    opacity: 0.07;
-                    transform: translate3d(50%, -50%, 0) scale(1);
-                }
             }
 
             @keyframes fastFireAura {
@@ -2137,7 +2152,7 @@
         <section id="hero">
             <!-- Transparent Ambient Background Portrait -->
             <div class="hero-fire-aura"></div>
-            <img src="pavan-ai-portrait.png" alt="Pavan Dasam Ambient Watermark" class="hero-bg-watermark">
+            
             <div class="container">
                 <div class="hero-grid">
                     <div class="hero-content reveal-on-scroll">
@@ -2198,6 +2213,12 @@
                     <div class="hero-image-wrapper reveal-on-scroll">
                         <div class="portrait-wrapper" id="portraitWrapper">
                             <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Click to rotate portrait style" aria-label="Click to flip avatar">
+                                <!-- Thunder & Lightning Visual Flash Effect -->
+                                <div class="thunder-overlay" id="thunderOverlay" aria-hidden="true">
+                                    <div class="thunder-flash"></div>
+                                    <div class="thunder-shockwave"></div>
+                                    <canvas id="thunderCanvas" class="thunder-canvas"></canvas>
+                                </div>
                                 <div class="portrait-inner" id="portraitFlipper">
                                     <div class="portrait-face portrait-front">
                                         <img src="pavan-ai-portrait.png" alt="Pavan Dasam AI Engineer">
@@ -2922,10 +2943,136 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleTyping();
 
-    // === 3D Interactive Tilt & Flip on Hero Portrait ===
+    // === 3D Interactive Tilt & Flip on Hero Portrait with Thunder Effect ===
     const tiltCard = document.getElementById('tiltCard');
     const portraitWrapper = document.getElementById('portraitWrapper');
     const portraitFlipBtn = document.getElementById('portraitFlipBtn');
+
+    function triggerThunder() {
+        const overlay = document.getElementById('thunderOverlay');
+        const canvas = document.getElementById('thunderCanvas');
+        if (!overlay || !canvas) return;
+
+        overlay.classList.remove('striking');
+        void overlay.offsetWidth;
+        overlay.classList.add('striking');
+
+        const rect = canvas.getBoundingClientRect();
+        const w = canvas.width = rect.width * (window.devicePixelRatio || 1);
+        const h = canvas.height = rect.height * (window.devicePixelRatio || 1);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const centerX = w / 2;
+        const centerY = h / 2;
+        const radius = Math.min(w, h) * 0.42;
+
+        function drawBolt(x1, y1, x2, y2, color, shadowCol, width) {
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = width;
+            ctx.shadowBlur = 18;
+            ctx.shadowColor = shadowCol;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            let points = [{x: x1, y: y1}, {x: x2, y: y2}];
+            for (let iter = 0; iter < 4; iter++) {
+                let nextPoints = [];
+                for (let i = 0; i < points.length - 1; i++) {
+                    let p1 = points[i];
+                    let p2 = points[i + 1];
+                    let midX = (p1.x + p2.x) / 2;
+                    let midY = (p1.y + p2.y) / 2;
+
+                    let dx = p2.x - p1.x;
+                    let dy = p2.y - p1.y;
+                    let len = Math.hypot(dx, dy);
+                    let normalX = -dy / len;
+                    let normalY = dx / len;
+
+                    let displacement = (Math.random() - 0.5) * len * 0.45;
+                    nextPoints.push(p1, {
+                        x: midX + normalX * displacement,
+                        y: midY + normalY * displacement
+                    });
+                }
+                nextPoints.push(points[points.length - 1]);
+                points = nextPoints;
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        let frame = 0;
+        const totalFrames = 8;
+        function animateLightning() {
+            ctx.clearRect(0, 0, w, h);
+            if (frame < totalFrames) {
+                const boltCount = Math.floor(Math.random() * 3) + 2;
+                for (let b = 0; b < boltCount; b++) {
+                    const angle1 = Math.random() * Math.PI * 2;
+                    const angle2 = angle1 + Math.PI * (0.65 + Math.random() * 0.7);
+                    const x1 = centerX + Math.cos(angle1) * radius;
+                    const y1 = centerY + Math.sin(angle1) * radius;
+                    const x2 = centerX + Math.cos(angle2) * radius;
+                    const y2 = centerY + Math.sin(angle2) * radius;
+
+                    const isCyan = Math.random() > 0.4;
+                    const shadow = isCyan ? '#00F0FF' : '#FF2A36';
+                    drawBolt(x1, y1, x2, y2, '#ffffff', shadow, 2.5);
+                    if (Math.random() > 0.5) {
+                        const bx = (x1 + x2) / 2 + (Math.random() - 0.5) * 45;
+                        const by = (y1 + y2) / 2 + (Math.random() - 0.5) * 45;
+                        drawBolt((x1 + x2) / 2, (y1 + y2) / 2, bx, by, '#00F0FF', '#FF2A36', 1.5);
+                    }
+                }
+                frame++;
+                setTimeout(animateLightning, 50);
+            } else {
+                ctx.clearRect(0, 0, w, h);
+                overlay.classList.remove('striking');
+            }
+        }
+        animateLightning();
+
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                const actx = new AudioContext();
+                const now = actx.currentTime;
+                const bufferSize = Math.floor(actx.sampleRate * 0.32);
+                const buffer = actx.createBuffer(1, bufferSize, actx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.22));
+                }
+                const noise = actx.createBufferSource();
+                noise.buffer = buffer;
+                const filter = actx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(400, now);
+                filter.frequency.exponentialRampToValueAtTime(100, now + 0.32);
+
+                const gain = actx.createGain();
+                gain.gain.setValueAtTime(0.16, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.32);
+
+                noise.connect(filter);
+                filter.connect(gain);
+                gain.connect(actx.destination);
+                noise.start(now);
+                noise.stop(now + 0.33);
+            }
+        } catch (e) {}
+    }
+
     if (tiltCard) {
         let isFlipped = false;
 
@@ -2937,6 +3084,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (statusText) {
                 statusText.textContent = 'ACTIVE · READY TO BUILD';
             }
+            triggerThunder();
         };
 
         tiltCard.addEventListener('click', toggleFlip);
