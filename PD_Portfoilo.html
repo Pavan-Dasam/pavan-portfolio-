@@ -561,8 +561,18 @@
             }
         }
 
+                .portrait-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+        }
+
         .portrait-frame {
-            width: min(100%, 360px);
+            width: 100%;
             aspect-ratio: 1 / 1;
             position: relative;
             border-radius: 50%;
@@ -570,7 +580,7 @@
             transform-style: preserve-3d;
             perspective: 1200px;
             cursor: pointer;
-            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
             outline: none;
         }
 
@@ -637,63 +647,64 @@
             transform: scale(1.06);
         }
 
-        /* Interactive Flip Hint */
-        .portrait-flip-hint {
-            position: absolute;
-            top: 4%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 6;
-            background: rgba(13, 18, 34, 0.88);
-            border: 1px solid rgba(229, 9, 20, 0.45);
-            color: var(--text-secondary);
-            padding: 4px 14px;
-            border-radius: 99px;
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            letter-spacing: 0.8px;
+        .portrait-controls {
             display: flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(229, 9, 20, 0.25);
-            backdrop-filter: blur(8px);
-            pointer-events: none;
-            transition: all 0.3s ease;
-            opacity: 0.9;
-        }
-
-        .portrait-frame:hover .portrait-flip-hint {
-            opacity: 1;
-            color: #fff;
-            border-color: var(--red-light);
-            box-shadow: 0 6px 25px rgba(229, 9, 20, 0.5);
-            transform: translateX(-50%) translateY(-2px);
-        }
-
-        .portrait-flip-hint i {
-            color: var(--red-light);
-            font-size: 0.65rem;
-            transition: transform 0.6s ease;
-        }
-
-        .portrait-frame.is-flipped .portrait-flip-hint i {
-            transform: rotate(180deg);
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+            z-index: 10;
         }
 
         .status-badge {
-            position: absolute;
-            bottom: 5%;
-            right: 5%;
-            z-index: 5;
-            background: rgba(13, 18, 34, 0.92);
+            background: rgba(13, 18, 34, 0.95);
             border: 1px solid var(--border-red);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 99px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(229, 9, 20, 0.45);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 18px rgba(229, 9, 20, 0.35);
             backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .portrait-flip-btn {
+            background: rgba(13, 18, 34, 0.95);
+            border: 1px solid rgba(229, 9, 20, 0.45);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(229, 9, 20, 0.25);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .portrait-flip-btn:hover {
+            color: #fff;
+            border-color: var(--red-light);
+            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .portrait-flip-btn i {
+            color: var(--red-light);
+            font-size: 0.72rem;
+            transition: transform 0.6s cubic-bezier(0.34, 1.35, 0.64, 1);
+        }
+
+        .portrait-frame.is-flipped ~ .portrait-controls .portrait-flip-btn i,
+        .portrait-wrapper.is-flipped .portrait-flip-btn i {
+            transform: rotate(180deg);
         }
 
         .status-dot {
@@ -2121,21 +2132,25 @@
 
                     <!-- 3D Tilt & Flip Portrait Frame -->
                     <div class="hero-image-wrapper reveal-on-scroll">
-                        <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Click to rotate avatar style" aria-label="Click to flip avatar">
-                            <div class="portrait-flip-hint">
-                                <i class="fas fa-sync-alt"></i> <span>CLICK TO ROTATE</span>
-                            </div>
-                            <div class="portrait-inner" id="portraitFlipper">
-                                <div class="portrait-face portrait-front">
-                                    <img src="pavan-ai-portrait.png" alt="Pavan Dasam AI Engineer">
+                        <div class="portrait-wrapper" id="portraitWrapper">
+                            <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Click to rotate portrait style" aria-label="Click to flip avatar">
+                                <div class="portrait-inner" id="portraitFlipper">
+                                    <div class="portrait-face portrait-front">
+                                        <img src="pavan-ai-portrait.png" alt="Pavan Dasam AI Engineer">
+                                    </div>
+                                    <div class="portrait-face portrait-back">
+                                        <img src="pavan-flip-portrait.jpg" alt="Pavan Dasam Signature Style">
+                                    </div>
                                 </div>
-                                <div class="portrait-face portrait-back">
-                                    <img src="pavan-flip-portrait.jpg" alt="Pavan Dasam Signature Style">
-                                </div>
                             </div>
-                            <div class="status-badge">
-                                <div class="status-dot"></div>
-                                <span id="portraitStatusText">ACTIVE · READY TO BUILD</span>
+                            <div class="portrait-controls">
+                                <div class="status-badge" id="statusBadge">
+                                    <div class="status-dot"></div>
+                                    <span id="portraitStatusText">ACTIVE · READY TO BUILD</span>
+                                </div>
+                                <button class="portrait-flip-btn" id="portraitFlipBtn" type="button" title="Click to rotate avatar style">
+                                    <i class="fas fa-sync-alt"></i> <span>ROTATE</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -2851,12 +2866,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === 3D Interactive Tilt & Flip on Hero Portrait ===
     const tiltCard = document.getElementById('tiltCard');
+    const portraitWrapper = document.getElementById('portraitWrapper');
+    const portraitFlipBtn = document.getElementById('portraitFlipBtn');
     if (tiltCard) {
         let isFlipped = false;
 
         const toggleFlip = () => {
             isFlipped = !isFlipped;
             tiltCard.classList.toggle('is-flipped', isFlipped);
+            if (portraitWrapper) portraitWrapper.classList.toggle('is-flipped', isFlipped);
             const statusText = document.getElementById('portraitStatusText');
             if (statusText) {
                 statusText.textContent = isFlipped ? 'SIGNATURE STYLE · RETRO VIBE' : 'ACTIVE · READY TO BUILD';
@@ -2864,6 +2882,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         tiltCard.addEventListener('click', toggleFlip);
+        if (portraitFlipBtn) {
+            portraitFlipBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFlip();
+            });
+        }
         tiltCard.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
