@@ -724,10 +724,20 @@
 
         .portrait-face.portrait-front {
             transform: rotateY(0deg) translateZ(1px);
+            z-index: 2;
         }
 
         .portrait-face.portrait-back {
             transform: rotateY(180deg) translateZ(1px);
+            z-index: 1;
+        }
+
+        .portrait-frame.is-flipped .portrait-face.portrait-front {
+            z-index: 1;
+        }
+
+        .portrait-frame.is-flipped .portrait-face.portrait-back {
+            z-index: 2;
         }
 
         .portrait-face img {
