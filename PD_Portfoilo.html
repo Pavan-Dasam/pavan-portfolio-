@@ -631,7 +631,7 @@
             position: absolute;
             inset: 25px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(0, 240, 255, 0.55) 45%, rgba(229, 9, 20, 0.35) 75%, transparent 100%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(30, 64, 175, 0.70) 35%, rgba(0, 31, 84, 0.85) 70%, transparent 100%);
             opacity: 0;
             pointer-events: none;
         }
@@ -657,7 +657,7 @@
             border: 3px solid #fff;
             opacity: 0;
             pointer-events: none;
-            box-shadow: 0 0 25px #00F0FF, 0 0 50px #ff2a36, inset 0 0 20px #00F0FF;
+            box-shadow: 0 0 25px #1D4ED8, 0 0 50px #1E3A8A, 0 0 75px #001F54, inset 0 0 20px #1E40AF;
         }
 
         .thunder-overlay.striking .thunder-shockwave {
@@ -672,12 +672,12 @@
             }
             50% {
                 opacity: 0.85;
-                border-color: #00F0FF;
+                border-color: #2563EB;
             }
             100% {
                 transform: scale(1.45);
                 opacity: 0;
-                border-color: #ff2a36;
+                border-color: #001F54;
             }
         }
 
@@ -3034,13 +3034,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const x2 = centerX + Math.cos(angle2) * radius;
                     const y2 = centerY + Math.sin(angle2) * radius;
 
-                    const isCyan = Math.random() > 0.4;
-                    const shadow = isCyan ? '#00F0FF' : '#FF2A36';
-                    drawBolt(x1, y1, x2, y2, '#ffffff', shadow, 2.5);
+                    const navyShades = ['#1D4ED8', '#1E3A8A', '#001F54', '#2563EB', '#1E40AF'];
+                    const shadow = navyShades[Math.floor(Math.random() * navyShades.length)];
+                    drawBolt(x1, y1, x2, y2, '#ffffff', shadow, 2.6);
                     if (Math.random() > 0.5) {
                         const bx = (x1 + x2) / 2 + (Math.random() - 0.5) * 45;
                         const by = (y1 + y2) / 2 + (Math.random() - 0.5) * 45;
-                        drawBolt((x1 + x2) / 2, (y1 + y2) / 2, bx, by, '#00F0FF', '#FF2A36', 1.5);
+                        const branchShadow = navyShades[Math.floor(Math.random() * navyShades.length)];
+                        drawBolt((x1 + x2) / 2, (y1 + y2) / 2, bx, by, '#93C5FD', branchShadow, 1.5);
                     }
                 }
                 frame++;
