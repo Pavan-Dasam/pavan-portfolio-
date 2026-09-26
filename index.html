@@ -2462,7 +2462,7 @@
                     <!-- 3D Tilt & Flip Portrait Frame -->
                     <div class="hero-image-wrapper reveal-on-scroll">
                         <div class="portrait-wrapper" id="portraitWrapper">
-                            <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Click to rotate portrait style" aria-label="Click to flip avatar">
+                            <div class="portrait-frame" id="tiltCard" role="button" tabindex="0" title="Pavan Dasam AI Engineer (Auto-rotates every 3s)" aria-label="Pavan Dasam 3D Avatar">
                                 <!-- Thunder & Lightning Visual Flash Effect -->
                                 <div class="thunder-overlay" id="thunderOverlay" aria-hidden="true">
                                     <div class="thunder-flash"></div>
@@ -2483,9 +2483,6 @@
                                     <div class="status-dot"></div>
                                     <span id="portraitStatusText">ARCHITECTING PRODUCTION GenAI</span>
                                 </div>
-                                <button class="portrait-flip-btn" id="portraitFlipBtn" type="button" title="Click to rotate avatar style">
-                                    <i class="fas fa-sync-alt"></i> <span>ROTATE</span>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -3405,18 +3402,30 @@ document.addEventListener('DOMContentLoaded', () => {
             triggerThunder();
         };
 
-        tiltCard.addEventListener('click', toggleFlip);
-        if (portraitFlipBtn) {
-            portraitFlipBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleFlip();
-            });
-        }
+        // Automatic image rotation with 3-second gap
+        let autoFlipInterval = setInterval(toggleFlip, 3000);
+
+        const restartAutoFlip = () => {
+            clearInterval(autoFlipInterval);
+            autoFlipInterval = setInterval(toggleFlip, 3000);
+        };
+
+        tiltCard.addEventListener('click', () => {
+            toggleFlip();
+            restartAutoFlip();
+        });
+
         tiltCard.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 toggleFlip();
+                restartAutoFlip();
             }
+        });
+
+        // Pause auto-rotation when user hovers to inspect the portrait
+        tiltCard.addEventListener('mouseenter', () => {
+            clearInterval(autoFlipInterval);
         });
 
         tiltCard.addEventListener('mousemove', (e) => {
@@ -3434,6 +3443,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         tiltCard.addEventListener('mouseleave', () => {
             tiltCard.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+            restartAutoFlip();
+        });
+
+        // Pause timer when browser tab is hidden to save resources
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(autoFlipInterval);
+            } else {
+                restartAutoFlip();
+            }
         });
     }
 
