@@ -1858,6 +1858,67 @@
             display: none !important;
         }
 
+        .timeline.is-empty::before {
+            display: none !important;
+        }
+
+        .exp-empty-prompt {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            margin: 1.5rem auto 2.5rem;
+            max-width: 680px;
+            background: rgba(13, 20, 38, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px dashed rgba(0, 240, 255, 0.3);
+            border-radius: 14px;
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .exp-empty-prompt.hidden {
+            display: none !important;
+        }
+
+        .exp-prompt-pulse {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 0.8rem;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.12);
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            animation: bounceUp 1.8s infinite ease-in-out;
+        }
+
+        @keyframes bounceUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .exp-prompt-title {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .exp-prompt-sub {
+            color: #94a3b8;
+            font-size: 0.90rem;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .exp-prompt-sub strong {
+            color: #e2e8f0;
+        }
+
     
         /* === FLOATING AI TERMINAL WIDGET (PORTFOLIO THEME) === */
         .terminal-floating-btn {
@@ -2631,7 +2692,7 @@
 
                 <!-- Experience Company Filter Bar -->
                 <div class="experience-filter-wrapper reveal-on-scroll">
-                    <button class="exp-filter-btn active" data-filter="accenture">
+                    <button class="exp-filter-btn" data-filter="accenture">
                         <i class="fas fa-briefcase"></i> Accenture · Voya Financial
                     </button>
                     <button class="exp-filter-btn" data-filter="tao">
@@ -2639,7 +2700,13 @@
                     </button>
                 </div>
 
-                <div class="timeline">
+                <div class="timeline is-empty" id="experienceTimeline">
+                    <!-- Initial Prompt when no company is selected -->
+                    <div class="exp-empty-prompt" id="expEmptyPrompt">
+                        <div class="exp-prompt-pulse"><i class="fas fa-arrow-up"></i></div>
+                        <h4 class="exp-prompt-title">Click a Company Name Header Above</h4>
+                        <p class="exp-prompt-sub">Select <strong>Accenture · Voya Financial</strong> or <strong>TAO Digitals · Anthem</strong> to reveal production deliverables, system architectures, and measurable metrics.</p>
+                    </div>
                     <!-- Role 1: Accenture -->
                     <div class="timeline-item reveal-on-scroll" data-company="accenture">
                         <div class="timeline-dot"></div>
@@ -3355,36 +3422,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         animateLightning();
-
-        try {
-            const AudioContext = window.AudioContext || window.webkitAudioContext;
-            if (AudioContext) {
-                const actx = new AudioContext();
-                const now = actx.currentTime;
-                const bufferSize = Math.floor(actx.sampleRate * 0.32);
-                const buffer = actx.createBuffer(1, bufferSize, actx.sampleRate);
-                const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.22));
-                }
-                const noise = actx.createBufferSource();
-                noise.buffer = buffer;
-                const filter = actx.createBiquadFilter();
-                filter.type = 'bandpass';
-                filter.frequency.setValueAtTime(400, now);
-                filter.frequency.exponentialRampToValueAtTime(100, now + 0.32);
-
-                const gain = actx.createGain();
-                gain.gain.setValueAtTime(0.16, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.32);
-
-                noise.connect(filter);
-                filter.connect(gain);
-                gain.connect(actx.destination);
-                noise.start(now);
-                noise.stop(now + 0.33);
-            }
-        } catch (e) {}
     }
 
     if (tiltCard) {
@@ -3402,12 +3439,12 @@ document.addEventListener('DOMContentLoaded', () => {
             triggerThunder();
         };
 
-        // Automatic image rotation with 3-second gap
-        let autoFlipInterval = setInterval(toggleFlip, 3000);
+        // Automatic image rotation with 5-second gap (visual only, silent)
+        let autoFlipInterval = setInterval(toggleFlip, 5000);
 
         const restartAutoFlip = () => {
             clearInterval(autoFlipInterval);
-            autoFlipInterval = setInterval(toggleFlip, 3000);
+            autoFlipInterval = setInterval(toggleFlip, 5000);
         };
 
         tiltCard.addEventListener('click', () => {
@@ -3537,41 +3574,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Professional Experience Company Filter (Hidden Initially) ===
+    // === Professional Experience Company Filter (Hidden Until Click) ===
     const expFilterBtns = document.querySelectorAll('.exp-filter-btn');
     const timelineItems = document.querySelectorAll('.timeline-item');
+    const expTimeline = document.getElementById('experienceTimeline');
+    const expEmptyPrompt = document.getElementById('expEmptyPrompt');
 
+    // Initially hide all timeline items until a company header is clicked
     timelineItems.forEach(item => {
-        if (item.getAttribute('data-company') === 'accenture') {
-            item.classList.remove('filtered-out');
-            item.style.opacity = '1';
-        } else {
-            item.classList.add('filtered-out');
-        }
+        item.classList.add('filtered-out');
     });
 
     if (expFilterBtns.length > 0 && timelineItems.length > 0) {
         expFilterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                expFilterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
                 const filter = btn.getAttribute('data-filter');
+                const wasActive = btn.classList.contains('active');
 
-                timelineItems.forEach(item => {
-                    const company = item.getAttribute('data-company') || '';
-                    if (company === filter) {
-                        item.classList.remove('filtered-out');
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(15px)';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        item.classList.add('filtered-out');
-                    }
-                });
+                if (wasActive) {
+                    // Toggle off if user clicks the active company button again
+                    btn.classList.remove('active');
+                    timelineItems.forEach(item => item.classList.add('filtered-out'));
+                    if (expTimeline) expTimeline.classList.add('is-empty');
+                    if (expEmptyPrompt) expEmptyPrompt.classList.remove('hidden');
+                } else {
+                    // Activate clicked company and reveal its deliverables
+                    expFilterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    if (expTimeline) expTimeline.classList.remove('is-empty');
+                    if (expEmptyPrompt) expEmptyPrompt.classList.add('hidden');
+
+                    timelineItems.forEach(item => {
+                        const company = item.getAttribute('data-company') || '';
+                        if (company === filter) {
+                            item.classList.remove('filtered-out');
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(15px)';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            item.classList.add('filtered-out');
+                        }
+                    });
+                }
             });
         });
     }
