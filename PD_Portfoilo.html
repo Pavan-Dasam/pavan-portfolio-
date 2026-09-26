@@ -979,6 +979,172 @@
             gap: 1.2rem;
         }
 
+        /* AI Product Interaction Architecture Card */
+        .interaction-arch-card {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, rgba(8, 14, 28, 0.75), rgba(13, 22, 44, 0.80));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            border-radius: 16px;
+            padding: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+            transition: all 0.4s ease;
+        }
+
+        .interaction-arch-card:hover {
+            border-color: rgba(0, 240, 255, 0.45);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+        }
+
+        .interaction-arch-header {
+            margin-bottom: 1.8rem;
+        }
+
+        .interaction-arch-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.10);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            border-radius: 99px;
+            padding: 5px 14px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .interaction-arch-title {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .interaction-arch-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 850px;
+        }
+
+        .interaction-modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .interaction-modes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .interaction-mode-item {
+            background: rgba(13, 20, 38, 0.60);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .interaction-mode-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .interaction-mode-item.highlighted-mode {
+            background: rgba(229, 9, 20, 0.06);
+            border-color: rgba(229, 9, 20, 0.30);
+            box-shadow: 0 8px 24px rgba(229, 9, 20, 0.08), inset 0 1px 0 0 rgba(255, 100, 110, 0.2);
+        }
+
+        .interaction-mode-item.highlighted-mode:hover {
+            border-color: var(--red-light);
+            box-shadow: 0 14px 34px rgba(229, 9, 20, 0.20), inset 0 1px 0 0 rgba(255, 150, 160, 0.3);
+        }
+
+        .mode-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            border: 1px solid;
+            margin-bottom: 0.25rem;
+        }
+
+        .mode-badge-tag {
+            display: inline-block;
+            align-self: flex-start;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .interaction-mode-item h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .mode-target {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .mode-summary {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .mode-metrics {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 0.4rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mode-metrics span {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
 
 
 
@@ -2315,7 +2481,7 @@
                             <div class="portrait-controls">
                                 <div class="status-badge" id="statusBadge">
                                     <div class="status-dot"></div>
-                                    <span id="portraitStatusText">ACTIVE · READY TO BUILD</span>
+                                    <span id="portraitStatusText">ARCHITECTING PRODUCTION GenAI</span>
                                 </div>
                                 <button class="portrait-flip-btn" id="portraitFlipBtn" type="button" title="Click to rotate avatar style">
                                     <i class="fas fa-sync-alt"></i> <span>ROTATE</span>
@@ -2384,6 +2550,72 @@
                                 <h4>Evaluation & Responsible AI</h4>
                                 <p>RAGAS, LLM-as-a-Judge, prompt injection protection, PII filtering, output validation,
                                     and human escalation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Product Interaction Architecture Showcase Card -->
+                <div class="interaction-arch-card reveal-on-scroll">
+                    <div class="interaction-arch-header">
+                        <div class="interaction-arch-badge">
+                            <i class="fas fa-microchip"></i> AI INTERACTION DESIGN ARCHITECTURE
+                        </div>
+                        <h3 class="interaction-arch-title">Dual-Mode AI Interaction Framework</h3>
+                        <p class="interaction-arch-desc">
+                            How this portfolio bridges executive scannability with live, agentic exploration — combining a high-velocity visual GUI for hiring managers with a stateful Natural Language Copilot &amp; Shell for technical leads.
+                        </p>
+                    </div>
+
+                    <div class="interaction-modes-grid">
+                        <!-- Mode 1: GUI -->
+                        <div class="interaction-mode-item">
+                            <div class="mode-icon-wrap" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.3);">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="mode-badge-tag" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">PRIMARY MODE · GUI</div>
+                            <h4>Visual Executive GUI</h4>
+                            <p class="mode-target"><strong>Audience:</strong> Recruiters &amp; Engineering Directors</p>
+                            <p class="mode-summary">
+                                Optimized for &lt;30-second reviews: instant credential verification, 3D interactive avatar, one-click Recruiter Brief modal, and measurable business ROI.
+                            </p>
+                            <div class="mode-metrics">
+                                <span>⚡ &lt;30s Scannable</span>
+                                <span>📋 1-Click Briefs</span>
+                            </div>
+                        </div>
+
+                        <!-- Mode 2: Natural Language & Shell Copilot -->
+                        <div class="interaction-mode-item highlighted-mode">
+                            <div class="mode-icon-wrap" style="color: var(--red-light); background: rgba(229, 9, 20, 0.12); border-color: rgba(229, 9, 20, 0.35);">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="mode-badge-tag" style="color: #ff6b72; border-color: rgba(229, 9, 20, 0.4);">LIVE COPILOT · NLP + CLI</div>
+                            <h4>Autonomous Copilot &amp; Shell</h4>
+                            <p class="mode-target"><strong>Audience:</strong> Tech Leads, Staff Engineers &amp; AI Architects</p>
+                            <p class="mode-summary">
+                                Conversational NLP query engine and terminal simulator. Ask free-form questions about LangGraph agentic swarms, RAG pipelines, or trigger instant prompt pills.
+                            </p>
+                            <div class="mode-metrics">
+                                <span>🤖 Natural Language UI</span>
+                                <span>⚡ CLI Terminal</span>
+                            </div>
+                        </div>
+
+                        <!-- Mode 3: Visual Design Engine -->
+                        <div class="interaction-mode-item">
+                            <div class="mode-icon-wrap" style="color: #a855f7; background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.3);">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="mode-badge-tag" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">VISUAL ENGINE · GLASSMORPHISM</div>
+                            <h4>Dark Glassmorphic Layer</h4>
+                            <p class="mode-target"><strong>Audience:</strong> Modern Web &amp; Product Designers</p>
+                            <p class="mode-summary">
+                                Multi-layered frosted glass (<code>backdrop-filter: blur(18px)</code>), specular light refraction, and interactive 3D physics delivering an elite AI-native interface.
+                            </p>
+                            <div class="mode-metrics">
+                                <span>✨ Specular Highlights</span>
+                                <span>🌌 3D Micro-Physics</span>
                             </div>
                         </div>
                     </div>
@@ -3168,7 +3400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('bg-mode-img2', isFlipped);
             const statusText = document.getElementById('portraitStatusText');
             if (statusText) {
-                statusText.textContent = 'ACTIVE · READY TO BUILD';
+                statusText.textContent = isFlipped ? 'BUILDING AUTONOMOUS AGENTS' : 'ARCHITECTING PRODUCTION GenAI';
             }
             triggerThunder();
         };
@@ -3455,7 +3687,7 @@ document.addEventListener('DOMContentLoaded', () => {
             • <strong>Profile:</strong> AI Engineer with 3+ Years delivering production GenAI, Agentic AI, and RAG systems.<br>
             • <strong>Proven Wins:</strong> 7-Agent LangGraph Swarm (Voya Financial) &amp; MemberAssist AI (Anthem).<br>
             • <strong>Primary Stack:</strong> Python, LangGraph, Azure OpenAI, Azure AI Search, FastAPI, Java 17, Docker.<br>
-            • <strong>Status:</strong> <span style="color:#34d399; font-weight:bold;">ACTIVE · READY TO BUILD</span><br>
+            • <strong>Tagline:</strong> <span style="color:#34d399; font-weight:bold;">ARCHITECTING PRODUCTION GenAI</span><br>
             • <strong>Direct Contact:</strong> WhatsApp (+91 9640559197) or <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light); text-decoration:underline;">pavanwork2113@gmail.com</a>`;
         } else if (lower === 'contact' || lower.includes('email') || lower.includes('phone') || lower.includes('whatsapp') || lower.includes('reach')) {
             html = `💬 WhatsApp: <a href="https://wa.me/919640559197" target="_blank" style="color:#34d399; text-decoration:underline;">+91 9640559197</a><br>
