@@ -954,11 +954,12 @@
             display: flex;
             align-items: flex-start;
             gap: 1.2rem;
-            background: rgba(13, 18, 34, 0.82);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
+            background: rgba(13, 18, 34, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
             padding: 1.4rem;
             transition: var(--transition-smooth);
             position: relative;
@@ -966,10 +967,10 @@
         }
 
         .principle-card:hover {
-            border-color: var(--border-red);
-            background: rgba(19, 26, 48, 0.92);
+            border-color: rgba(255, 77, 88, 0.45);
+            background: rgba(19, 26, 48, 0.85);
             transform: translateX(6px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 20px rgba(229, 9, 20, 0.20), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
         }
 
         .about-cards {
@@ -1058,8 +1059,11 @@
         }
 
         .timeline-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            background: rgba(13, 18, 34, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
             border-radius: 14px;
             padding: 2rem;
             transition: var(--transition-smooth);
@@ -1067,10 +1071,10 @@
         }
 
         .timeline-card:hover {
-            border-color: var(--border-red);
-            background: var(--bg-card-hover);
+            border-color: rgba(255, 77, 88, 0.45);
+            background: rgba(19, 26, 48, 0.85);
             transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(229, 9, 20, 0.22), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
         }
 
         .timeline-meta {
@@ -1114,11 +1118,20 @@
         }
 
         .project-block {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid var(--border-subtle);
+            background: rgba(6, 10, 22, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             padding: 1.4rem;
             margin-top: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .project-block:hover {
+            border-color: rgba(255, 77, 88, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
         }
 
         .project-block-title {
@@ -1215,18 +1228,21 @@
         }
 
         .skill-category-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            background: rgba(13, 18, 34, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
             border-radius: 14px;
             padding: 1.8rem;
             transition: var(--transition-smooth);
         }
 
         .skill-category-card:hover {
-            border-color: var(--border-red);
-            background: var(--bg-card-hover);
+            border-color: rgba(255, 77, 88, 0.45);
+            background: rgba(19, 26, 48, 0.85);
             transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(229, 9, 20, 0.20), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
         }
 
         .skill-category-header {
@@ -1726,14 +1742,15 @@
             position: fixed;
             bottom: 85px;
             right: 25px;
-            width: min(480px, calc(100vw - 30px));
-            height: 380px;
-            background: rgba(8, 13, 26, 0.97);
-            border: 1px solid rgba(229, 9, 20, 0.38);
-            border-radius: 12px;
+            width: min(520px, calc(100vw - 30px));
+            height: 440px;
+            background: rgba(8, 13, 26, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
             z-index: 9999;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 9, 20, 0.2);
-            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(229, 9, 20, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -1751,12 +1768,14 @@
         }
 
         .terminal-topbar {
-            background: rgba(13, 18, 34, 0.95);
+            background: rgba(13, 18, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .terminal-controls {
@@ -1795,8 +1814,10 @@
             display: flex;
             align-items: center;
             padding: 9px 14px;
-            background: rgba(10, 14, 28, 0.95);
-            border-top: 1px solid var(--border-subtle);
+            background: rgba(10, 14, 28, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             gap: 8px;
         }
 
@@ -1818,13 +1839,13 @@
         }
 
         .term-badge {
-            background: rgba(229, 9, 20, 0.14);
-            border: 1px solid rgba(229, 9, 20, 0.35);
-            color: #ff4d58;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
             padding: 2px 8px;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.72rem;
+            font-size: 0.70rem;
             font-family: var(--font-mono);
             transition: all 0.2s ease;
         }
@@ -1833,6 +1854,30 @@
             background: rgba(229, 9, 20, 0.25);
             color: #fff;
             border-color: var(--red-light);
+        }
+
+        .term-nl-pill {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(229, 9, 20, 0.14));
+            border: 1px solid rgba(96, 165, 250, 0.35);
+            color: #93c5fd;
+            padding: 3px 10px;
+            border-radius: 99px;
+            cursor: pointer;
+            font-size: 0.71rem;
+            font-family: var(--font-mono);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .term-nl-pill:hover {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(229, 9, 20, 0.28));
+            border-color: #60a5fa;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
         }
 
         /* === ENHANCEMENT 1: 60-SECOND RECRUITER BRIEF BUTTON & MODAL === */
@@ -3329,39 +3374,119 @@ document.addEventListener('DOMContentLoaded', () => {
         const resp = document.createElement('div');
         resp.style.marginTop = '4px';
 
-        switch (cleanCmd) {
-            case 'help':
-                resp.innerHTML = '<span style="color:var(--red-light);">Available commands:</span><br>• <span style="color:#fff;">skills</span> - Core stack &amp; specializations<br>• <span style="color:#fff;">experience</span> - Accenture &amp; TAO Digitals roles<br>• <span style="color:#fff;">projects</span> - Featured enterprise AI architectures<br>• <span style="color:#fff;">certs</span> - Official LangChain/Databricks IDs<br>• <span style="color:#fff;">recruiter</span> - 60-second executive candidate pitch<br>• <span style="color:#fff;">why-langgraph</span> - Architecture design rationale<br>• <span style="color:#fff;">contact</span> - Direct WhatsApp &amp; Email<br>• <span style="color:#fff;">clear</span> - Reset screen (preserves quick buttons)';
-                break;
-            case 'skills':
-                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🧠 Core Specializations:</span><br>• <strong>Agentic AI:</strong> LangGraph, Multi-Agent Swarms, Cyclic Graphs, HITL<br>• <strong>RAG &amp; Retrieval:</strong> Azure AI Search, FAISS, ChromaDB, OCR Chunking<br>• <strong>Backend:</strong> Python (FastAPI), Java 17 (Spring Boot), PostgreSQL, Redis';
-                break;
-            case 'experience':
-            case 'work':
-                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">💼 Enterprise Roles:</span><br>1. <strong>Accenture (Client: Voya Financial)</strong> · Agentic AI Engineer (2024–Present)<br>• Built 7-Agent LangGraph claims system with 100% citation grounding.<br>2. <strong>TAO Digitals (Client: Anthem)</strong> · Software Engineer (2023–2024)<br>• Built MemberAssist AI RAG copilot (&lt;800ms P95) &amp; Java 17 backend services.';
-                break;
-            case 'projects':
-                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🚀 Featured Deliverables:</span><br>1. <strong>Autonomous Claims Agent:</strong> 7-Agent LangGraph system with 94%+ confidence.<br>2. <strong>Claims Intelligence Copilot:</strong> OCR &amp; RAG document synthesis (&lt;3.5s).<br>3. <strong>MemberAssist AI:</strong> Healthcare member service copilot (&lt;800ms P95).';
-                break;
-            case 'certs':
-                resp.innerHTML = '<span style="color:#fbbf24; font-weight:bold;">🎖️ Verified Credentials:</span><br>• LangChain Academy (LangChain): <strong style="color:#fff;">ctddbhm9sf</strong><br>• LangChain Academy (LangGraph): <strong style="color:#fff;">9ucdiusaz6</strong><br>• Databricks Certified Generative AI Engineer';
-                break;
-            case 'recruiter':
-                resp.innerHTML = '<span style="color:#fbbf24; font-weight:bold;">⚡ 60-Second Pitch:</span><br>• <strong>Role:</strong> Agentic AI &amp; Production RAG Engineer (3+ Yrs).<br>• <strong>Deliverables:</strong> 7-Agent LangGraph Swarm (Voya) &amp; MemberAssist AI (Anthem).<br>• <strong>Stack:</strong> Python (FastAPI), LangGraph, Azure OpenAI, Azure AI Search, Java.<br>• <strong>Contact:</strong> WhatsApp (+91 9640559197) or <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light);">pavanwork2113@gmail.com</a>';
-                break;
-            case 'why-langgraph':
-                resp.innerHTML = '<span style="color:var(--red-light); font-weight:bold;">🧠 Why LangGraph over Simple Chains:</span><br>1. <strong>Cyclic State Graphs:</strong> Allows agents to re-route, loop, and request missing data.<br>2. <strong>Human-in-the-Loop:</strong> Pauses graph execution at checkpoints for human sign-off.<br>3. <strong>State Persistence:</strong> Checkpointing directly into PostgreSQL for fault recovery.';
-                break;
-            case 'roi':
-                resp.innerHTML = '<span style="color:#34d399; font-weight:bold;">📈 Enterprise ROI:</span> &gt;70% reduction in adjudication turnaround, &lt;800ms P95 latency, 100% citation grounding.';
-                break;
-            case 'hire':
-            case 'contact':
-                resp.innerHTML = '💬 WhatsApp: <a href="https://wa.me/919640559197" target="_blank" style="color:var(--red-light);">+91 9640559197</a><br>📧 Email: <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light);">pavanwork2113@gmail.com</a><br>🔗 LinkedIn: <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank" style="color:var(--red-light);">in/pavan-kumar-dasam-2574893b9</a>';
-                break;
-            default:
-                resp.innerHTML = '<span style="color:#f87171;">Command not recognized: "' + cleanCmd + '". Type "help" for options.</span>';
+        const lower = cleanCmd;
+        let html = '';
+
+        // Natural Language & Command Intent Matching
+        if (lower.includes('hire') || lower.includes('why should') || lower.includes('why pavan') || lower.includes('candidate') || lower.includes('pitch') || lower.includes('value')) {
+            html = `<div style="background: rgba(37,99,235,0.12); border-left: 3px solid #3b82f6; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#60a5fa; font-weight:700;"><i class="fas fa-lightbulb"></i> Pavan.ai Copilot · Candidate Evaluation</span>
+            </div>
+            <span style="color:#fff; font-weight:700;">Why Pavan Dasam is a High-Impact Hire:</span><br>
+            • <strong>Production Agentic Provenance:</strong> Architected and deployed an end-to-end 7-agent cyclic LangGraph workflow into enterprise claims operations at Voya Financial.<br>
+            • <strong>Production-Grade RAG:</strong> Engineered hybrid Azure AI Search retrieval with &lt;800ms P95 latency and strict citation grounding for Anthem healthcare.<br>
+            • <strong>Grounded &amp; Auditable:</strong> Zero-tolerance for hallucinations — implemented RAGAS automated evaluations, prompt injection defenses, and PII guardrails.<br>
+            • <strong>Full-Stack GenAI Delivery:</strong> Seamlessly bridges Python (FastAPI), LangGraph, Azure OpenAI, Docker, and enterprise Java 17 architectures.<br>
+            👉 <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light); text-decoration:underline; font-weight:bold;">Schedule Interview / Send Email</a> · <a href="https://wa.me/919640559197" target="_blank" style="color:#34d399; text-decoration:underline;">Direct WhatsApp</a>`;
+        } else if (lower.includes('voya') || lower.includes('claims') || lower.includes('autonomous') || lower.includes('financial insurance')) {
+            html = `<div style="background: rgba(229,9,20,0.12); border-left: 3px solid #ef4444; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#f87171; font-weight:700;"><i class="fas fa-robot"></i> Accenture · Voya Financial Claims Swarm</span>
+            </div>
+            • <strong>Problem:</strong> Bringing supplemental health, life, and short-term disability claims processing in-house with high throughput.<br>
+            • <strong>Solution:</strong> Designed a 7-agent LangGraph system with persistent state checkpointers (PostgreSQL) and Human-in-the-Loop checkpoints.<br>
+            • <strong>Multi-Agent Graph:</strong> Intake Agent &rarr; OCR Document Verification &rarr; Policy Retrieval &rarr; Eligibility Validation &rarr; Claims Analysis &rarr; Fraud/Risk Agent &rarr; Human Sign-off.<br>
+            • <strong>Business Impact:</strong> 94%+ automated adjudication confidence, &gt;70% turnaround reduction, 100% cited policy grounding.`;
+        } else if (lower.includes('langgraph') || lower.includes('cyclic') || lower.includes('agentic') || lower.includes('multi-agent') || lower.includes('swarm') || lower.includes('why-langgraph')) {
+            html = `<div style="background: rgba(16,185,129,0.12); border-left: 3px solid #10b981; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#34d399; font-weight:700;"><i class="fas fa-network-wired"></i> LangGraph Architecture Rationale</span>
+            </div>
+            • <strong>Beyond Linear Chains:</strong> Real-world enterprise claims require loops, retries, and conditional branching — LangGraph enables true cyclic state graphs.<br>
+            • <strong>State Persistence:</strong> Checkpointing graph state directly in PostgreSQL ensures multi-step runs survive worker restarts and maintain conversational history.<br>
+            • <strong>Human-in-the-Loop:</strong> Graph execution dynamically pauses on high-value claims or anomalies, surfacing an audit packet for human adjudicators.<br>
+            • <strong>Certified Mastery:</strong> Verified LangGraph Academy credential: <strong style="color:#fff;">9ucdiusaz6</strong>.`;
+        } else if (lower.includes('anthem') || lower.includes('memberassist') || lower.includes('health') || lower.includes('clinical')) {
+            html = `<div style="background: rgba(59,130,246,0.12); border-left: 3px solid #3b82f6; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#60a5fa; font-weight:700;"><i class="fas fa-hospital"></i> TAO Digitals · Anthem MemberAssist AI</span>
+            </div>
+            • <strong>Objective:</strong> Accelerate healthcare service representative resolution time across complex policy and benefits documents.<br>
+            • <strong>RAG Pipeline:</strong> Azure AI Search hybrid retrieval (dense vector embeddings + BM25 keyword matching) with cross-encoder semantic reranking.<br>
+            • <strong>Speed &amp; Accuracy:</strong> P95 query latency reduced to &lt;800ms with 100% citation grounding (zero ungrounded claims).<br>
+            • <strong>Backend Stack:</strong> Integrated into production via Java 17 (Spring Boot) and FastAPI microservices.`;
+        } else if (lower.includes('rag') || lower.includes('guardrail') || lower.includes('ragas') || lower.includes('responsible') || lower.includes('search') || lower.includes('chunk')) {
+            html = `<div style="background: rgba(245,158,11,0.12); border-left: 3px solid #f59e0b; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#fbbf24; font-weight:700;"><i class="fas fa-shield-alt"></i> Production RAG &amp; Responsible AI Framework</span>
+            </div>
+            • <strong>Chunking &amp; Indexing:</strong> RecursiveCharacterTextSplitter with domain-aware header boundaries and table-preserving OCR parsers.<br>
+            • <strong>Hybrid Retrieval:</strong> Azure AI Search dense vector embeddings paired with reciprocal rank fusion (RRF) for optimal recall.<br>
+            • <strong>Automated Evaluation:</strong> Continuous evaluation harness using RAGAS for faithfulness, answer relevancy, and context recall.<br>
+            • <strong>Enterprise Guardrails:</strong> NeMo Guardrails layer for prompt injection prevention, output validation schemas, and PII masking.`;
+        } else if (lower.includes('model') || lower.includes('llm') || lower.includes('openai') || lower.includes('gpt') || lower.includes('claude')) {
+            html = `<div style="background: rgba(168,85,247,0.12); border-left: 3px solid #a855f7; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px;">
+                <span style="color:#c084fc; font-weight:700;"><i class="fas fa-brain"></i> Foundation Models &amp; LLM Ecosystem</span>
+            </div>
+            • <strong>Frontier Models:</strong> Azure OpenAI (GPT-4o, GPT-4 Turbo) and Anthropic Claude 3.5 Sonnet for reasoning-heavy multi-step tasks.<br>
+            • <strong>Structured Outputs:</strong> Pydantic v2 schemas and JSON mode enforcement for deterministic tool execution and downstream API calls.<br>
+            • <strong>Optimization:</strong> Prompt compression, system prompt modularity, and caching to minimize token expenditure and latency.`;
+        } else if (lower === 'skills' || lower.includes('stack') || lower.includes('python')) {
+            html = `<span style="color:var(--red-light); font-weight:bold;">🧠 Core Specializations &amp; Stack:</span><br>
+            • <strong>Agentic AI:</strong> LangGraph, LangChain, Multi-Agent Swarms, Cyclic Graphs, HITL Checkpointing<br>
+            • <strong>RAG &amp; Retrieval:</strong> Azure AI Search, Hybrid Vector Search, FAISS, ChromaDB, Semantic Rerankers<br>
+            • <strong>Models:</strong> Azure OpenAI (GPT-4o), Claude 3.5 Sonnet, Pydantic Structured Outputs<br>
+            • <strong>Evaluation:</strong> RAGAS, LLM-as-a-Judge, NeMo Guardrails, PII Sanitization<br>
+            • <strong>Backend &amp; Cloud:</strong> Python (FastAPI), Java 17 (Spring Boot), Docker, Azure, PostgreSQL, Redis`;
+        } else if (lower === 'experience' || lower === 'work' || lower.includes('accenture') || lower.includes('tao')) {
+            html = `<span style="color:var(--red-light); font-weight:bold;">💼 Enterprise Experience:</span><br>
+            1. <strong>Accenture (Client: Voya Financial)</strong> · Agentic AI Engineer (2024–Present)<br>
+            • Built 7-Agent LangGraph claims system with 100% citation grounding and Human-in-the-Loop review.<br>
+            2. <strong>TAO Digitals (Client: Anthem)</strong> · Software Engineer (2023–2024)<br>
+            • Built MemberAssist AI RAG copilot (&lt;800ms P95) &amp; Java 17 backend microservices.`;
+        } else if (lower === 'projects') {
+            html = `<span style="color:var(--red-light); font-weight:bold;">🚀 Featured Deliverables:</span><br>
+            1. <strong>Autonomous Claims Processing Agent:</strong> 7-Agent LangGraph system with 94%+ automated confidence.<br>
+            2. <strong>Claims Intelligence Copilot:</strong> OCR &amp; RAG document synthesis pipeline (&lt;3.5s).<br>
+            3. <strong>MemberAssist AI:</strong> Healthcare member service copilot with hybrid Azure AI Search (&lt;800ms P95).`;
+        } else if (lower === 'certs' || lower.includes('certif')) {
+            html = `<span style="color:#fbbf24; font-weight:bold;">🎖️ Verified Credentials:</span><br>
+            • LangChain Academy (LangChain): <strong style="color:#fff;">ctddbhm9sf</strong><br>
+            • LangChain Academy (LangGraph): <strong style="color:#fff;">9ucdiusaz6</strong><br>
+            • Databricks Certified Generative AI Engineer`;
+        } else if (lower === 'recruiter' || lower.includes('tldr') || lower.includes('brief')) {
+            html = `<span style="color:#fbbf24; font-weight:bold;">⚡ 60-Second Executive Pitch:</span><br>
+            • <strong>Profile:</strong> AI Engineer with 3+ Years delivering production GenAI, Agentic AI, and RAG systems.<br>
+            • <strong>Proven Wins:</strong> 7-Agent LangGraph Swarm (Voya Financial) &amp; MemberAssist AI (Anthem).<br>
+            • <strong>Primary Stack:</strong> Python, LangGraph, Azure OpenAI, Azure AI Search, FastAPI, Java 17, Docker.<br>
+            • <strong>Status:</strong> <span style="color:#34d399; font-weight:bold;">ACTIVE · READY TO BUILD</span><br>
+            • <strong>Direct Contact:</strong> WhatsApp (+91 9640559197) or <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light); text-decoration:underline;">pavanwork2113@gmail.com</a>`;
+        } else if (lower === 'contact' || lower.includes('email') || lower.includes('phone') || lower.includes('whatsapp') || lower.includes('reach')) {
+            html = `💬 WhatsApp: <a href="https://wa.me/919640559197" target="_blank" style="color:#34d399; text-decoration:underline;">+91 9640559197</a><br>
+            📧 Email: <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light); text-decoration:underline;">pavanwork2113@gmail.com</a><br>
+            🔗 LinkedIn: <a href="https://www.linkedin.com/in/pavan-kumar-dasam-2574893b9/" target="_blank" style="color:#60a5fa; text-decoration:underline;">in/pavan-kumar-dasam-2574893b9</a><br>
+            📂 GitHub: <a href="https://github.com/Pavan-Dasam" target="_blank" style="color:#fff; text-decoration:underline;">github.com/Pavan-Dasam</a>`;
+        } else if (lower === 'help') {
+            html = `<span style="color:var(--red-light); font-weight:bold;">💡 How to use Pavan.ai Copilot:</span><br>
+            <span style="color:#93c5fd; font-weight:bold;">Ask any question in plain English:</span><br>
+            • "Why should we hire Pavan?"<br>
+            • "Tell me about the Voya claims agent"<br>
+            • "What is his LangGraph stack?"<br>
+            • "How does Anthem MemberAssist work?"<br>
+            • "What models and guardrails does he use?"<br>
+            <br>
+            <span style="color:#cbd5e1; font-weight:bold;">Or run CLI commands:</span><br>
+            <span style="color:#fff;">skills</span>, <span style="color:#fff;">experience</span>, <span style="color:#fff;">projects</span>, <span style="color:#fff;">certs</span>, <span style="color:#fff;">recruiter</span>, <span style="color:#fff;">contact</span>, <span style="color:#fff;">clear</span>`;
+        } else {
+            // Conversational fallback
+            html = `<div style="background: rgba(37,99,235,0.10); border-left: 3px solid #3b82f6; padding: 8px 12px; border-radius: 4px; margin-bottom: 6px;">
+                <span style="color:#60a5fa; font-weight:700;"><i class="fas fa-robot"></i> Pavan.ai Copilot</span>
+            </div>
+            I am Pavan's AI portfolio copilot. Pavan is an <strong>AI Engineer with 3+ years of experience</strong> specializing in <strong>LangGraph multi-agent systems, Enterprise RAG, and Azure OpenAI</strong> across Financial &amp; Health Insurance domains.<br><br>
+            <span style="color:#94a3b8;">Explore top questions or click a prompt:</span><br>
+            • <span class="term-nl-pill" onclick="runTermCmd('Why should we hire Pavan?')"><i class="fas fa-lightbulb"></i> Why hire Pavan?</span><br>
+            • <span class="term-nl-pill" onclick="runTermCmd('Summarize Voya Claims Agent')"><i class="fas fa-robot"></i> Voya Claims Agent</span><br>
+            • <span class="term-nl-pill" onclick="runTermCmd('What is your LangGraph stack?')"><i class="fas fa-network-wired"></i> LangGraph Stack</span><br>
+            • Or type <span style="color:var(--red-light); font-weight:bold;">help</span> to see all commands.`;
         }
+
+        resp.innerHTML = html;
 
         termOutput.appendChild(resp);
         termOutput.scrollTop = termOutput.scrollHeight;
@@ -3799,26 +3924,35 @@ document.addEventListener('DOMContentLoaded', () => {
             <span style="font-size: 0.7rem; color: #34d399; font-family: var(--font-mono);">ONLINE</span>
         </div>
         <div class="terminal-body" id="termOutput">
-            <div style="color: #fff; font-weight: bold; margin-bottom: 6px; font-family: var(--font-mono);">
-                <span style="color: var(--red-light);">●</span> Pavan Dasam | AI Engineer Shell v2.4
+            <div style="color: #fff; font-weight: bold; margin-bottom: 4px; font-family: var(--font-mono); display: flex; align-items: center; justify-content: space-between;">
+                <span><span style="color: #34d399;">●</span> Pavan.ai Copilot &amp; Shell v3.0</span>
+                <span style="color: #93c5fd; font-size: 0.68rem; background: rgba(37,99,235,0.2); padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(96,165,250,0.3);">NATURAL LANGUAGE READY</span>
             </div>
-            <div style="color: var(--text-muted); margin-bottom: 8px; font-size: 0.78rem;">
-                Type <span style="color: var(--red-light); font-weight: bold;">help</span> or click a quick action:
+            <div style="color: var(--text-muted); margin-bottom: 8px; font-size: 0.76rem;">
+                Ask anything in natural language, or click a quick prompt:
             </div>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+            <!-- Natural Language Query Pills -->
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 9px;">
+                <span class="term-nl-pill" onclick="runTermCmd('Why should we hire Pavan?')"><i class="fas fa-lightbulb" style="color: #fbbf24;"></i> Why hire Pavan?</span>
+                <span class="term-nl-pill" onclick="runTermCmd('Summarize Voya Claims Agent')"><i class="fas fa-robot" style="color: #60a5fa;"></i> Voya Claims Agent</span>
+                <span class="term-nl-pill" onclick="runTermCmd('What is your LangGraph stack?')"><i class="fas fa-network-wired" style="color: #34d399;"></i> LangGraph Stack</span>
+                <span class="term-nl-pill" onclick="runTermCmd('How does Anthem MemberAssist work?')"><i class="fas fa-hospital" style="color: #f472b6;"></i> Anthem MemberAssist</span>
+                <span class="term-nl-pill" onclick="runTermCmd('Explain RAG and Responsible AI')"><i class="fas fa-shield-alt" style="color: #fbbf24;"></i> RAG &amp; Guardrails</span>
+            </div>
+            <!-- CLI Command Shortcuts -->
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
+                <span style="font-size: 0.68rem; color: #64748b; font-family: var(--font-mono); margin-right: 2px;">CLI:</span>
                 <span class="term-badge" onclick="runTermCmd('skills')">skills</span>
                 <span class="term-badge" onclick="runTermCmd('experience')">experience</span>
                 <span class="term-badge" onclick="runTermCmd('projects')">projects</span>
                 <span class="term-badge" onclick="runTermCmd('certs')">certs</span>
                 <span class="term-badge" onclick="runTermCmd('contact')">contact</span>
-                <span class="term-badge" onclick="runTermCmd('recruiter')">⚡ recruiter</span>
-                <span class="term-badge" onclick="runTermCmd('why-langgraph')">why-langgraph</span>
                 <span class="term-badge" onclick="runTermCmd('clear')">clear</span>
             </div>
         </div>
         <div class="terminal-input-row">
             <span class="terminal-prompt">&gt;</span>
-            <input type="text" class="terminal-input" id="termInput" placeholder="Type a command (help, skills, certs, contact)..." autocomplete="off">
+            <input type="text" class="terminal-input" id="termInput" placeholder="Ask a question or type a command (e.g. &quot;Why hire Pavan?&quot;, &quot;skills&quot;)..." autocomplete="off">
         </div>
     </div>
         
