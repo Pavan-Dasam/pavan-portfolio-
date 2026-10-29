@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Pavan Dasam - AI Engineer specializing in Generative AI, Agentic AI, and RAG Systems. 3+ Years in Financial & Health Insurance domains.">
+        content="Pavan Dasam - AI Engineer specializing in Generative AI, Agentic AI, and RAG Systems. Over 3.5 Years in Financial & Health Insurance domains.">
     <title>Pavan Dasam | AI Engineer · Generative AI · Agentic AI · RAG</title>
 
     <!-- Google Fonts -->
@@ -3039,13 +3039,13 @@
                             <span>I'm </span><span class="typing-text"></span>
                         </div>
                         <p class="hero-bio">
-                            AI Engineer with 3+ Years of experience designing, building, and deploying enterprise
+                            AI Engineer with over 3.5 years of experience designing, building, and deploying enterprise
                             Generative AI, LLM assistants, and multi-step agentic workflows across Financial Insurance
                             and Health Insurance domains.
                         </p>
 
                         <div class="hero-badges">
-                            <div class="hero-badge"><i class="fas fa-certificate"></i> LangChain & LangGraph Certified
+                            <div class="hero-badge"><i class="fas fa-certificate"></i> LangChain, LangGraph & MCP Certified
                             </div>
                             <div class="hero-badge"><i class="fas fa-network-wired"></i> Multi-Agent Orchestration</div>
                             <div class="hero-badge"><i class="fas fa-cloud"></i> Azure OpenAI & Claude</div>
@@ -3054,7 +3054,7 @@
 
                         <div class="hero-stats">
                             <div class="stat-item">
-                                <h4>3+ Years</h4>
+                                <h4>3.5+ Years</h4>
                                 <p>GenAI & Backend</p>
                             </div>
                             <div class="stat-item">
@@ -3293,7 +3293,7 @@
                                     <span class="project-type-pill">Agentic AI</span>
                                 </div>
                                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
-                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life, and disability, and brought Leave/PFML/Short-Term Disability claims administration in-house. Designed a multi-agent workflow to process incoming claims end-to-end.
+                                    <strong>Context:</strong> Voya's claims operations span supplemental health, life, and disability, and in 2026 brought Leave/PFML/Short-Term Disability claims administration in-house for new business. Delivered a multi-agent system that coordinates several specialized agents under a single LangGraph workflow to process a claim end-to-end.
                                 </p>
                                 <div class="workflow-diagram-pill">
                                     <strong>Multi-Agent Workflow:</strong><br>
@@ -3303,13 +3303,14 @@
                                     <li>Designed and built a multi-agent LangGraph workflow spanning Intake, Document Verification, Policy Retrieval, Eligibility, Claims Analysis, Fraud/Risk, and Recommendation agents to process disability, life, and supplemental health claims.</li>
                                     <li>Developed the <strong>Intake Agent</strong> to classify incoming claims and extract claimant/policy info, and the <strong>Document Verification Agent</strong> to check received documents against claim requirements and flag missing items.</li>
                                     <li>Implemented the <strong>Policy Retrieval Agent</strong> using RAG over certificate/policy language to surface applicable coverage sections for each claim.</li>
-                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates, plan eligibility, and applicable rules via internal APIs and rules-engine integration.</li>
+                                    <li>Developed the <strong>Eligibility Agent</strong> to validate coverage dates, plan eligibility, and applicable rules via internal APIs and rules-engine integration, and standardized tool/data-source access across all agents using the <strong>Model Context Protocol (MCP)</strong>.</li>
                                     <li>Built the <strong>Fraud/Risk Agent</strong> to flag unusual claim patterns, and the <strong>Recommendation Agent</strong> to assemble supporting evidence, cite policy sections, and produce a confidence-scored recommended next action.</li>
                                     <li>Implemented <strong>Human-in-the-Loop routing</strong> so claims examiners review and finalize every agent-recommended action before it is applied (e.g., flags 4/5 documents received, cites Policy Section 7.2, and recommends requesting missing employer statement at 94% confidence).</li>
                                     <li>Selected <strong>LangGraph</strong> over simple LangChain chains because the claims process required persistent state, conditional branching, and human-in-the-loop checkpoints.</li>
                                 </ul>
                                 <div class="tech-pill-row">
                                     <span>LangGraph</span>
+                                    <span>MCP</span>
                                     <span>Azure OpenAI</span>
                                     <span>Python</span>
                                     <span>FastAPI</span>
@@ -3408,7 +3409,39 @@
 
                             </div>
 
-                            <!-- Product 1.2: Claims Intelligence Copilot -->
+                            <!-- Product 1.2: Voya Policy Servicing Agent -->
+                            <div class="project-block">
+                                <div class="project-block-title">
+                                    <h4>★ Voya Policy Servicing Agent</h4>
+                                    <span class="project-type-pill">Single Agentic System · MCP</span>
+                                </div>
+                                <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">
+                                    <strong>Context:</strong> Beyond claims, Voya's policy servicing team handles endorsements, beneficiary updates, billing inquiries, and policy document requests. Rather than a multi-agent pipeline, delivered a <em>single agentic system</em> — per Voya Financial's requirement — where one LLM-driven agent equipped with multiple tools reasons over each request end-to-end and decides which tool to call, matched to how self-contained this workflow is.
+                                </p>
+                                <div class="workflow-diagram-pill">
+                                    <strong>Single-Agent + MCP Tools Architecture:</strong><br>
+                                    Incoming Request <span>→</span> Single Agent (Reasoning Loop) <span>→</span> MCP Tool Calls: Policy Change Tool | Billing Lookup Tool | Document Retrieval Tool | Compliance Check Tool <span>→</span> Response
+                                </div>
+                                <ul class="timeline-details">
+                                    <li>Designed a <strong>single agentic system</strong> — one LangGraph agent running a continuous reasoning-and-tool-calling loop, not a multi-agent pipeline — since policy servicing requests are typically self-contained and well-suited to one agent with the right tools.</li>
+                                    <li>Exposed policy-change, billing-lookup, RAG-based document-retrieval, and compliance-check capabilities as <strong>Model Context Protocol (MCP) tools</strong> that the single agent calls directly, keeping one continuous context and one consolidated audit trail per request instead of handing off between agents.</li>
+                                    <li>Implemented <strong>persistent agent state</strong> so the same agent handles multi-turn requests — e.g., a beneficiary update followed by a compliance re-check — without losing context, with <strong>human-in-the-loop approval</strong> inside the same loop for changes above a defined risk threshold.</li>
+                                    <li>Deliberately chose this single-agent, tool-calling design over a multi-agent pipeline for policy servicing, reserving the multi-agent approach for the higher-complexity claims workflow above.</li>
+                                </ul>
+                                <div class="tech-pill-row">
+                                    <span>LangGraph (Single-Agent Loop)</span>
+                                    <span>MCP</span>
+                                    <span>Azure OpenAI</span>
+                                    <span>Python</span>
+                                    <span>FastAPI</span>
+                                    <span>Azure AI Search</span>
+                                    <span>PostgreSQL</span>
+                                    <span>Docker</span>
+                                    <span>AKS</span>
+                                </div>
+                            </div>
+
+                            <!-- Product 1.3: Voya Claims Intelligence Copilot -->
                             <div class="project-block">
                                 <div class="project-block-title">
                                     <h4>Voya Claims Intelligence Copilot</h4>
@@ -3835,7 +3868,7 @@
                             </div>
 
                             <div style="font-size:0.85rem; color:#cbd5e1; line-height:1.55; margin-bottom:1.2rem;">
-                                <strong>Candidate Proven Match:</strong> 3+ Years Production GenAI experience delivering end-to-end 7-agent cyclic swarms (Accenture/Voya) and sub-second grounded RAG assistants (Anthem).
+                                <strong>Candidate Proven Match:</strong> Over 3.5 Years Production GenAI experience delivering end-to-end 7-agent cyclic swarms and single-agent MCP systems (Accenture/Voya), and sub-second grounded RAG assistants (Anthem).
                             </div>
 
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
@@ -3937,6 +3970,7 @@
                             <span class="skill-tag">Agentic Workflows</span>
                             <span class="skill-tag">State Management</span>
                             <span class="skill-tag">Tool Calling</span>
+                            <span class="skill-tag">Model Context Protocol (MCP)</span>
                             <span class="skill-tag">Human-in-the-Loop</span>
                             <span class="skill-tag">Prompt Engineering</span>
                             <span class="skill-tag">Structured Outputs</span>
@@ -4055,6 +4089,12 @@
 
                 <div class="certs-grid">
                     <div class="cert-card reveal-on-scroll">
+                        <p class="cert-issuer">ANTHROPIC</p>
+                        <h3 class="cert-title">Certified in Model Context Protocol (MCP)</h3>
+                        <p class="cert-desc">Certified in architecting standardized client-server integrations, tool-calling schemas, dynamic context management, and secure enterprise data connectivity.</p>
+                    </div>
+
+                    <div class="cert-card reveal-on-scroll">
                         <p class="cert-issuer">DATABRICKS CERTIFIED</p>
                         <h3 class="cert-title">Generative AI Engineer</h3>
                         <p class="cert-desc">Certified in foundational concepts, LLM architectures, prompt engineering,
@@ -4142,7 +4182,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 <strong>Pavan Dasam</strong> · AI Engineer · LangChain & LangGraph Certified · Built with
+            <p>© 2026 <strong>Pavan Dasam</strong> · AI Engineer · LangChain, LangGraph & MCP Certified · Built with
                 <span>❤️</span></p>
         </div>
     </footer>
@@ -4609,7 +4649,7 @@ document.addEventListener('DOMContentLoaded', () => {
             • <strong>Optimization:</strong> Prompt compression, system prompt modularity, and caching to minimize token expenditure and latency.`;
         } else if (lower === 'skills' || lower.includes('stack') || lower.includes('python')) {
             html = `<span style="color:var(--red-light); font-weight:bold;">🧠 Core Specializations &amp; Stack:</span><br>
-            • <strong>Agentic AI:</strong> LangGraph, LangChain, Multi-Agent Swarms, Cyclic Graphs, HITL Checkpointing<br>
+            • <strong>Agentic AI:</strong> LangGraph, LangChain, Model Context Protocol (MCP), Multi-Agent Swarms, Single-Agent Tool Loops, HITL Checkpointing<br>
             • <strong>RAG &amp; Retrieval:</strong> Azure AI Search, Hybrid Vector Search, FAISS, ChromaDB, Semantic Rerankers<br>
             • <strong>Models:</strong> Azure OpenAI (GPT-4o), Claude 3.5 Sonnet, Pydantic Structured Outputs<br>
             • <strong>Evaluation:</strong> RAGAS, LLM-as-a-Judge, NeMo Guardrails, PII Sanitization<br>
@@ -4622,19 +4662,24 @@ document.addEventListener('DOMContentLoaded', () => {
             • Built MemberAssist AI RAG copilot (&lt;800ms P95) &amp; Java 17 backend microservices.`;
         } else if (lower === 'projects') {
             html = `<span style="color:var(--red-light); font-weight:bold;">🚀 Featured Deliverables:</span><br>
-            1. <strong>Autonomous Claims Processing Agent:</strong> 7-Agent LangGraph system with 94%+ automated confidence.<br>
-            2. <strong>Claims Intelligence Copilot:</strong> OCR &amp; RAG document synthesis pipeline (&lt;3.5s).<br>
+            1. <strong>Autonomous Claims Processing Agent (Voya Financial):</strong> 7-Agent LangGraph multi-agent system with 94%+ automated confidence &amp; MCP tool integration.<br>
+            2. <strong>Voya Policy Servicing Agent (Voya Financial):</strong> Single Agentic System with continuous MCP tool reasoning loop (Policy Change, Billing Lookup, Document Retrieval, Compliance Check).<br>
+            3. <strong>Voya Claims Intelligence Copilot (Voya Financial):</strong> OCR &amp; RAG document synthesis pipeline (&lt;3.5s) for claims examiners.<br>
+            4. <strong>MemberAssist AI (Anthem):</strong> RAG healthcare support copilot with hybrid Azure AI Search (&lt;800ms P95 latency).<br>
+            5. <strong>Claims &amp; Member Services Backend (Anthem):</strong> Java 17 / Spring Boot microservices with Agile CI/CD.<br>
             3. <strong>MemberAssist AI:</strong> Healthcare member service copilot with hybrid Azure AI Search (&lt;800ms P95).`;
         } else if (lower === 'certs' || lower.includes('certif')) {
             html = `<span style="color:#fbbf24; font-weight:bold;">🎖️ Verified Credentials:</span><br>
-            • LangChain Academy (LangChain): <strong style="color:#fff;">ctddbhm9sf</strong><br>
-            • LangChain Academy (LangGraph): <strong style="color:#fff;">9ucdiusaz6</strong><br>
-            • Databricks Certified Generative AI Engineer`;
+            • <strong>Certified in Model Context Protocol (MCP)</strong> – Anthropic<br>
+            • <strong>LangGraph Certification</strong> – LangChain Academy: <strong style="color:#fff;">9ucdiusaz6</strong><br>
+            • <strong>LangChain Certification</strong> – LangChain Academy: <strong style="color:#fff;">ctddbhm9sf</strong><br>
+            • <strong>Databricks Certified – Generative AI</strong><br>
+            • <strong>Bachelor of Technology (B.Tech)</strong> – JNTUK University (2023)`;
         } else if (lower === 'recruiter' || lower.includes('tldr') || lower.includes('brief')) {
             html = `<span style="color:#fbbf24; font-weight:bold;">⚡ 60-Second Executive Pitch:</span><br>
-            • <strong>Profile:</strong> AI Engineer with 3+ Years delivering production GenAI, Agentic AI, and RAG systems.<br>
-            • <strong>Proven Wins:</strong> 7-Agent LangGraph Swarm (Voya Financial) &amp; MemberAssist AI (Anthem).<br>
-            • <strong>Primary Stack:</strong> Python, LangGraph, Azure OpenAI, Azure AI Search, FastAPI, Java 17, Docker.<br>
+            • <strong>Profile:</strong> AI Engineer with Over 3.5 Years delivering production GenAI, Agentic AI, and RAG systems.<br>
+            • <strong>Proven Wins:</strong> 7-Agent LangGraph Swarm &amp; Single-Agent MCP Policy Servicing (Voya Financial), and MemberAssist AI (Anthem).<br>
+            • <strong>Primary Stack:</strong> Python, LangGraph, Model Context Protocol (MCP), Azure OpenAI, Azure AI Search, FastAPI, Java 17, Docker.<br>
             • <strong>Tagline:</strong> <span style="color:#34d399; font-weight:bold;">ARCHITECTING PRODUCTION GenAI</span><br>
             • <strong>Direct Contact:</strong> WhatsApp (+91 9640559197) or <a href="mailto:pavanwork2113@gmail.com" style="color:var(--red-light); text-decoration:underline;">pavanwork2113@gmail.com</a>`;
         } else if (lower === 'contact' || lower.includes('email') || lower.includes('phone') || lower.includes('whatsapp') || lower.includes('reach')) {
@@ -4658,7 +4703,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html = `<div style="background: rgba(37,99,235,0.10); border-left: 3px solid #3b82f6; padding: 8px 12px; border-radius: 4px; margin-bottom: 6px;">
                 <span style="color:#60a5fa; font-weight:700;"><i class="fas fa-robot"></i> Pavan.ai Copilot</span>
             </div>
-            I am Pavan's AI portfolio copilot. Pavan is an <strong>AI Engineer with 3+ years of experience</strong> specializing in <strong>LangGraph multi-agent systems, Enterprise RAG, and Azure OpenAI</strong> across Financial &amp; Health Insurance domains.<br><br>
+            I am Pavan's AI portfolio copilot. Pavan is an <strong>AI Engineer with over 3.5 years of experience</strong> specializing in <strong>LangGraph multi-agent systems, Single-Agent MCP Tool Calling, Enterprise RAG, and Azure OpenAI</strong> across Financial &amp; Health Insurance domains.<br><br>
             <span style="color:#94a3b8;">Explore top questions or click a prompt:</span><br>
             • <span class="term-nl-pill" onclick="runTermCmd('Why should we hire Pavan?')"><i class="fas fa-lightbulb"></i> Why hire Pavan?</span><br>
             • <span class="term-nl-pill" onclick="runTermCmd('Summarize Voya Claims Agent')"><i class="fas fa-robot"></i> Voya Claims Agent</span><br>
@@ -5440,7 +5485,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="recruiter-stat-pill-row">
                 <div class="recruiter-stat-pill">
-                    <strong>3+ Years</strong>
+                    <strong>3.5+ Years</strong>
                     <span>GenAI &amp; Backend</span>
                 </div>
                 <div class="recruiter-stat-pill">
@@ -5459,7 +5504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div style="background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 14px; margin-bottom: 14px; font-size: 0.84rem; line-height: 1.6; color: #cbd5e1;">
                 <strong style="color: #fff;">Candidate Value Proposition:</strong><br>
-                Engineered an autonomous <strong>7-Agent LangGraph Claims Processing system</strong> for Voya Financial with full Human-in-the-Loop governance. Built healthcare member copilots on Azure OpenAI with zero hallucination rate using RAGAS evaluation. Fluent in Python (FastAPI), LangGraph, Azure AI Search, and Java 17 Spring Boot microservices.
+                Engineered an autonomous <strong>7-Agent LangGraph Claims Processing system</strong> and a <strong>Single-Agent Policy Servicing system with MCP tools</strong> for Voya Financial with full Human-in-the-Loop governance. Built healthcare member copilots on Azure OpenAI with zero hallucination rate using RAGAS evaluation. Fluent in Python (FastAPI), LangGraph, Azure AI Search, and Java 17 Spring Boot microservices.
             </div>
 
             <div style="margin-bottom: 16px;">
@@ -5470,6 +5515,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span style="background: rgba(0, 163, 255, 0.12); border: 1px solid var(--border-red); color: #ff4d58; padding: 3px 8px; border-radius: 4px;">LangChain (ctddbhm9sf)</span>
                     <span style="background: rgba(0, 163, 255, 0.12); border: 1px solid var(--border-red); color: #ff4d58; padding: 3px 8px; border-radius: 4px;">LangGraph (9ucdiusaz6)</span>
                     <span style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.4); color: #fbbf24; padding: 3px 8px; border-radius: 4px;">Databricks GenAI Certified</span>
+                    <span style="background: rgba(0, 163, 255, 0.12); border: 1px solid var(--border-red); color: #00A3FF; padding: 3px 8px; border-radius: 4px;">Anthropic MCP Certified</span>
                 </div>
             </div>
 
